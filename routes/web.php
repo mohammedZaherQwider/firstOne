@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [mainController::class,'index'])->name('index');
 Route::get('/hostpial', [mainController::class,'hostpial'])->name('hostpial');
 Route::get('/hostpial_details/{hostpial}', [mainController::class,'hostpial_details'])->name('hostpial_details');
+Route::get('/profile', [mainController::class,'profile'])->name('profile');
+

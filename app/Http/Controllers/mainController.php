@@ -54,6 +54,11 @@ class mainController extends Controller
             ->orderByDesc('ratings_avg_rating')
             ->take(3)
             ->get();
-        return view('front_end.hospital-details', compact('hostpial','hostpials'));
+        return view('front_end.hospital-details', compact('hostpial', 'hostpials'));
+    }
+    function profile()
+    {
+        $countries = Country::select('id', 'name')->get();
+        return view('front_end.profile', compact('countries'));
     }
 }

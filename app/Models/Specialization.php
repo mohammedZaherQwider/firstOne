@@ -22,4 +22,8 @@ class Specialization extends Model
     {
         return $this->hasMany(Offer::class);
     }
+    function operations()
+    {
+        return $this->hasMany(Operation::class);
+    }
 }

@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doctors', function (Blueprint $table) {
+        Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('specialization_id');
-            $table->foreignId('nationality_id');
-            $table->foreignId('hostpial_id');
-            $table->enum('gender', ['male', 'female']);
+            $table->string('title');
+            $table->text('content');
             $table->string('img');
-            $table->string('bio');
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doctors');
+        Schema::dropIfExists('contents');
     }
 };

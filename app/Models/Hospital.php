@@ -9,6 +9,9 @@ class Hospital extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = [
+        'services' => 'array',
+    ];
 
     function specializations()
     {
@@ -30,8 +33,16 @@ class Hospital extends Model
     {
         return $this->hasMany(Offer::class);
     }
+    function users()
+    {
+        return $this->hasMany(User::class);
+    }
     public function ratings()
     {
         return $this->morphMany(Rating::class, 'ratable');
+    }
+    function operations()
+    {
+        return $this->hasMany(Operation::class);
     }
 }

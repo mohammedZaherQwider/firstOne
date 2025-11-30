@@ -113,7 +113,7 @@
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
                     <h2>مستشفيات ننصح بها</h2>
-                    <a href="hospitals.html" class="btn cs-btn">عرض كل المستشفيات</a>
+                    <a href="{{ route('hostpial') }}" class="btn cs-btn">عرض كل المستشفيات</a>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -413,25 +413,32 @@
         <section class="consulation-section callaction-section">
             <div class="container">
                 <div class="content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2">
-                            <figure>
-                                <img src="assets/images/consultation.png" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.1s" alt="" srcset="">
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">طلب استشارة</h4>
-                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                استشارات طبية مجانية من أطباء مختصين، هل تريد سؤال طبيب؟ احصل على مشورة
-                                .طبية ورأي ثان مجاناً، اسأل طبيب وسيتم الرد في نفس اليوم، اطئمن على صحتك
-                            </p>
-                        </div>
-                        <div class="col-lg-3 mx-auto">
-                            <a href="#" class="btn cs-btn wow fadeInUp" data-wow-duration="1s"
-                                data-wow-delay="0.3s">طلب استشارة</a>
-                        </div>
-                    </div>
+                    @foreach ($contents as $content)
+                        @if ($content->title == 'طلب استشارة')
+                            <div class="row align-items-center">
+                                <div class="col-lg-2">
+                                    <figure>
+                                        <img src="assets/images/consultation.png" class="wow zoomIn"
+                                            data-wow-duration="1s" data-wow-delay="0.1s" alt="" srcset="">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-7">
+                                    <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                        {{ $content->title }}
+                                    </h4>
+                                    <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                                        {{ $content->content }}
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 mx-auto">
+                                    <a href="{{ $content->link }}" class="btn cs-btn wow fadeInUp"
+                                        data-wow-duration="1s" data-wow-delay="0.3s"> {{ $content->title }}</a>
+                                </div>
+                            </div>
+                            @break
+                        @endif
+                    @endforeach
+
                 </div>
             </div>
         </section>
@@ -808,27 +815,33 @@
         <!-- service-request-section -->
         <section class="callaction-section service-request-section">
             <div class="container">
-                <div class="content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2">
-                            <figure>
-                                <img src="assets/images/medical-health-services.png" class="wow zoomIn"
-                                    data-wow-duration="1s" data-wow-delay="0.1s" alt="" srcset="">
-                            </figure>
+                @foreach ($contents as $content)
+                    @if ($content->title == 'طلب خدمة')
+                        <div class="content">
+                            <div class="row align-items-center">
+                                <div class="col-lg-2">
+                                    <figure>
+                                        <img src="assets/images/medical-health-services.png" class="wow zoomIn"
+                                            data-wow-duration="1s" data-wow-delay="0.1s" alt="" srcset="">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-7">
+                                    <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                        {{ $content->title }} </h4>
+                                    <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                                        {{ $content->content }}
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 mx-auto">
+                                    <a href="{{ $content->link }}" class="btn cs-btn wow fadeInUp"
+                                        data-wow-duration="1s" data-wow-delay="0.3s">ارسل طلب الأن</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-7">
-                            <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">طلب خدمة</h4>
-                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                تحتاج للمساعدة، ونحن هنا لمساعدتك فريق عملنا متواجد دائما على مدار الساعة
-                                .طوال أيام الأسبوع لخدمتك والإجابة على جميع أسئلتك واستفساراتك
-                            </p>
-                        </div>
-                        <div class="col-lg-3 mx-auto">
-                            <a href="#" class="btn cs-btn wow fadeInUp" data-wow-duration="1s"
-                                data-wow-delay="0.3s">ارسل طلب الأن</a>
-                        </div>
-                    </div>
-                </div>
+                        @break
+                    @endif
+                @endforeach
+
             </div>
         </section>
         <!-- ./service-request-section -->
@@ -857,7 +870,8 @@
                                             <h6> {{ $offer->doctor->name }} </h6>
                                             <div class="price">
                                                 <p>${{ $offer->price }}</p>
-                                                <p> {{ number_format($offer->price * (1 - $offer->discount_value / 100), 2) }} $</p>
+                                                <p> {{ number_format($offer->price * (1 - $offer->discount_value / 100), 2) }}
+                                                    $</p>
                                             </div>
                                         </div>
                                     </div>
@@ -965,27 +979,33 @@
         <!-- contact-us-section -->
         <section class="callaction-section contact-us-section">
             <div class="container">
-                <div class="content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-2">
-                            <figure>
-                                <img src="assets/images/contact-us.png" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.1s" alt="" srcset="">
-                            </figure>
+                {{--  هسا هنا بدنا نعمل عمود البوزشن تمام ولما ييجي يضيف البلن بخليه يحدد وين بدو اياها تمام وبصير افحص ع البوزشن المكان وبعرض االبلن --}}
+                @foreach ($contents as $content)
+                    @if ($content->titel == 'تواصل معنا')
+                        <div class="content">
+                            <div class="row align-items-center">
+                                <div class="col-lg-2">
+                                    <figure>
+                                        <img src="assets/images/contact-us.png" class="wow zoomIn" data-wow-duration="1s"
+                                            data-wow-delay="0.1s" alt="" srcset="">
+                                    </figure>
+                                </div>
+                                <div class="col-lg-7">
+                                    <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                        {{ $content->titel }} </h4>
+                                    <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                                        {{ $content->content }}
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 mx-auto">
+                                    <a href="#" class="btn cs-btn wow fadeInUp" data-wow-duration="1s"
+                                        data-wow-delay="0.3s"> {{ $content->title }} </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-7">
-                            <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">تواصل معنا</h4>
-                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                تحتاج للمساعدة، ونحن هنا لمساعدتك فريق عملنا متواجد دائما على مدار الساعة
-                                .طوال أيام الأسبوع لخدمتك والإجابة على جميع أسئلتك واستفساراتك
-                            </p>
-                        </div>
-                        <div class="col-lg-3 mx-auto">
-                            <a href="#" class="btn cs-btn wow fadeInUp" data-wow-duration="1s"
-                                data-wow-delay="0.3s">تواصل معنا الأن</a>
-                        </div>
-                    </div>
-                </div>
+                        @break
+                    @endif
+                @endforeach
             </div>
         </section>
         <!-- ./contact-us-section -->

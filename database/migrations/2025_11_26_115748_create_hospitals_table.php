@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('country_id');
             $table->foreignId('city_id');
             $table->string('img');
+            $table->integer('bed_number');
             $table->json('services');
             $table->timestamps();
         });

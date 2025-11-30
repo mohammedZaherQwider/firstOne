@@ -48,8 +48,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Country::class);
     }
-     function ratings()
+    function ratings()
     {
         return $this->hasMany(Rating::class);
+    }
+     function job()
+    {
+        return $this->belongsTo(Job::class);
+    }
+     function hospital()
+    {
+        return $this->belongsTo(Hospital::class);
+    }
+    function operations()  {
+        return $this->hasMany(Operation::class);
     }
 }

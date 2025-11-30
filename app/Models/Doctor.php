@@ -19,8 +19,6 @@ class Doctor extends Model
     {
         return $this->belongsTo(Specialization::class);
     }
-
-
     function hostpial()
     {
         return $this->belongsTo(Hospital::class);
@@ -32,5 +30,9 @@ class Doctor extends Model
     public function ratings()
     {
         return $this->morphMany(Rating::class, 'ratable');
+    }
+    function operations()
+    {
+        return $this->hasMany(Operation::class);
     }
 }

@@ -15,7 +15,8 @@
     <link rel="icon" href="assets/images/icon.svg">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-rtl.min.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="assets/plugins/animate/animate.css">
     <!-- owl slider CSS -->
@@ -54,7 +55,7 @@
                         <div class="cs-dropdown">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="language"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     AR
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="language">
@@ -64,8 +65,8 @@
                                                 <svg id="svgexport-10_15_" data-name="svgexport-10 (15)"
                                                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 20 20">
-                                                    <circle id="Ellipse_11643" data-name="Ellipse 11643" cx="10" cy="10"
-                                                        r="10" fill="#3d9635" />
+                                                    <circle id="Ellipse_11643" data-name="Ellipse 11643" cx="10"
+                                                        cy="10" r="10" fill="#3d9635" />
                                                     <g id="Group_63308" data-name="Group 63308"
                                                         transform="translate(2.852 4.7)">
                                                         <path id="Path_41627" data-name="Path 41627"
@@ -174,8 +175,8 @@
                                                 <svg id="svgexport-10_16_" data-name="svgexport-10 (16)"
                                                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 20 20">
-                                                    <circle id="Ellipse_11644" data-name="Ellipse 11644" cx="9.918"
-                                                        cy="9.918" r="9.918" fill="#f0f0f0" />
+                                                    <circle id="Ellipse_11644" data-name="Ellipse 11644"
+                                                        cx="9.918" cy="9.918" r="9.918" fill="#f0f0f0" />
                                                     <g id="Group_63310" data-name="Group 63310"
                                                         transform="translate(0.347 2.192)">
                                                         <path id="Path_41658" data-name="Path 41658"
@@ -206,7 +207,8 @@
                                                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                     viewBox="0 0 20 20">
                                                     <path id="Path_41663" data-name="Path 41663"
-                                                        d="M10,20A10,10,0,1,0,0,10,10,10,0,0,0,10,20Z" fill="#d80027" />
+                                                        d="M10,20A10,10,0,1,0,0,10,10,10,0,0,0,10,20Z"
+                                                        fill="#d80027" />
                                                     <path id="Path_41664" data-name="Path 41664"
                                                         d="M73.2,170.354a2.83,2.83,0,0,0,4.174,2.486,3.479,3.479,0,1,1,0-4.982,2.946,2.946,0,0,0-1.346-.333A2.83,2.83,0,0,0,73.2,170.354Zm5.891-.7-.821-1.134v1.4l-1.329.434,1.321.43v1.4l.823-1.129,1.334.434-.821-1.134.821-1.129Z"
                                                         transform="translate(-68.671 -160.354)" fill="#f0f0f0"
@@ -221,7 +223,8 @@
                         </div>
                         <span class="icon-show">
                             <svg id="vuesax_bulk_global" data-name="vuesax/bulk/global"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
                                 <g id="global">
                                     <path id="Vector"
                                         d="M4.59,4.57c-.03,0-.07.02-.1.02A10.006,10.006,0,0,1,0,.1C0,.07.02.03.02,0A31.893,31.893,0,0,0,3.75.84,33.548,33.548,0,0,0,4.59,4.57Z"
@@ -250,13 +253,15 @@
                                     <path id="Vector-9" data-name="Vector"
                                         d="M7.763,7.763a30.039,30.039,0,0,1-7.527,0,30.039,30.039,0,0,1,0-7.527,30.039,30.039,0,0,1,7.527,0A30.039,30.039,0,0,1,7.763,7.763Z"
                                         transform="translate(8 8)" fill="#868692" />
-                                    <path id="Vector-10" data-name="Vector" d="M0,0H24V24H0Z" fill="none" opacity="0" />
+                                    <path id="Vector-10" data-name="Vector" d="M0,0H24V24H0Z" fill="none"
+                                        opacity="0" />
                                 </g>
                             </svg>
                         </span>
                         <span class="icon-hide">
                             <svg id="vuesax_bulk_global" data-name="vuesax/bulk/global"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
                                 <g id="global">
                                     <path id="Vector"
                                         d="M4.59,4.57c-.03,0-.07.02-.1.02A10.006,10.006,0,0,1,0,.1C0,.07.02.03.02,0A31.893,31.893,0,0,0,3.75.84,33.548,33.548,0,0,0,4.59,4.57Z"
@@ -285,7 +290,8 @@
                                     <path id="Vector-9" data-name="Vector"
                                         d="M7.763,7.763a30.039,30.039,0,0,1-7.527,0,30.039,30.039,0,0,1,0-7.527,30.039,30.039,0,0,1,7.527,0A30.039,30.039,0,0,1,7.763,7.763Z"
                                         transform="translate(8 8)" fill="#253751" />
-                                    <path id="Vector-10" data-name="Vector" d="M0,0H24V24H0Z" fill="none" opacity="0" />
+                                    <path id="Vector-10" data-name="Vector" d="M0,0H24V24H0Z" fill="none"
+                                        opacity="0" />
                                 </g>
                             </svg>
 
@@ -309,43 +315,55 @@
                     <div class="col-lg-5">
                         <div class="content">
                             <div class="login-card">
-                                <h1>هل نسيت كلمة المرور؟</h1>
-                                <h6>أدخل  البريد الإلكتروني ليصلك رمز إعادة تعيين كلمة المرور</h6>
-                                <form action="{{ route('forgetpassword_add') }}" method="post">
+                                <h2>أدخل رمز إعادة تعيين كلمة المرور</h2>
+                                <form action="{{ route('token') }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="email" class="col-form-label">البريد الإلكتروني :</label>
+                                                <label for="email" class="col-form-label"> رمز اعادة التعيين
+                                                    :</label>
                                                 <div class="icon-input">
                                                     <span class="icon-i">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" viewBox="0 0 24 24">
                                                             <g id="profile" transform="translate(-108 -252)">
-                                                              <path id="Vector" d="M4.75,0a4.746,4.746,0,0,0-.12,9.49.807.807,0,0,1,.22,0h.07A4.746,4.746,0,0,0,4.75,0Z" transform="translate(115.25 254)" fill="#d3d3d8"/>
-                                                              <path id="Vector-2" data-name="Vector" d="M12.12,1.395a9.929,9.929,0,0,0-10.15,0A3.947,3.947,0,0,0,0,4.625a3.914,3.914,0,0,0,1.96,3.21,9.239,9.239,0,0,0,5.08,1.41,9.239,9.239,0,0,0,5.08-1.41,3.945,3.945,0,0,0,1.96-3.23A3.937,3.937,0,0,0,12.12,1.395Z" transform="translate(112.96 264.755)" fill="#868692"/>
-                                                              <path id="Vector-3" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(108 252)" fill="none" opacity="0"/>
+                                                                <path id="Vector"
+                                                                    d="M4.75,0a4.746,4.746,0,0,0-.12,9.49.807.807,0,0,1,.22,0h.07A4.746,4.746,0,0,0,4.75,0Z"
+                                                                    transform="translate(115.25 254)"
+                                                                    fill="#d3d3d8" />
+                                                                <path id="Vector-2" data-name="Vector"
+                                                                    d="M12.12,1.395a9.929,9.929,0,0,0-10.15,0A3.947,3.947,0,0,0,0,4.625a3.914,3.914,0,0,0,1.96,3.21,9.239,9.239,0,0,0,5.08,1.41,9.239,9.239,0,0,0,5.08-1.41,3.945,3.945,0,0,0,1.96-3.23A3.937,3.937,0,0,0,12.12,1.395Z"
+                                                                    transform="translate(112.96 264.755)"
+                                                                    fill="#868692" />
+                                                                <path id="Vector-3" data-name="Vector"
+                                                                    d="M0,0H24V24H0Z" transform="translate(108 252)"
+                                                                    fill="none" opacity="0" />
                                                             </g>
-                                                          </svg>
+                                                        </svg>
                                                     </span>
-                                                    <input type="email" class="form-control custom-input" name="email" value="{{ old('email') }}"
-                                                        id="email" placeholder="أدخل البريد الإلكتروني ">
-                                                    @error('email')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
+                                                    <input type="token" class="form-control custom-input"
+                                                        name="token" value="{{ old('token') }}" id="token"
+                                                        placeholder="أدخل الرمز ">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 mt-32">
-                                            <button  class="mx-auto w-100 btn cs-btn v2">
-                                                إعادة تعيين كلمة المرور
+                                            <button class="mx-auto w-100 btn cs-btn v2">
+                                                ارسال
                                             </button>
                                         </div>
-                                        <div class="col-lg-12 text-center mt-4">
-                                            <span class="font400 font-14 black-color">ليس لديك حساب؟</span>
-                                            <a href="{{ route('register') }}" class="forget_password">إنشاء حساب</a>
-                                        </div>
-                                    </div>
                                 </form>
+                                <div class="col-lg-12 text-center mt-4">
+                                    <span class="font400 font-14 black-color"> لم تستلم رمز بعد </span>
+                                    {{-- <a href="{{ route('resetToken', $user) }}" class="forget_password"> اعادة ارسال --}}
+                                    </a>
+                                    <form method="POST" action="{{ route('forgetpassword_add') }}">
+                                        @csrf
+                                        <input type="hidden" name="email" value="{{ $user->email }}">
+                                        <button type="submit" class="forget_password">إعادة إرسال</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -388,8 +406,12 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="assets/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
     <script src="assets/plugins/owlslider/owl.carousel.min.js"></script>
     <script src="assets/plugins/fancybox/jquery.fancybox.min.js"></script>
     <script src="assets/plugins/animate/wow.min.js"></script>
@@ -397,6 +419,6 @@
         integrity="sha512-jk2H6cbspEVLyLHIJkHcwiHqh7sQuyrBJvHKokFyKebzaRZiA7RmcbAo7KvM3GqFaLJJGDFC/gBMYzbeeS7KUw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
-    </body>
+</body>
 
-    </html>
+</html>

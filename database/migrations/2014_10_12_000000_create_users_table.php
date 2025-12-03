@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('img');
             $table->string('phone');
-            $table->foreignId('contry_id');
+            $table->foreignId('country_id');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -49,9 +49,8 @@
                                 <figure class="mb-0">
                                     <img src="assets/images/avatar.png" alt="" srcset="">
                                 </figure>
-                                <div>
-                                    <h6> {{ Auth::user()->name }} </h6>
-                                    <h4>{{ Auth::user()->phone }}</h4>
+                                <div>{{ $user->name}} </h6>
+                                    <h4>{{ $user->phone }}</h4>
                                 </div>
                             </div>
                             <ul>
@@ -181,9 +180,6 @@
                                         </figure>
 
                                     </div>
-                                    @php
-                                        $user = Auth::user();
-                                    @endphp
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">

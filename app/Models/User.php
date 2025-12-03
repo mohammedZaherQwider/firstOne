@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'img',
         'phone',
-        'country_id'
+        'country_id',
+        'email_verified_at'
     ];
 
     /**
@@ -52,15 +53,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rating::class);
     }
-     function job()
+    function job()
     {
         return $this->belongsTo(Job::class);
     }
-     function hospital()
+    function hospital()
     {
         return $this->belongsTo(Hospital::class);
     }
-    function operations()  {
+    function operations()
+    {
         return $this->hasMany(Operation::class);
     }
 }

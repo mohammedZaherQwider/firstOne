@@ -179,6 +179,7 @@
                                     </div>
                                 </div>
                                 <div class="hospital-media-body_description">
+                                    {{-- اعمل عدد كلمات  --}}
                                     {{ Str::before($hostpial->description, '.') }}
                                 </div>
                                 <div class="hospital-media-body_footer">

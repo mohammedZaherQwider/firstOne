@@ -21,10 +21,10 @@ class mainController extends Controller
 {
     function index()
     {
-        $specializations = Specialization::select('name', 'img')->get();
-        $hostpials = Hospital::select('id', 'name', 'img', 'country_id', 'city_id')->with('ratings')->get();
-        // $ratings = Rating::select('user_id', 'type', 'type_id', 'rating', 'date', 'comment')->get();
-        $doctors = Doctor::with(['nationalitie', 'ratings'])->get();
+        $specializations = Specialization::select('name', 'img')->limit(10)->get();
+        $hostpials = Hospital::select('id', 'name', 'img', 'country_id', 'city_id')->with('ratings')->limit(3)->get();
+        // $ratings = Rating::select('user_id', 'type', 'type_id', 'rating', 'date', 'comment')->get(   );
+        $doctors = Doctor::with(['nationalitie', 'ratings'])->limit(4)->get();
         $offers = Offer::all();
         $contents = Content::all();
         return view('front_end.index', compact('specializations', 'hostpials', 'doctors', 'offers', 'contents'));
@@ -51,6 +51,40 @@ class mainController extends Controller
         $hostpials = $query->paginate(5)->appends(request()->query());
         return view('front_end.hospitals', compact('hostpials', 'specializations', 'countries', 'cities'));
     }
+    function doctors(Request $request)
+    {
+        $query = Doctor::with('ratings');
+        $specializations = Specialization::select('id', 'name')->get();
+        $countries = Country::select('id', 'name')->get();
+        $hostpials = Hospital::select('id', 'name')->get();
+
+        if ($request->filled('doctor_name')) {
+            $query->where('name', 'like', '%' . $request->doctor_name . '%');
+        }
+
+        if ($request->filled('hospital_id')) {
+            $query->where('hospital_id', $request->hospital_id);
+        }
+
+        if ($request->filled('specialization_id')) {
+            $query->where('specialization_id', $request->specialization_id);
+        }
+
+        $doctors = $query->paginate(5)->appends(request()->query());
+        return view('front_end.doctors', compact('doctors', 'specializations', 'countries', 'hostpials'));
+    }
+    function specializations(Request $request)
+    {
+        $query = Specialization::query();
+
+        if ($request->filled('specialization_name')) {
+            $query->where('name', 'like', '%' . $request->specialization_name . '%');
+        }
+
+        $specializations = $query->select('id', 'name', 'created_at')->paginate(5)->appends($request->query());
+
+        return view('front_end.specializations', compact('specializations'));
+    }
     function hostpial_details(Hospital $hostpial)
     {
         $hostpial->load(['ratings', 'country', 'city', 'specializations']);
@@ -60,6 +94,20 @@ class mainController extends Controller
             ->take(3)
             ->get();
         return view('front_end.hospital-details', compact('hostpial', 'hostpials'));
+    }
+    function doctor_details(Doctor $doctor)
+    {
+        $doctor->load(['ratings', 'hospital', 'nationalitie', 'specialization']);
+        $doctors = Doctor::withAvg('ratings', 'rating')
+            ->orderByDesc('ratings_avg_rating')
+            ->take(3)
+            ->get();
+        return view('front_end.doctor-details', compact('doctor', 'doctors'));
+    }
+    function specialization_details(Specialization $specialization)
+    {
+        $specializations = Specialization::select('name', 'img')->limit(10)->get();
+        return view('front_end.specialization-details', compact('specialization','specializations'));
     }
 
     function register()
@@ -137,8 +185,11 @@ class mainController extends Controller
     // public function get_token() {
     //     return view('front_end.token', compact('user'));
     // }
-
-    function token(Request $request)
+    function token()
+    {
+        return view('front_end.token');
+    }
+    function token_add(Request $request)
     {
         $request->validate([
             'token' => 'required',
@@ -151,7 +202,7 @@ class mainController extends Controller
             return view('front_end.resetPassword', compact('email'));
         } else {
             // مش شغالة
-            return redirect()->back()->withErrors(['token' => ' التوكين غير صحيح ']);
+            return redirect()->route('token')->withErrors(['token' => ' التوكين غير صحيح ']);
         }
     }
     function reset_password(Request $request)

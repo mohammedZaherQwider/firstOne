@@ -84,7 +84,7 @@
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
                     <h2>التخصصات الطبية</h2>
-                    <a href="#" class="btn cs-btn">عرض كل التخصصات</a>
+                    <a href="{{ route('specializations') }}" class="btn cs-btn">عرض كل التخصصات</a>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -160,7 +160,7 @@
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
                     <h2>نخبة من الأخصائيين</h2>
-                    <a href="#" class="btn cs-btn">عرض كل الأخصائيين</a>
+                    <a href="{{ route('doctors') }}" class="btn cs-btn">عرض كل الأخصائيين</a>
                 </div>
                 <div class="content">
                     <div class="row">

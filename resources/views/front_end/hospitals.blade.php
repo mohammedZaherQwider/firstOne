@@ -139,6 +139,7 @@
                                     <div>
                                         <h2> {{ $hostpial->name }} </h2>
                                         <div class="d-flex align-items-center">
+                                        <div class="d-flex align-items-center">
                                             <div class="rate">
                                                 @php
                                                     $count = $hostpial->ratings->count();
@@ -179,8 +180,7 @@
                                     </div>
                                 </div>
                                 <div class="hospital-media-body_description">
-                                    {{-- اعمل عدد كلمات  --}}
-                                    {{ Str::before($hostpial->description, '.') }}
+                                    {{ Str::words($beforeDot, 10); }}
                                 </div>
                                 <div class="hospital-media-body_footer">
                                     <div>
@@ -290,8 +290,8 @@
                         </div>
                     </div>
                 @endforeach
-
-                <div class="col-lg-12 ">
+                {{-- {{ $hostpials->links('pagination::bootstrap-5') }} --}}
+                {{-- <div class="col-lg-12 ">
                     <nav class="cs-pagination">
                         <ul class="pagination">
                             <li class="page-item">
@@ -330,7 +330,79 @@
                             </li>
                         </ul>
                     </nav>
+                </div> --}}
+                <div class="col-lg-12">
+                    <nav class="cs-pagination">
+                        <ul class="pagination">
+
+                            {{-- Previous --}}
+                            @if ($hostpials->onFirstPage())
+                                <li class="page-item disabled">
+                                    <span class="page-link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.811" height="12.121"
+                                            viewBox="0 0 6.811 12.121">
+                                            <path id="Arrow_-_Right" data-name="Arrow - Right" d="M10,5,5,0,0,5"
+                                                transform="translate(6.061 1.061) rotate(90)" fill="none"
+                                                stroke="#aeaeb1" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"></path>
+                                        </svg>
+                                    </span>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $hostpials->previousPageUrl() }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.811" height="12.121"
+                                            viewBox="0 0 6.811 12.121">
+                                            <path id="Arrow_-_Right" data-name="Arrow - Right" d="M10,5,5,0,0,5"
+                                                transform="translate(6.061 1.061) rotate(90)" fill="none"
+                                                stroke="#aeaeb1" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endif
+
+                            {{-- Numbers --}}
+                            @foreach ($hostpials->links()->elements[0] as $page => $url)
+                                <li class="page-item {{ $page == $hostpials->currentPage() ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                </li>
+                            @endforeach
+
+                            {{-- Next --}}
+                            @if ($hostpials->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $hostpials->nextPageUrl() }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.811" height="12.121"
+                                            viewBox="0 0 6.811 12.121">
+                                            <path id="Arrow_-_Right" data-name="Arrow - Right" d="M10,0,5,5,0,0"
+                                                transform="translate(5.75 1.061) rotate(90)" fill="none"
+                                                stroke="#05060f" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"></path>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="page-item disabled">
+                                    <span class="page-link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="6.811" height="12.121"
+                                            viewBox="0 0 6.811 12.121">
+                                            <path id="Arrow_-_Right" data-name="Arrow - Right" d="M10,0,5,5,0,0"
+                                                transform="translate(5.75 1.061) rotate(90)" fill="none"
+                                                stroke="#05060f" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="1.5"></path>
+                                        </svg>
+                                    </span>
+                                </li>
+                            @endif
+
+                        </ul>
+                    </nav>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>

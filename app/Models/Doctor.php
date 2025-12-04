@@ -19,7 +19,7 @@ class Doctor extends Model
     {
         return $this->belongsTo(Specialization::class);
     }
-    function hostpial()
+    function hospital()
     {
         return $this->belongsTo(Hospital::class);
     }

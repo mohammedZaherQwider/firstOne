@@ -18,12 +18,16 @@ class Specialization extends Model
     {
         return $this->hasMany(Doctor::class);
     }
-      function offers()
+    function offers()
     {
         return $this->hasMany(Offer::class);
     }
     function operations()
     {
         return $this->hasMany(Operation::class);
+    }
+    function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

@@ -33,3 +33,9 @@ Route::post('/token_add', [mainController::class,'token_add'])->name('token_add'
 Route::post('/reset_password', [mainController::class,'reset_password'])->name('reset_password');
 Route::get('/profile', [mainController::class,'profile'])->name('profile');
 
+
+Route::get('/index', function(){
+    return view('back_end.index');
+});
+
+

@@ -13,9 +13,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        $this->call([
-           SpecializationSeeder::class
-        ]);
+        // $this->call([
+        //    DoctorSeeder::class
+        // ]);
+        //  $this->call([
+        //    SpecializationSeeder::class
+        // ]);
+        //  $this->call([
+        //    HospitalSeeder::class
+        // ]);
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

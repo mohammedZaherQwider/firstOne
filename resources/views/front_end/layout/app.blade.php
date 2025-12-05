@@ -12,18 +12,18 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="copyright" content="" />
-    <link rel="icon" href="{{ asset('assets/images/icon.svg') }}">
+    <link rel="icon" href="{{ asset('assets/front_end/images/icon.svg') }}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-rtl.min.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
         integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/font-awesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/animate/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/font-awesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/animate/animate.css') }}">
     <!-- owl slider CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/owlslider/assets/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/owlslider/assets/owl.carousel.min.css') }}" />
 
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fancybox/jquery.fancybox.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/fancybox/jquery.fancybox.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/front_end/css/style.css') }}">
     <!-- <link rel="stylesheet" href="assets/css/style-en.css"> -->
 
 </head>
@@ -755,7 +755,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/front_end/js/jquery.min.js') }}"></script>
     <!-- <script src="assets/js/popper.min.js"></script> -->
     <!-- <script src="assets/js/bootstrap.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -764,13 +764,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
-    <script src="assets/plugins/owlslider/owl.carousel.min.js"></script>
-    <script src="assets/plugins/fancybox/jquery.fancybox.min.js"></script>
-    <script src="assets/plugins/animate/wow.min.js"></script>
+    <script src="{{ asset('assets/front_end/plugins/owlslider/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/front_end/plugins/fancybox/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('assets/front_end/plugins/animate/wow.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.8.1/lottie_svg.min.js"
         integrity="sha512-jk2H6cbspEVLyLHIJkHcwiHqh7sQuyrBJvHKokFyKebzaRZiA7RmcbAo7KvM3GqFaLJJGDFC/gBMYzbeeS7KUw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/front_end/js/main.js') }}"></script>
     <script></script>
     <!-- <script src="assets/js/scripts.js"></script> -->
     <!-- <script src="assets/js/scripts-en.js"></script> -->

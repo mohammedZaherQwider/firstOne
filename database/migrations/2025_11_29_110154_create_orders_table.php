@@ -21,7 +21,6 @@ return new class extends Migration
             $table->text('description');
             $table->boolean('agree_terms');
             $table->enum('type',['consultation', 'service']);
-            $table->string('img');
             $table->timestamps();
         });
     }

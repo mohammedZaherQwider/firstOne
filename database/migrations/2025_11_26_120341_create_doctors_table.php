@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('nationality_id');
             $table->foreignId('hostpial_id');
             $table->enum('gender', ['male', 'female']);
-            $table->string('img');
             $table->string('bio');
             $table->timestamps();
         });

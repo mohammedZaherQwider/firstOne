@@ -35,4 +35,8 @@ class Doctor extends Model
     {
         return $this->hasMany(Operation::class);
     }
+    function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

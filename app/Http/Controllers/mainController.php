@@ -21,8 +21,8 @@ class mainController extends Controller
 {
     function index()
     {
-        $specializations = Specialization::select('name', 'img')->limit(10)->get();
-        $hostpials = Hospital::select('id', 'name', 'img', 'country_id', 'city_id')->with('ratings')->limit(3)->get();
+        $specializations = Specialization::select('name')->limit(10)->get();
+        $hostpials = Hospital::select('id', 'name', 'country_id', 'city_id')->with('ratings')->limit(3)->get();
         // $ratings = Rating::select('user_id', 'type', 'type_id', 'rating', 'date', 'comment')->get(   );
         $doctors = Doctor::with(['nationalitie', 'ratings'])->limit(4)->get();
         $offers = Offer::all();
@@ -106,7 +106,7 @@ class mainController extends Controller
     }
     function specialization_details(Specialization $specialization)
     {
-        $specializations = Specialization::select('name', 'img')->limit(10)->get();
+        $specializations = Specialization::select('name')->limit(10)->get();
         return view('front_end.specialization-details', compact('specialization','specializations'));
     }
 

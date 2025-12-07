@@ -1,8 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use App\Models\Hospital;
+use App\Models\Image;
+use App\Models\Nationalitie;
+use App\Models\Specialization;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -12,7 +18,9 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $doctors = Doctor::orderBy('id', 'desc')->get();
+
+        return view('back_end.doctors.index', compact('doctors'));
     }
 
     /**
@@ -20,7 +28,10 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        $specializations = Specialization::all();
+        $nationalitys = Nationalitie::all();
+        $hospitals = Hospital::all();
+        return view('back_end.doctors.create', compact('nationalitys', 'specializations', 'hospitals'));
     }
 
     /**
@@ -28,7 +39,35 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required |string',
+            'specialization_id' => 'required|exists:specializations,id',
+            'nationality_id' => 'required|exists:nationalities,id',
+            'hospital_id' => 'required|exists:hospitals,id',
+            'gender' => 'required|in:male,female',
+            'bio' => 'required | string',
+        ]);
+        $doctor = Doctor::Create(
+            [
+                'name' => $request->name,
+                'specialization_id' => $request->specialization_id,
+                'nationality_id' => $request->nationality_id,
+                'hospital_id' => $request->hospital_id,
+                'gender' => $request->gender,
+                'bio' => $request->bio,
+            ]
+        );
+        if ($request->has('uploaded_images')) {
+            $images = array_filter($request->uploaded_images);
+            foreach ($images as $filename) {
+                $doctor->image()->create([
+                    'image' => $filename
+                ]);
+            }
+        }
+        return redirect()->route('doctors.index')
+            ->with('mas',  'Doctor added .')
+            ->with('icon', 'success');
     }
 
     /**
@@ -44,7 +83,11 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        $doctor = Doctor::findOrFail($doctor->id);
+        $specializations = Specialization::all();
+        $nationalitys = Nationalitie::all();
+        $hospitals = Hospital::all();
+        return view('back_end.doctors.create', compact('doctor', 'specializations', 'nationalitys', 'hospitals'));
     }
 
     /**
@@ -52,14 +95,40 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
-        //
+        $request->validate([
+            'name' => 'required |string',
+            'specialization_id' => 'required|exists:specializations,id',
+            'nationality_id' => 'required|exists:nationalities,id',
+            'hospital_id' => 'required|exists:hospitals,id',
+            'gender' => 'required|in:male,female',
+            'bio' => 'required | string',
+        ]);
+        $doctor->update([
+            'name' => $request->name,
+            'specialization_id' => $request->specialization_id,
+            'nationality_id' => $request->nationality_id,
+            'hospital_id' => $request->hospital_id,
+            'gender' => $request->gender,
+            'bio' => $request->bio,
+        ]);
+        return redirect()->route('doctors.index')
+            ->with('mas', 'Doctor updated.')
+            ->with('icon', 'success');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Doctor $doctor)
+    public function destroy(string $id)
     {
-        //
+        $hotel = Doctor::findorFail($id);
+        $hotel->delete();
+        return $hotel;
+    }
+    function pdf()
+    {
+        $data = Doctor::all();
+        $pdf = Pdf::loadView('back_end.doctors.pdf', compact('data'));
+        return $pdf->download('invoice.pdf');
     }
 }

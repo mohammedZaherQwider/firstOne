@@ -37,11 +37,15 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Page Vendor Stylesheets(used by this page)-->
     <link href="{{ asset('assets/back_end/css/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
         type="text/css" />
+    <link href="{{ asset('assets/back_end/css/leaflet.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/back_end/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/back_end/css/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{ asset('assets/back_end/css/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/back_end/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/back_end/css/dropzone.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/back_end/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
@@ -118,74 +122,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">Dashboards</span>
-                                    <span class="menu-arrow"></span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div class="menu-item">
-                                        <a class="menu-link active" href="../../demo1/dist/index.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Multipurpose</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/dashboards/ecommerce.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">eCommerce</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/dashboards/store-analytics.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Store Analytics</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/dashboards/logistics.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Logistics</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/dashboards/delivery.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Delivery</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/dashboards/marketing.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Marketing</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/dashboards/social.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Social</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/landing.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Landing</span>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                             <div class="menu-item">
                                 <div class="menu-content pt-8 pb-2">
@@ -212,236 +149,37 @@ License: For each use you must have a valid license purchased only from above li
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Pages</span>
+                                    <span class="menu-title">Doctors</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">User Profile</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/user-profile/overview.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Overview</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/user-profile/projects.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Projects</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/user-profile/campaigns.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Campaigns</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/user-profile/documents.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Documents</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/user-profile/followers.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Followers</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/user-profile/activity.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Activity</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Blog</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                            <div class="menu-item">
-                                                <a class="menu-link" href="../../demo1/dist/pages/blog/home.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Blog Home</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link" href="../../demo1/dist/pages/blog/post.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Blog Post</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Pricing</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/pricing/pricing-1.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Pricing 1</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link"
-                                                    href="../../demo1/dist/pages/pricing/pricing-2.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Pricing 2</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Careers</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                            <div class="menu-item">
-                                                <a class="menu-link" href="../../demo1/dist/pages/careers/list.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Careers List</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link" href="../../demo1/dist/pages/careers/apply.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Careers Apply</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">FAQ</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                            <div class="menu-item">
-                                                <a class="menu-link" href="../../demo1/dist/pages/faq/classic.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Classic</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item">
-                                                <a class="menu-link" href="../../demo1/dist/pages/faq/extended.html">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Extended</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/pages/about.html">
+                                        <a class="menu-link" href="{{ route('doctors.index') }}">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
-                                            <span class="menu-title">About Us</span>
+                                            <span class="menu-title">All Doctors </span>
                                         </a>
                                     </div>
                                     <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/pages/contact.html">
+                                        <a class="menu-link" href="{{ route('doctors.create') }}">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>
                                             </span>
-                                            <span class="menu-title">Contact Us</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/pages/team.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Our Team</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/pages/licenses.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Licenses</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/pages/sitemap.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Sitemap</span>
+                                            <span class="menu-title">Add Doctors </span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
 
+                            </div>
+                            <!--end::Menu-->
                         </div>
-                        <!--end::Menu-->
+                        <!--end::Aside Menu-->
                     </div>
-                    <!--end::Aside Menu-->
-                </div>
-                <!--end::Aside menu-->
-                <!--begin::Footer-->
+                    <!--end::Aside menu-->
+                    <!--begin::Footer-->
                     <a href="../../demo1/dist/documentation/getting-started.html"
                         class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover"
                         data-bs-dismiss-="click" title="200+ in-house components and 3rd-party plugins">
@@ -453,10 +191,8 @@ License: For each use you must have a valid license purchased only from above li
                                 <path opacity="0.3"
                                     d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM12.5 18C12.5 17.4 12.6 17.5 12 17.5H8.5C7.9 17.5 8 17.4 8 18C8 18.6 7.9 18.5 8.5 18.5L12 18C12.6 18 12.5 18.6 12.5 18ZM16.5 13C16.5 12.4 16.6 12.5 16 12.5H8.5C7.9 12.5 8 12.4 8 13C8 13.6 7.9 13.5 8.5 13.5H15.5C16.1 13.5 16.5 13.6 16.5 13ZM12.5 8C12.5 7.4 12.6 7.5 12 7.5H8C7.4 7.5 7.5 7.4 7.5 8C7.5 8.6 7.4 8.5 8 8.5H12C12.6 8.5 12.5 8.6 12.5 8Z"
                                     fill="black" />
-                                <rect x="7" y="17" width="6" height="2" rx="1"
-                                    fill="black" />
-                                <rect x="7" y="12" width="10" height="2" rx="1"
-                                    fill="black" />
+                                <rect x="7" y="17" width="6" height="2" rx="1" fill="black" />
+                                <rect x="7" y="12" width="10" height="2" rx="1" fill="black" />
                                 <rect x="7" y="7" width="6" height="2" rx="1" fill="black" />
                                 <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="black" />
                             </svg>
@@ -507,8 +243,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Menu wrapper-->
                                 <div class="header-menu align-items-stretch" data-kt-drawer="true"
                                     data-kt-drawer-name="header-menu"
-                                    data-kt-drawer-activate="{default: true, lg: false}"
-                                    data-kt-drawer-overlay="true"
+                                    data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
                                     data-kt-drawer-width="{default:'200px', '300px': '250px'}"
                                     data-kt-drawer-direction="end"
                                     data-kt-drawer-toggle="#kt_header_menu_mobile_toggle" data-kt-swapper="true"
@@ -523,80 +258,6 @@ License: For each use you must have a valid license purchased only from above li
                                                 <span class="menu-title">Dashboards</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
-                                            <div
-                                                class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-                                                <div class="menu-item">
-                                                    <a class="menu-link active py-3"
-                                                        href="../../demo1/dist/index.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Multipurpose</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3"
-                                                        href="../../demo1/dist/dashboards/ecommerce.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">eCommerce</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3"
-                                                        href="../../demo1/dist/dashboards/store-analytics.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Store Analytics</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3"
-                                                        href="../../demo1/dist/dashboards/logistics.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Logistics</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3"
-                                                        href="../../demo1/dist/dashboards/delivery.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Delivery</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3"
-                                                        href="../../demo1/dist/dashboards/marketing.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Marketing</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3"
-                                                        href="../../demo1/dist/dashboards/social.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Social</span>
-                                                    </a>
-                                                </div>
-                                                <div class="menu-item">
-                                                    <a class="menu-link py-3" href="../../demo1/dist/landing.html">
-                                                        <span class="menu-bullet">
-                                                            <span class="bullet bullet-dot"></span>
-                                                        </span>
-                                                        <span class="menu-title">Landing</span>
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
                                             class="menu-item menu-lg-down-accordion me-lg-1">
@@ -613,9 +274,9 @@ License: For each use you must have a valid license purchased only from above li
                                                         <span class="menu-icon">
                                                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
                                                             <span class="svg-icon svg-icon-2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
                                                                     <path
                                                                         d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
                                                                         fill="black" />
@@ -884,9 +545,9 @@ License: For each use you must have a valid license purchased only from above li
                                                         <span class="menu-icon">
                                                             <!--begin::Svg Icon | path: icons/duotune/communication/com013.svg-->
                                                             <span class="svg-icon svg-icon-2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
                                                                     <path
                                                                         d="M6.28548 15.0861C7.34369 13.1814 9.35142 12 11.5304 12H12.4696C14.6486 12 16.6563 13.1814 17.7145 15.0861L19.3493 18.0287C20.0899 19.3618 19.1259 21 17.601 21H6.39903C4.87406 21 3.91012 19.3618 4.65071 18.0287L6.28548 15.0861Z"
                                                                         fill="black" />
@@ -983,9 +644,9 @@ License: For each use you must have a valid license purchased only from above li
                                                         <span class="menu-icon">
                                                             <!--begin::Svg Icon | path: icons/duotune/technology/teh004.svg-->
                                                             <span class="svg-icon svg-icon-2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
                                                                     <path opacity="0.3"
                                                                         d="M21 10.7192H3C2.4 10.7192 2 11.1192 2 11.7192C2 12.3192 2.4 12.7192 3 12.7192H6V14.7192C6 18.0192 8.7 20.7192 12 20.7192C15.3 20.7192 18 18.0192 18 14.7192V12.7192H21C21.6 12.7192 22 12.3192 22 11.7192C22 11.1192 21.6 10.7192 21 10.7192Z"
                                                                         fill="black" />
@@ -1353,9 +1014,9 @@ License: For each use you must have a valid license purchased only from above li
                                                         <span class="menu-icon">
                                                             <!--begin::Svg Icon | path: icons/duotune/art/art009.svg-->
                                                             <span class="svg-icon svg-icon-2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
                                                                     <path opacity="0.3"
                                                                         d="M21 18.3V4H20H5C4.4 4 4 4.4 4 5V20C10.9 20 16.7 15.6 19 9.5V18.3C18.4 18.6 18 19.3 18 20C18 21.1 18.9 22 20 22C21.1 22 22 21.1 22 20C22 19.3 21.6 18.6 21 18.3Z"
                                                                         fill="black" />
@@ -1763,9 +1424,9 @@ License: For each use you must have a valid license purchased only from above li
                                                         <span class="menu-icon">
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                                                             <span class="svg-icon svg-icon-2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
                                                                     <path
                                                                         d="M11.2929 2.70711C11.6834 2.31658 12.3166 2.31658 12.7071 2.70711L15.2929 5.29289C15.6834 5.68342 15.6834 6.31658 15.2929 6.70711L12.7071 9.29289C12.3166 9.68342 11.6834 9.68342 11.2929 9.29289L8.70711 6.70711C8.31658 6.31658 8.31658 5.68342 8.70711 5.29289L11.2929 2.70711Z"
                                                                         fill="black" />
@@ -5456,6 +5117,13 @@ License: For each use you must have a valid license purchased only from above li
     <script>
         var hostUrl = "assets/";
     </script>
+    <script src="{{ asset('assets/back_end/js/dropzone-min.js') }}"></script>
+    <script src="{{ asset('assets/back_end/js/axios.min.js') }}"></script>
+    <script src="{{ asset('assets/back_end/js/jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ asset('assets/back_end/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/back_end/js/sweetalert2.all.min.js') }}"></script>
+
+    @yield('js')
     <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="{{ asset('assets/back_end/js/plugins.bundle.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/scripts.bundle.js') }}"></script>
@@ -5471,6 +5139,9 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('assets/back_end/js/upgrade-plan.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/create-app.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/users-search.js') }}"></script>
+    <script src="{{ asset('assets/back_end/js/leaflet.bundle.js') }}"></script>
+    <script src="{{ asset('assets/back_end/js/dropzone-min.js') }}"></script>
+
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 </body>

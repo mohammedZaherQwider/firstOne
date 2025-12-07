@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('specialization_id');
             $table->foreignId('nationality_id');
-            $table->foreignId('hostpial_id');
+            $table->foreignId('hospital_id');
             $table->enum('gender', ['male', 'female']);
             $table->string('bio');
             $table->timestamps();

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Hostpials;
+use App\Http\Controllers\Controller;
+use App\Models\Hospital;
 use Illuminate\Http\Request;
 
-class HostpialsController extends Controller
+class HospitalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class HostpialsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Hostpials $hostpials)
+    public function show(Hospital $Hospital)
     {
         //
     }
@@ -42,7 +43,7 @@ class HostpialsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Hostpials $hostpials)
+    public function edit(Hospital $Hospital)
     {
         //
     }
@@ -50,7 +51,7 @@ class HostpialsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hostpials $hostpials)
+    public function update(Request $request, Hospital $Hospital)
     {
         //
     }
@@ -58,7 +59,7 @@ class HostpialsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hostpials $hostpials)
+    public function destroy(Hospital $Hospital)
     {
         //
     }

@@ -237,23 +237,12 @@
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bolder fs-3 mb-1">Doctors </span>
+                                <span class="card-label fw-bolder fs-3 mb-1">Hospitals </span>
                             </h3>
                             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-trigger="hover" title="Click to add a user">
-                                <a href="{{ route('doctors.create') }}" class="btn btn-sm btn-light btn-active-primary"
-                                    data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                                    <span class="svg-icon svg-icon-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2"
-                                                rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-                                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1"
-                                                fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->New Member</a>
+                                <a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal"
+                                    data-bs-target="#kt_modal_new_target">Add New Hospital</a>
                                 <div class="d-flex my-0">
                                     <select id="exportSelect"
                                         class="form-select form-select-sm border-body bg-body w-100px">
@@ -262,7 +251,6 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -272,7 +260,6 @@
                                 <!--begin::Table-->
                                 <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
                                     id="myTable">
-
                                     <!--begin::Table head-->
                                     <thead>
                                         <tr class="fw-bolder text-muted">
@@ -284,17 +271,16 @@
                                             </th>
                                             <th class="min-w-150px">ID</th>
                                             <th class="min-w-150px">Name </th>
-                                            <th class="min-w-150px">Specialization </th>
-                                            <th class="min-w-140px">Nationality</th>
-                                            <th class="min-w-120px">Hostpial</th>
-                                            <th class="min-w-120px">Gender</th>
+                                            <th class="min-w-150px">Country </th>
+                                            <th class="min-w-140px">City</th>
+                                            <th class="min-w-120px">Bed Number</th>
                                             <th class="min-w-100px text-end">Actions</th>
                                         </tr>
                                     </thead>
                                     <!--end::Table head-->
                                     <!--begin::Table body-->
                                     <tbody>
-                                        @foreach ($doctors as $doctor)
+                                        @foreach ($hospitals as $hospital)
                                             <tr>
 
                                                 <td>
@@ -307,54 +293,48 @@
                                                 <td>
                                                     <div>
                                                         <span class="text-muted fw-bold text-muted d-block fs-7">
-                                                            {{ $doctor->id }}
+                                                            {{ $hospital->id }}
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         <div class="symbol symbol-45px me-5">
-                                                            <img src="{{ asset('uploads/doctors/' . ($doctor->image?->image ?? 'default.jpg')) }}"
-                                                                alt="Doctor Image" />
+                                                            <img src="{{ asset('uploads/hospitals/' . ($hospital->image?->image ?? 'default.jpg')) }}"
+                                                                alt="hospital Image" />
                                                         </div>
                                                         <div class="d-flex justify-content-start flex-column">
                                                             <a href="#"
                                                                 class="text-dark fw-bolder text-hover-primary fs-6">
-                                                                {{ $doctor->name }}</a>
+                                                                {{ $hospital->name }}</a>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <span class="text-muted fw-bold text-muted d-block fs-7">
-                                                            {{ $doctor->specialization->name }}
+                                                            {{ $hospital->country->name }}
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <span class="text-muted fw-bold text-muted d-block fs-7">
-                                                            {{ $doctor->nationalitie->name }}
+                                                            {{ $hospital->city->name }}
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <span class="text-muted fw-bold text-muted d-block fs-7">
-                                                            {{ $doctor->hospital->name }}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div>
-                                                        <span class="text-muted fw-bold text-muted d-block fs-7">
-                                                            {{ $doctor->gender }}
+                                                            {{ $hospital->bed_number }}
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                                        <a href="{{ route('doctors.edit', $doctor) }}"
+                                                        <a href="   "
+                                                            data-bs-toggle="modal" data-bs-target="#kt_modal_new_target"
                                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                                             <span class="svg-icon svg-icon-3">
@@ -371,7 +351,7 @@
                                                             <!--end::Svg Icon-->
                                                         </a>
                                                         <form class="d-inline"
-                                                            action="{{ route('doctors.destroy', $doctor->id) }}"
+                                                            action="{{ route('hospitals.destroy', $hospital->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('delete')
@@ -418,6 +398,7 @@
         </div>
         <!--end::Post-->
     </div>
+    @include('back_end.hospitals.createmodel')
 @endsection
 @section('js')
     <script>
@@ -428,7 +409,7 @@
                 "info": true,
                 "lengthChange": true,
                 "order": [
-                    [1, "desc"]
+                    [1, "DESC"]
                 ]
             });
         });
@@ -446,19 +427,19 @@
             }
         })
 
-        @if (session('mas') == 'Doctor added .')
+        @if (session('mas') == 'hospital added .')
             Toast.fire({
                 icon: '{{ session('icon') }}',
                 title: '{{ session('mas') }}'
             })
         @endif
-        @if (session('mas') == 'Doctor deleted .')
+        @if (session('mas') == 'hospital deleted .')
             Toast.fire({
                 icon: '{{ session('icon') }}',
                 title: '{{ session('mas') }}'
             })
         @endif
-        @if (session('mas') == 'Doctor updated.')
+        @if (session('mas') == 'hospital updated.')
             Toast.fire({
                 icon: '{{ session('icon') }}',
                 title: '{{ session('mas') }}'

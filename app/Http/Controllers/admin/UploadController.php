@@ -30,7 +30,12 @@ class UploadController extends Controller
             'filename' => $filename
         ]);
     }
-    function update() {
-
+    function deleteOldImage(Request $request)
+    {
+        $path = public_path("uploads/{$request->folder}/{$request->filename}");
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        return response()->json(['success' => true]);
     }
 }

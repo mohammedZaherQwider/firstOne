@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
@@ -47,6 +47,7 @@ class DoctorController extends Controller
             'gender' => 'required|in:male,female',
             'bio' => 'required | string',
         ]);
+        // $doctor = Doctor::Create($request->all());
         $doctor = Doctor::Create(
             [
                 'name' => $request->name,
@@ -111,6 +112,18 @@ class DoctorController extends Controller
             'gender' => $request->gender,
             'bio' => $request->bio,
         ]);
+        // if ($request->has('uploaded_images')) {
+
+        //     if ($doctor->image) {
+        //         $doctor->image()->delete();
+        //     }
+
+        //     $images = array_filter($request->uploaded_images);
+        //     // dd($images);
+        //     $doctor->image()->create([
+        //         'image' => $images[0]
+        //     ]);
+        // }
         return redirect()->route('doctors.index')
             ->with('mas', 'Doctor updated.')
             ->with('icon', 'success');

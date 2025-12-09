@@ -210,14 +210,6 @@ License: For each use you must have a valid license purchased only from above li
                                             <span class="menu-title">All Hospitals </span>
                                         </a>
                                     </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('hospitals.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Add Hospital </span>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">

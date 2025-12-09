@@ -5,8 +5,8 @@
         <div class="card">
             <div class="card-body p-lg-17">
                 <form action="{{ isset($doctor) ? route('doctors.update', $doctor->id) : route('doctors.store') }}" " method="POST" enctype="multipart/form-data" id="doctorForm">
-                                    @csrf
-                                            @if (isset($doctor))
+                                        @csrf
+                                                 @if (isset($doctor))
                     @method('PUT')
                     @endif
                     <h1 class="fw-bolder text-dark mb-9">Add Doctors</h1>

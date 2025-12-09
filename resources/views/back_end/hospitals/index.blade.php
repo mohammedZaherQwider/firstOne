@@ -333,10 +333,13 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                                        <a href="   "
-                                                            data-bs-toggle="modal" data-bs-target="#kt_modal_new_target"
+                                                        <a href="{{ route('hospitals.show',$hospital) }}"
                                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                            <i class="fas fa-eye"></i>
+                                                            <!--end::Svg Icon-->
+                                                        </a>
+                                                        <a href="#" data-id="{{ $hospital->id }}"
+                                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 btn-edit-hospital">
                                                             <span class="svg-icon svg-icon-3">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                     height="24" viewBox="0 0 24 24" fill="none">
@@ -427,22 +430,10 @@
             }
         })
 
-        @if (session('mas') == 'hospital added .')
+        @if (session('mas'))
             Toast.fire({
                 icon: '{{ session('icon') }}',
-                title: '{{ session('mas') }}'
-            })
-        @endif
-        @if (session('mas') == 'hospital deleted .')
-            Toast.fire({
-                icon: '{{ session('icon') }}',
-                title: '{{ session('mas') }}'
-            })
-        @endif
-        @if (session('mas') == 'hospital updated.')
-            Toast.fire({
-                icon: '{{ session('icon') }}',
-                title: '{{ session('mas') }}'
+                title: '{{ session('msg') }}'
             })
         @endif
     </script>
@@ -477,6 +468,174 @@
             if (this.value) {
                 window.location.href = this.value; // ينزل ملف PDF مباشرة
             }
+        });
+    </script>
+
+    {{-- <script>
+        $(document).on('click', '.btn-edit-hospital', function(e) {
+            e.preventDefault();
+            let serviceIndex = 0;
+
+
+            let id = $(this).data('id');
+            let url = "/hospitals/" + id + "/edit";
+
+            function addServiceRow(index, srv = {
+                name: '',
+                type: 'in',
+                icon: 'fa-hospital'
+            }) {
+                let html = `
+        <div class="service-item d-flex mb-3 align-items-center">
+            <input type="text" name="services[${index}][name]" value="${srv.name}" class="form-control me-2">
+
+            <select name="services[${index}][type]" class="form-select me-2">
+                <option value="in" ${srv.type === 'in' ? 'selected' : ''}>In</option>
+                <option value="out" ${srv.type === 'out' ? 'selected' : ''}>Out</option>
+            </select>
+
+            <select name="services[${index}][icon]" class="form-select me-2">
+                <option value="fa-hospital" ${srv.icon === 'fa-hospital' ? 'selected' : ''}>Hospital</option>
+                <option value="fa-stethoscope" ${srv.icon === 'fa-stethoscope' ? 'selected' : ''}>Stethoscope</option>
+                <option value="fa-user-md" ${srv.icon === 'fa-user-md' ? 'selected' : ''}>Doctor</option>
+                <option value="@" ${srv.icon === '@' ? 'selected' : ''}>@</option>
+            </select>
+
+            <button type="button" class="btn btn-danger btn-remove-service ms-2">-</button>
+        </div>
+        `;
+                $('#services-wrapper').append(html);
+            }
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(response) {
+                    $('#name').val(response.name);
+                    $('#country_id').val(response.country_id).trigger('change');
+                    $('#bed_number').val(response.bed_number);
+                    $('#description').val(response.description);
+
+                    $('#services-wrapper').empty();
+                    response.services.forEach((srv, index) => {
+                        addServiceRow(serviceIndex++, srv);
+                    });
+
+                    $.ajax({
+                        url: '/cities/' + response.country_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#city_id').empty().append(
+                                '<option value="">اختر المدينة</option>');
+                            $.each(data, function(key, value) {
+                                $('#city_id').append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                            $('#city_id').val(response.city_id).trigger('change');
+                        }
+                    });
+
+                    let modal = new bootstrap.Modal(document.getElementById('kt_modal_new_target'));
+                    modal.show();
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+        $(document).on('click', '.btn-add-service', function() {
+            addServiceRow(serviceIndex++);
+        });
+
+        // حذف الخدمة عند الضغط على زر -
+        $(document).on('click', '.btn-remove-service', function() {
+            $(this).closest('.service-item').remove();
+        });
+    </script> --}}
+    <script>
+        $(document).on('click', '.btn-edit-hospital', function(e) {
+            e.preventDefault();
+
+            let serviceIndex = 0; // معرف خارج أي دالة ليبقى متاح لكل الوظائف
+
+            function addServiceRow(index, srv = {
+                name: '',
+                type: 'in',
+                icon: 'fa-hospital'
+            }) {
+                let html = `
+            <div class="service-item d-flex mb-3 align-items-center">
+                <input type="text" name="services[${index}][name]" value="${srv.name}" class="form-control me-2">
+                <select name="services[${index}][type]" class="form-select me-2">
+                    <option value="in" ${srv.type === 'in' ? 'selected' : ''}>In</option>
+                    <option value="out" ${srv.type === 'out' ? 'selected' : ''}>Out</option>
+                </select>
+                <select name="services[${index}][icon]" class="form-select me-2">
+                    <option value="fa-hospital" ${srv.icon === 'fa-hospital' ? 'selected' : ''}>Hospital</option>
+                    <option value="fa-stethoscope" ${srv.icon === 'fa-stethoscope' ? 'selected' : ''}>Stethoscope</option>
+                    <option value="fa-user-md" ${srv.icon === 'fa-user-md' ? 'selected' : ''}>Doctor</option>
+                    <option value="@" ${srv.icon === '@' ? 'selected' : ''}>@</option>
+                </select>
+                <button type="button" class="btn btn-danger btn-remove-service ms-2">-</button>
+            </div>
+        `;
+                $('#services-wrapper').append(html);
+            }
+            let id = $(this).data('id');
+            let url = "/hospitals/" + id + "/edit";
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(response) {
+                    $('#name').val(response.name);
+                    $('#country_id').val(response.country_id).trigger('change');
+                    $('#bed_number').val(response.bed_number);
+                    $('#description').val(response.description);
+                    $('#id').val(response.id);
+                    let formData = $('#hospitalForm').serialize();
+
+                    // console.log(response.id);
+
+                    $('#services-wrapper').empty();
+                    serviceIndex = 0; // إعادة ضبط العد عند فتح المودل
+                    response.services.forEach((srv, index) => {
+                        addServiceRow(serviceIndex++, srv);
+                    });
+
+                    $.ajax({
+                        url: '/cities/' + response.country_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#city_id').empty().append(
+                                '<option value="">اختر المدينة</option>');
+                            $.each(data, function(key, value) {
+                                $('#city_id').append('<option value="' + value.id +
+                                    '">' + value.name + '</option>');
+                            });
+                            $('#city_id').val(response.city_id).trigger('change');
+                        }
+                    });
+
+                    let modal = new bootstrap.Modal(document.getElementById('kt_modal_new_target'));
+                    modal.show();
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+        // إضافة خدمة جديدة
+        $(document).on('click', '.btn-add-service', function() {
+            addServiceRow(serviceIndex++);
+        });
+
+        // حذف الخدمة
+        $(document).on('click', '.btn-remove-service', function() {
+            $(this).closest('.service-item').remove();
         });
     </script>
 @endsection

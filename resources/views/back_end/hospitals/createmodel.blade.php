@@ -129,14 +129,20 @@
                                       <i> &</i>
                                   </option>
                               </select>
-                              <button type="button" class="btn btn-success btn-add-service">
-                                  <i class="fa fa-plus"></i></button>
+                              {{-- <button type="button" class="btn btn-success btn-add-service">
+                                  <i class="fa fa-plus"></i></button> --}}
                               @error('services[0][icon]')
                                   <div class="form-error">
                                       {{ $message }}
                                   </div>
                               @enderror
                           </div>
+                      </div>
+                      <div id="services-area">
+                          <div id="services-wrapper"></div>
+                          <button type="button" class="btn btn-success btn-add-service mt-2">
+                              <i class="fa fa-plus"></i>
+                          </button>
                       </div>
                       <!--end::Input group-->
                       <!--begin::Input group-->
@@ -145,6 +151,8 @@
                           <textarea class="form-control form-control-solid" rows="3" id="description" name="description"
                               placeholder="Enter Description"></textarea>
                       </div>
+                      <input type="hidden" id="id" name="id" value="">
+
                       <!--end::Input group-->
 
                       <!--begin::Actions-->
@@ -205,16 +213,16 @@
         </select>
 
         <select name="services[${serviceIndex}][icon]" class="form-select me-2">
-            <option value="fa-hospital" data-icon="fas fa-hospital">
+           <option value="@" data-icon="fas fa-hospital">
                                       <i> @</i>
                                   </option>
-                                  <option value="fa-hospital" data-icon="fas fa-hospital">
+                                  <option value="%" data-icon="fas fa-hospital">
                                       <i> %</i>
                                   </option>
-                                  <option value="fa-hospital" data-icon="fas fa-hospital">
+                                  <option value="$" data-icon="fas fa-hospital">
                                       <i> $</i>
                                   </option>
-                                  <option value="fa-hospital" data-icon="fas fa-hospital">
+                                  <option value="&" data-icon="fas fa-hospital">
                                       <i> &</i>
                                   </option>
         </select>
@@ -247,10 +255,12 @@
                   });
               }
           });
-
+          let hospitalId = $('#id').val().trim();
           let formData = {
+              id: hospitalId !== "" ? hospitalId : null,
               name: $('#name').val(),
               country_id: $('#country_id').val(),
+              id: $('#id').val(),
               city_id: $('#city_id').val(),
               bed_number: $('#bed_number').val(),
               description: $('#description').val(),
@@ -263,7 +273,7 @@
               data: formData,
               success: function(response) {
                   console.log("Saved:", response);
-                //   $('#myTable').DataTable().ajax.reload(null, false);
+                  //   $('#myTable').DataTable().ajax.reload(null, false);
                   var modal = bootstrap.Modal.getInstance(document.getElementById(
                       'kt_modal_new_target'));
                   modal.hide();

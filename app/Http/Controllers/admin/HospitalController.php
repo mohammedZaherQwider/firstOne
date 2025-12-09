@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Hospital;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -32,6 +33,7 @@ class HospitalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id' => 'nullable|exists:hospitals,id',
             'name' => 'required|string',
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
@@ -42,11 +44,25 @@ class HospitalController extends Controller
             'services.*.icon' => 'required|string',
         ]);
 
-        $hospital = Hospital::create($request->all());
-
+        $data = [
+            'name' => $request->name,
+            'country_id' => $request->country_id,
+            'city_id' => $request->city_id,
+            'bed_number' => $request->bed_number,
+            'description' => $request->description,
+            'services' => $request->services,
+        ];
+        if ($request->id) {
+            $hospital = Hospital::findOrFail($request->id);
+            $hospital->update($data);
+            $msg = 'Hospital updated successfully';
+        } else {
+            $hospital = Hospital::create($data);
+            $msg = 'Hospital created successfully';
+        }
         return response()->json([
             'status' => 'success',
-            'msg' => 'Hospital created successfully',
+            'msg' => $msg,
             'data' => $hospital
         ]);
     }
@@ -57,16 +73,17 @@ class HospitalController extends Controller
      */
     public function show(Hospital $hospital)
     {
-        //
+        $hospital = Hospital::findOrFail($hospital->id);
+        return view('back_end.hospitals.show', compact('hospital'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Hospital $hospital)
+    public function edit($id)
     {
-        $hospital = Hospital::findOrFail($hospital->id);
-        require view('back_end.hospitals.index', compact('hospital'));
+        $hospital = Hospital::findOrFail($id);
+        return response()->json($hospital);
     }
 
     /**
@@ -77,11 +94,32 @@ class HospitalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {}
+    public function destroy(string $id)
+    {
+        $hospital = Hospital::findorFail($id);
+        $hospital->delete();
+        return $hospital;
+    }
     function pdf() {}
     public function getCities($country_id)
     {
         $cities = City::where('country_id', $country_id)->get();
         return response()->json($cities);
+    }
+    function uploadImage(Request $request)
+    {
+        $request->validate([
+            'uploaded_images' => 'required|array',
+            'uploaded_images.*' => 'required|string',
+            'hospital_id' => 'required|exists:hospitals,id'
+        ]);
+        $hospital = Hospital::findOrFail($request->hospital_id);
+        foreach ($request->uploaded_images as $filename) {
+            $hospital->images()->create([
+                'image' => $filename
+            ]);
+        }
+
+        return redirect()->route('hospitals.edit', $hospital->id);
     }
 }

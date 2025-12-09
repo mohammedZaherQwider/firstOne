@@ -26,4 +26,7 @@ Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
 Route::post('/delete-old-image', [UploadController::class, 'deleteOldImage'])->name('deleteOldImage');
 
 Route::resource('/hospitals', HospitalController::class);
+Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage'])
+    ->name('uploadImage');
+
 Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');

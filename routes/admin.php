@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\OperationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,6 @@ Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage']
     ->name('uploadImage');
 
 Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');
+
+Route::resource('/operations', OperationController::class);
+

@@ -446,24 +446,13 @@
             }
         })
 
-        @if (session('mas') == 'Doctor added .')
+        @if (session('mas'))
             Toast.fire({
                 icon: '{{ session('icon') }}',
                 title: '{{ session('mas') }}'
             })
         @endif
-        @if (session('mas') == 'Doctor deleted .')
-            Toast.fire({
-                icon: '{{ session('icon') }}',
-                title: '{{ session('mas') }}'
-            })
-        @endif
-        @if (session('mas') == 'Doctor updated.')
-            Toast.fire({
-                icon: '{{ session('icon') }}',
-                title: '{{ session('mas') }}'
-            })
-        @endif
+
     </script>
     <script>
         function destroy(e) {

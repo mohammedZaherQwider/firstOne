@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\HospitalController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\OperationController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
-    return 'admin';
-});
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 Route::resource('/doctors', DoctorController::class);
 Route::get('/doctors-pdf', [DoctorController::class, 'pdf'])->name('pdf');
@@ -34,3 +35,4 @@ Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->na
 
 Route::resource('/operations', OperationController::class);
 
+Route::resource('/roles', RoleController::class);

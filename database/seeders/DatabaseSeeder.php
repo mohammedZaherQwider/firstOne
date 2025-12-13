@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
         //  $this->call([
         //    HospitalSeeder::class
         // ]);
+        //  $this->call([
+        //    UserSeeder::class
+        // ]);
+        $this->call([
+            PermissionSeeder::class
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

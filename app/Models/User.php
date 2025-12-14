@@ -25,6 +25,10 @@ class User extends Authenticatable
         'img',
         'phone',
         'country_id',
+        'job_id',
+        'role_id',
+        'hospital_id',
+        'type',
         'email_verified_at'
     ];
 

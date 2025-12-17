@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -41,7 +41,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    protected $guard = 'web';
     /**
      * The attributes that should be cast.
      *

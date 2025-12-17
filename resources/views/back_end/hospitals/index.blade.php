@@ -306,7 +306,13 @@
                                                         <div class="d-flex justify-content-start flex-column">
                                                             <a href="#"
                                                                 class="text-dark fw-bolder text-hover-primary fs-6">
-                                                                {{ $hospital->name }}</a>
+                                                                @if (app()->currentLocale() == 'ar')
+                                                                     {{ $hospital->localization->name }}
+                                                                @else
+                                                                    {{ $hospital->name }}
+                                                                @endif
+
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -333,7 +339,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                                        <a href="{{ route('hospitals.show',$hospital) }}"
+                                                        <a href="{{ route('hospitals.show', $hospital) }}"
                                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                             <i class="fas fa-eye"></i>
                                                             <!--end::Svg Icon-->

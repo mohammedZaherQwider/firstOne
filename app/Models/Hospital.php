@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\localization\Hospitellocalization;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -48,5 +49,9 @@ class Hospital extends Model
     function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+    function localization()
+    {
+        return $this->hasOne(Hospitellocalization::class);
     }
 }

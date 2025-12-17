@@ -53,6 +53,22 @@
                               </div>
                           @enderror
                       </div>
+                      <div class="d-flex flex-column mb-8 fv-row">
+                          <!--begin::Label-->
+                          <label class="d-flex align-items-center fs-6 fw-bold mb-2">
+                              <span class="required">Hospital Title <span style="color: red">ar</span></span>
+                              <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                  title="Specify a target name for future usage and reference"></i>
+                          </label>
+                          <!--end::Label-->
+                          <input type="text" class="form-control form-control-solid"
+                              placeholder="Enter Hospital Name Ar" name="nameAr" id="nameAr" />
+                          @error('nameAr')
+                              <div class="form-error">
+                                  {{ $message }}
+                              </div>
+                          @enderror
+                      </div>
                       <!--end::Input group-->
                       <!--begin::Input group-->
                       <div class="row g-9 mb-8">
@@ -150,6 +166,11 @@
                           <label class="fs-6 fw-bold mb-2">Description</label>
                           <textarea class="form-control form-control-solid" rows="3" id="description" name="description"
                               placeholder="Enter Description"></textarea>
+                      </div>
+                      <div class="d-flex flex-column mb-8">
+                          <label class="fs-6 fw-bold mb-2">Description <span style="color: red">ar</span></label>
+                          <textarea class="form-control form-control-solid" rows="3" id="descriptionAr" name="descriptionAr"
+                              placeholder="Enter Description Ar"></textarea>
                       </div>
                       <input type="hidden" id="id" name="id" value="">
 
@@ -259,14 +280,18 @@
           let formData = {
               id: hospitalId !== "" ? hospitalId : null,
               name: $('#name').val(),
+              nameAr: $('#nameAr').val(),
               country_id: $('#country_id').val(),
               id: $('#id').val(),
               city_id: $('#city_id').val(),
               bed_number: $('#bed_number').val(),
               description: $('#description').val(),
+              descriptionAr: $('#descriptionAr').val(),
               services: services,
               _token: "{{ csrf_token() }}"
           };
+          console.log(formData);
+
           $.ajax({
               url: "{{ route('hospitals.store') }}",
               type: "POST",

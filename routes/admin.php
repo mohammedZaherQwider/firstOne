@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\OperationController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Permission\Contracts\Role;
 
 /*
@@ -21,20 +22,26 @@ use Spatie\Permission\Contracts\Role;
 |
 */
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
-Route::resource('/doctors', DoctorController::class);
-Route::get('/doctors-pdf', [DoctorController::class, 'pdf'])->name('pdf');
-Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
-Route::post('/delete-old-image', [UploadController::class, 'deleteOldImage'])->name('deleteOldImage');
+    Route::resource('/doctors', DoctorController::class);
+    Route::get('/doctors-pdf', [DoctorController::class, 'pdf'])->name('pdf');
+    Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
+    Route::post('/delete-old-image', [UploadController::class, 'deleteOldImage'])->name('deleteOldImage');
 
-Route::resource('/hospitals', HospitalController::class);
-Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage'])
-    ->name('uploadImage');
+    Route::resource('/hospitals', HospitalController::class);
+    Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage'])
+        ->name('uploadImage');
 
-Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');
+    Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');
 
-Route::resource('/operations', OperationController::class);
+    Route::resource('/operations', OperationController::class);
 
-Route::resource('/roles', RoleController::class);
-Route::resource('/users', UserController::class);
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/users', UserController::class);
+
+    Route::get('/send-Notifications', [AdminController::class, 'notification'])->name('notification');
+    Route::post('/send-Notifications', [AdminController::class, 'send_notification'])->name('send_notification');
+    Route::get('/read-notification/{id}', [AdminController::class, 'read'])->name('read');
+});

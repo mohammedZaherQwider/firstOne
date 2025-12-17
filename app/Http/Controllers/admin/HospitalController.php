@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Hospital;
 use App\Models\Image;
+use App\Models\localization\Hospitellocalization;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -35,10 +36,12 @@ class HospitalController extends Controller
         $request->validate([
             'id' => 'nullable|exists:hospitals,id',
             'name' => 'required|string',
+            'nameAr' => 'required|string',
             'country_id' => 'required|exists:countries,id',
             'city_id' => 'required|exists:cities,id',
             'bed_number' => 'required|integer',
             'description' => 'required',
+            'descriptionAr' => 'required',
             'services.*.name' => 'required|string',
             'services.*.type' => 'required|in:in,out',
             'services.*.icon' => 'required|string',
@@ -52,12 +55,26 @@ class HospitalController extends Controller
             'description' => $request->description,
             'services' => $request->services,
         ];
+
         if ($request->id) {
             $hospital = Hospital::findOrFail($request->id);
+            $hospitallocalization = Hospitellocalization::findOrFail($hospital->localization->id);
             $hospital->update($data);
+            $localization = [
+                'name' => $request->nameAr,
+                'description' => $request->descriptionAr,
+                'hospital_id' => $hospital->id,
+            ];
+            $hospitallocalization->update($localization);
             $msg = 'Hospital updated successfully';
         } else {
             $hospital = Hospital::create($data);
+            $localization = [
+                'name' => $request->nameAr,
+                'description' => $request->descriptionAr,
+                'hospital_id' => $hospital->id,
+            ];
+            $hospitallocalization = Hospitellocalization::create($localization);
             $msg = 'Hospital created successfully';
         }
         return response()->json([
@@ -97,7 +114,9 @@ class HospitalController extends Controller
     public function destroy(string $id)
     {
         $hospital = Hospital::findorFail($id);
+        $hospitallocalization = Hospitellocalization::findorFail($id);
         $hospital->delete();
+        $hospitallocalization->delete();
         return $hospital;
     }
     function pdf() {}

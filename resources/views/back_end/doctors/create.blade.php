@@ -4,7 +4,7 @@
     <div id="kt_content_container" class="container-xxl">
         <div class="card">
             <div class="card-body p-lg-17">
-                <form action="{{ isset($doctor) ? route('doctors.update', $doctor->id) : route('doctors.store') }}" " method="POST" enctype="multipart/form-data" id="doctorForm">
+                <form action="{{ isset($doctor) ? route('doctors.update', $doctor->id) : route('doctors.store') }}"  method="POST" enctype="multipart/form-data" id="doctorForm">
                                         @csrf
                                                  @if (isset($doctor))
                     @method('PUT')

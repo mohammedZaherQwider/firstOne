@@ -7,6 +7,7 @@ use App\Models\Hospital;
 use App\Models\Operation;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OperationController extends Controller
 {

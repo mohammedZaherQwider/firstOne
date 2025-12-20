@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="en" dir="rtl">
+<html lang="{{app()->getLocale()}}" dir="{{  app()->getLocale() == 'ar' ? 'rtl': 'ltr'}}">
 
 <head>
     <meta charset="utf-8">
@@ -12,19 +12,35 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="copyright" content="" />
-    <link rel="icon" href="{{ asset('assets/front_end/images/icon.svg') }}">
+
+{{--   --}}
+   <link rel="icon" href="{{ asset('assets/front_end/images/icon.svg') }}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-rtl.min.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/animate/animate.css') }}">
     <!-- owl slider CSS -->
     <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/owlslider/assets/owl.carousel.min.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/fancybox/jquery.fancybox.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/front_end/css/style.css') }}">
+
     <!-- <link rel="stylesheet" href="assets/css/style-en.css"> -->
+{{--  --}}
+    @if (app()->getLocale()== 'ar')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('assets/front_end/css/style.css') }}">
+
+
+    @else
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/front_end/cssRTL/style.css') }}">
+
+    @endif
+
 
 </head>
 
@@ -52,7 +68,7 @@
             <nav class="scrollspy_menu">
                 <ul class="navbar-nav">
                     <li class="nav-item active underline_header_titles">
-                        <a class="nav-link" href="index.html">الرئيسية </a>
+                        <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                     </li>
                     <li class="nav-item">
                         <div class="cs-dropdown">
@@ -71,7 +87,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">تواصل معنا</a>
+                        <a class="nav-link" href="contact-us.html">{{__('front.contect') }}</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="btn cs-btn">
@@ -97,7 +113,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="login.html" class="btn cs-btn v2">الدخول</a>
+                        <a href="login.html" class="btn cs-btn v2">{{ __('front.login')}} </a>
                     </li>
                 </ul>
             </nav>
@@ -195,7 +211,7 @@
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
                         <li class="nav-item active underline_header_titles">
-                            <a class="nav-link" href="{{ route('index') }}">الرئيسية </a>
+                            <a class="nav-link" href="{{ route('index') }}">{{ __('front.main') }} </a>
                         </li>
                         <li class="nav-item">
                             <div class="cs-dropdown">
@@ -214,7 +230,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact-us.html">تواصل معنا</a>
+                            <a class="nav-link" href="contact-us.html">  {{ __('front.contect')}}</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="btn cs-btn">
@@ -244,7 +260,7 @@
                     </ul>
                 </nav>
                 <div class="d-flex align-items-center gap-2">
-                    <a href="{{ route('login') }}" class="btn cs-btn v2">الدخول</a>
+                    <a href="{{ route('login') }}" class="btn cs-btn v2"> {{ __('front.login')}}</a>
                     <div class="lang d-flex align-items-center">
                         <!-- <a href="#"> -->
                         <div class="cs-dropdown">
@@ -562,7 +578,7 @@
                 </p>
 
                 <div class="f-social">
-                    <a href="http://" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['whatsapp'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Group_16" data-name="Group 16" xmlns="http://www.w3.org/2000/svg"
                                 width="32" height="31.997" viewBox="0 0 32 31.997">
@@ -590,7 +606,7 @@
                             </svg>
                         </span>
                     </a>
-                    <a href="http://" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['facebook'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_858_32" data-name="Component 858 – 32"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32.402"
@@ -615,7 +631,7 @@
                         </span>
                     </a>
 
-                    <a href="http://" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['x'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_859_26" data-name="Component 859 – 26"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="28.193"
@@ -642,7 +658,7 @@
                         </span>
                     </a>
 
-                    <a href="http://" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['instagram'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_860_23" data-name="Component 860 – 23"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -696,7 +712,7 @@
                             </svg>
                         </span>
                     </a>
-                    <a href="http://" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['linkedin'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_862_28" data-name="Component 862 – 28"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32"

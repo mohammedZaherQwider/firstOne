@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Models\User;
 use App\Notifications\NewNotification;
 use Illuminate\Http\Request;
@@ -38,5 +39,19 @@ class AdminController extends Controller
     {
         Auth::user()->notifications->find($id)->markAsRead();
         return redirect()->back();
+    }
+    function settings_viwe()  {
+        return view('back_end.settings.index');
+    }
+    function settings (Request $request) {
+
+        foreach ($request->except('_token') as $key => $value) {
+            Setting::updateOrCreate(
+                ['key' => $key],
+                ['value' => $value]
+            );
+        }
+        cache()->forget('settings');
+        return back()->with('success', 'Settings seved');
     }
 }

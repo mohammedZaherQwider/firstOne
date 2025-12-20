@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\OperationController;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Permission\Contracts\Role;
@@ -44,4 +45,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/send-Notifications', [AdminController::class, 'notification'])->name('notification');
     Route::post('/send-Notifications', [AdminController::class, 'send_notification'])->name('send_notification');
     Route::get('/read-notification/{id}', [AdminController::class, 'read'])->name('read');
+
+    Route::get('/settings', [AdminController::class, 'settings_viwe'])->name('settings_viwe');
+    Route::post('/settings',[AdminController::class, 'settings'] )->name('settings');
 });

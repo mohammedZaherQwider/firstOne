@@ -10,6 +10,7 @@ use App\Models\Nationalitie;
 use App\Models\Specialization;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
@@ -28,6 +29,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        // return $user->hasPermissionTo('Show all Doctors') ? 'true' : 'false';
         $specializations = Specialization::all();
         $nationalitys = Nationalitie::all();
         $hospitals = Hospital::all();

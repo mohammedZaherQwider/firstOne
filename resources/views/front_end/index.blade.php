@@ -8,7 +8,7 @@
                 <div class="content">
                     <div class="row align-items-center">
                         <div class="col-lg-5 order-lg-0 order-1">
-                            <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">الوجهة الأمثل لرعاية أفضل
+                            <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">  {{ __('front.title')}}
                             </h1>
                             <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"> رايت جايد منصة دولية للبحث
                                 عن أفضل المستشفيات والأخصائيين

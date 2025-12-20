@@ -106,14 +106,14 @@
                                     {{ $user->hospital->name }}
                                 </td>
                                 <td>
-                                    {{ $user->roles->first() }}
+                                    {{ $user->role->name }}
                                 </td>
                                 <td>
                                     {{ $user->type }}
                                 </td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <a href="{{ route('roles.edit', $user) }}"
+                                        <a href="{{ route('users.edit', $user) }}"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-3">

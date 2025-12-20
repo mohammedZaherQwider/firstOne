@@ -1,15 +1,22 @@
 @extends('back_end.layout.app')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div id="kt_content_container" class="container-xxl">
         <div class="card">
             <div class="card-body p-lg-17">
-                <form action="{{ isset($user) ? route('users.update', $user->id) : route('users.store') }}" method="POST"
+                <form action="{{ route('users.store') }}" method="POST"
                     enctype="multipart/form-data" id="operationForm">
                     @csrf
-                    @if (isset($user))
-                        @method('PUT')
-                    @endif
+
                     <h1 class="fw-bolder text-dark mb-9">Add Users</h1>
 
                     <div class="row mb-5">

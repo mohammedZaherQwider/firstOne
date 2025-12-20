@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Can;
 
 class UserController extends Controller
 {
@@ -39,9 +40,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email',
             'password' => 'required|min:6',
             'phone' => 'required',
             'country_id' => 'required |exists:countries,id',
@@ -51,6 +53,7 @@ class UserController extends Controller
             'type' => 'required|in:admin,user',
 
         ]);
+        // dd($request->all());
 
         $data = [
             'name'        => $request->name,
@@ -67,11 +70,13 @@ class UserController extends Controller
         if ($request->id) {
             $user = User::findOrFail($request->id);
             $user->update($data);
+            $role = Role::find($request->role_id);
+            $user->syncRoles($role->name);
             $msg = 'User updated successfully';
         } else {
             $user = User::create($data);
-            $role = Role::findOrFail($request->role_id,);
-            $user->assignRole($role);
+            $role = Role::find($request->role_id);
+            $user->assignRole($role->name);
             $msg = 'User created successfully';
         }
         return redirect()->route('users.index')->with([
@@ -99,7 +104,7 @@ class UserController extends Controller
         $countries = Country::select('id', 'name')->get();
         $jobs = Job::select('id', 'name')->get();
         $hospitals = Hospital::select('id', 'name')->get();
-        return view('back_end.users.create', compact('roles', 'countries', 'jobs', 'hospitals'));
+        return view('back_end.users.create', compact('roles', 'countries', 'jobs', 'hospitals', 'user'));
     }
 
     /**

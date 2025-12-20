@@ -1,0 +1,66 @@
+html,body{
+    direction: rtl;
+    text-align: start;
+}
+.m-category-item .more{
+    right: unset;
+    left: 15px;
+}
+.m-category-item .more svg{
+    transform: rotate(-180deg);
+}
+.product-item .add-to-favorite{
+    left: 0;
+    right: unset;
+}
+.product-item .discout{
+    right: 6px;
+    left: unset;
+}
+.fa-chevron-right:before{
+    content: "\f053";
+}
+.fa-chevron-left:before{
+    content: "\f054";
+}
+.home-slider .owl-nav .owl-next{
+    left: 0;
+    right: unset;
+}
+.home-slider .owl-nav .owl-prev{
+    right: 0;
+    left: unset;
+}
+.news-item .read-more svg{
+    transform: rotate(-180deg);
+}
+.main-footer .scroll-to-top{
+    left: 0;
+    right: unset;
+}
+.fa-angle-left:before{
+    content: "\f105";
+}
+.cs-checkbox-1 .checkmark{
+    right: 0px;
+    left: unset;
+}
+.noUi-horizontal .noUi-handle{
+    right: -17px;
+    left: unset;
+}
+.product-feature p::before{
+    right: 0;
+    left: unset;
+}
+.custom-tabs{
+    padding-right: 0;
+}
+.description ol li::before, .description ul li::after{
+    right: -27px;
+    left: unset;
+}
+.icon-input .icon-i{
+    right: 22px;
+    left: unset;
+}

@@ -26,6 +26,7 @@ class UserFactory extends Factory
             'phone' => 123,
             'country_id' => 1,
             'job_id' => 1,
+            'role_id' => 1,
             'hospital_id' => 1,
             'type' => "admin",
         ];

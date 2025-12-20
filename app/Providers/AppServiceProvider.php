@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
+use Spatie\FlareClient\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // dd(Setting::all());
+        $settings = cache()->rememberForever('settings', function () {
+            return Setting::all()->pluck('value', 'key')->toArray();
+        });
+        // $settings =Setting::pluck('value', 'key')->toArray();
+        view()->share('settings', $settings);
     }
 }

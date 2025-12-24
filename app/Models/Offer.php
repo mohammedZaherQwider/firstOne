@@ -15,12 +15,16 @@ class Offer extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
-     function hospital()
+    function hospital()
     {
         return $this->belongsTo(Hospital::class);
     }
-     function specialization()
+    function specialization()
     {
         return $this->belongsTo(Specialization::class);
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }

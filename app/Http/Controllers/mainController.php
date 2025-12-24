@@ -9,8 +9,10 @@ use App\Models\Country;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\Offer;
+use App\Models\Payment;
 use App\Models\Specialization;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -107,7 +109,7 @@ class mainController extends Controller
     function specialization_details(Specialization $specialization)
     {
         $specializations = Specialization::select('name')->limit(10)->get();
-        return view('front_end.specialization-details', compact('specialization','specializations'));
+        return view('front_end.specialization-details', compact('specialization', 'specializations'));
     }
 
     function register()
@@ -216,5 +218,89 @@ class mainController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->route('login')->with('success', 'تم تغيير كلمة المرور بنجاح.');
+    }
+    function pay(Offer $offer)
+    {
+        $price = number_format($offer->price * (1 - $offer->discount_value / 100), 2);
+        $url = "https://eu-test.oppwa.com/v1/checkouts";
+        $data = "entityId=8a8294174d0595bb014d05d829cb01cd" .
+            "&amount=" . $price .
+            "&currency=USD" .
+            "&paymentType=DB" .
+            "&integrity=true";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization:Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA=='
+        ));
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // this should be set to true in production
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        $responseData = json_decode($responseData, true);
+        // return $responseData;
+        $id = $responseData['id'];
+        return view('front_end.pay', compact('offer', 'id'));
+    }
+    function status(Request $request, Offer $offer)
+    {
+        // dump($offer);
+        $resourcePath = $request->resourcePath;
+        // dd($resourcePath);
+        $url = "https://eu-test.oppwa.com" . $resourcePath;
+        // dd($url);
+        $url .= "?entityId=8a8294174d0595bb014d05d829cb01cd";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization:Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA=='
+        ));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // this should be set to true in production
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if (curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        // return $responseData;
+
+        $responseData = json_decode($responseData, true);
+
+        $code = $responseData['result']['code'];
+        $price = number_format($offer->price * (1 - $offer->discount_value / 100), 2);
+        $transactionId = $response['id'] ?? null;
+
+        if ($code == '800.900.300') {
+            // ✅ Payment Success
+            Payment::create([
+                'offer_id'       => $offer->id,
+                'amount'         => $price,
+                'currency'       => 'ILS',
+                'payment_method' => 'hyperpay',
+                'transaction_id' => $transactionId,
+                'status'         => 'paid',
+                'paid_at'        => Carbon::now(),
+            ]);
+            return view('front_end.resulte');
+        } else {
+            Payment::create([
+                'offer_id'       => $offer->id,
+                'amount'         => $price,
+                'currency'       => 'ILS',
+                'payment_method' => 'hyperpay',
+                'transaction_id' => $transactionId,
+                'status'         => 'failed',
+            ]);
+            return redirect()->route('/')
+            ->with('msg', 'فشلت العملية يحب حاول تاني');
+        }
     }
 }

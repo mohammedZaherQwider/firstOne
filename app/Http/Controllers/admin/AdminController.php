@@ -40,10 +40,12 @@ class AdminController extends Controller
         Auth::user()->notifications->find($id)->markAsRead();
         return redirect()->back();
     }
-    function settings_viwe()  {
+    function settings_viwe()
+    {
         return view('back_end.settings.index');
     }
-    function settings (Request $request) {
+    function settings(Request $request)
+    {
 
         foreach ($request->except('_token') as $key => $value) {
             Setting::updateOrCreate(

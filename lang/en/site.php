@@ -13,6 +13,8 @@ return [
     'rolrs' => 'Roles',
     'operation' => 'Operation',
     'operations' => 'Operations',
+    'offer' => 'Offer',
+    'offers' => 'Offers',
     'all' => 'All',
     'add' => 'Add',
 

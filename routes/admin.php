@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\OfferController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\OperationController;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
@@ -41,11 +43,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::resource('/roles', RoleController::class);
     Route::resource('/users', UserController::class);
+    Route::resource('/offers', OfferController::class);
+
 
     Route::get('/send-Notifications', [AdminController::class, 'notification'])->name('notification');
     Route::post('/send-Notifications', [AdminController::class, 'send_notification'])->name('send_notification');
     Route::get('/read-notification/{id}', [AdminController::class, 'read'])->name('read');
 
     Route::get('/settings', [AdminController::class, 'settings_viwe'])->name('settings_viwe');
-    Route::post('/settings',[AdminController::class, 'settings'] )->name('settings');
+    Route::post('/settings', [AdminController::class, 'settings'])->name('settings');
 });

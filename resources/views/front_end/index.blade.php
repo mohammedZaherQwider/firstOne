@@ -856,10 +856,10 @@
                     <div class="row">
                         @foreach ($offers as $offer)
                             <div class="col-lg-3 col-md-6">
-                                <a href="#">
+                                <a href="{{ route('pay',$offer) }}">
                                     <div class="offer-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                         <figure>
-                                            <img src="assets/images/offer-1.png" alt="" srcset="">
+                                            <img src="{{ asset('assets/front_end/images/offer-1.png')   }}" alt="" srcset="">
                                             <div class="discount">
                                                 ‏{{ intval($offer->discount_value) }}% خصم
                                             </div>

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::all();
+        return view('back_end.countries.index', compact('countries'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('back_end.countries.create');
     }
 
     /**
@@ -28,7 +30,26 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|unique:countries,name',
+        ]);
+
+        $data = $request->only(['name']);
+
+        if ($request->id) {
+            $country = Country::findOrFail($request->id);
+            $country->update($data);
+            $msg = 'Country updated successfully';
+        } else {
+            $country = Country::create($data);
+            $msg = 'Country created successfully';
+        }
+
+        return redirect()->route('countries.index')->with([
+            'status' => 'success',
+            'msg' => $msg,
+            'data' => $country
+        ]);
     }
 
     /**
@@ -44,7 +65,7 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        //
+        return view('back_end.countries.create', compact('country'));
     }
 
     /**
@@ -60,6 +81,12 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $country->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'msg' => 'Country deleted successfully',
+            'data' => $country
+        ]);
     }
 }

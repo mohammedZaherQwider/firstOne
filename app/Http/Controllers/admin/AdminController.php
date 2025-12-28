@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\Setting;
 use App\Models\User;
 use App\Notifications\NewNotification;
@@ -14,7 +15,7 @@ class AdminController extends Controller
     function dashboard()
     {
         if (Auth::check() && Auth::user()->type == "admin") {
-            return view('back_end.index');
+            return redirect()->route('dashboard');
             // return view('dashboard');
         }
         if (Auth::user()->type == "user") {
@@ -55,5 +56,20 @@ class AdminController extends Controller
         }
         cache()->forget('settings');
         return back()->with('success', 'Settings seved');
+    }
+    function payment()
+    {
+        $payments = Payment::all();
+        return view('back_end.payments.index', compact('payments'));
+    }
+    public function destroy(Payment $payment)
+    {
+        $payment->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'msg' => 'Country deleted successfully',
+            'data' => $payment
+        ]);
     }
 }

@@ -8,7 +8,10 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\OperationController;
+use App\Http\Controllers\Admin\SpecializationController;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -37,6 +40,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage'])
         ->name('uploadImage');
 
+
+    Route::resource('/cities', CityController::class);
     Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');
 
     Route::resource('/operations', OperationController::class);
@@ -44,6 +49,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::resource('/roles', RoleController::class);
     Route::resource('/users', UserController::class);
     Route::resource('/offers', OfferController::class);
+    Route::resource('/countries', CountryController::class);
+    Route::resource('/specializations', SpecializationController::class);
+    Route::get('/payments', [AdminController::class, 'payment'])->name('payment');
+    Route::delete('/payments/{payment}', [AdminController::class, 'destroy'])->name('payments.destroy');
+
+
 
 
     Route::get('/send-Notifications', [AdminController::class, 'notification'])->name('notification');

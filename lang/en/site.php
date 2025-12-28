@@ -15,6 +15,12 @@ return [
     'operations' => 'Operations',
     'offer' => 'Offer',
     'offers' => 'Offers',
+    'country' => 'Country',
+    'countries' => 'Countries',
+    'city' => 'Citiy',
+    'cities' => 'Cities',
+    'specializations' => 'Specializations',
+    'specialization' => 'Specialization',
     'all' => 'All',
     'add' => 'Add',
 

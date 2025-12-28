@@ -15,6 +15,12 @@ return [
     'offer' => 'عرض',
     'operation' => 'العملية',
     'operations' => 'العمليات',
+    'country' => 'دولة',
+    'countries' => 'الدول',
+    'city' => 'مدينة',
+    'cities' => 'المدن',
+    'specializations' => 'التخصصات',
+    'specialization' => 'التخصص',
     'all' => 'جميع',
     'add' => 'اضافة',
 

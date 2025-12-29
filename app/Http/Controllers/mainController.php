@@ -25,11 +25,37 @@ class mainController extends Controller
     {
         $specializations = Specialization::select('name')->limit(10)->get();
         $hostpials = Hospital::select('id', 'name', 'country_id', 'city_id')->with('ratings')->limit(3)->get();
-        // $ratings = Rating::select('user_id', 'type', 'type_id', 'rating', 'date', 'comment')->get(   );
         $doctors = Doctor::with(['nationalitie', 'ratings'])->limit(4)->get();
         $offers = Offer::all();
         $contents = Content::all();
-        return view('front_end.index', compact('specializations', 'hostpials', 'doctors', 'offers', 'contents'));
+
+        $specs = $specializations->shuffle()->take(3)->map(fn($s) => [
+            'type' => 'specialization',
+            'name' => $s->name,
+            'id' => $s->id,
+        ]);
+
+        $hosps = $hostpials->shuffle()->take(2)->map(fn($h) => [
+            'type' => 'hospital',
+            'name' => $h->name,
+            'country' => $h->country->name ?? '-',
+            'description' => $h->description ?? 'No description available',
+        ]);
+
+        $docs = $doctors->shuffle()->take(4)->map(fn($d) => [
+            'type' => 'doctor',
+            'name' => $d->name,
+            'specialization' => $d->specialization->name ?? '-',
+            'hospital' => $d->hospital->name ?? '-',
+            'bio' => $d->bio ?? 'No bio available',
+        ]);
+        $mixedData = collect()
+            ->merge($specs)
+            ->merge($hosps)
+            ->merge($docs)
+            ->shuffle();
+
+        return view('front_end.index', compact('specializations', 'hostpials', 'doctors', 'offers', 'contents', 'mixedData'));
     }
     function hostpial(Request $request)
     {
@@ -300,7 +326,7 @@ class mainController extends Controller
                 'status'         => 'failed',
             ]);
             return redirect()->route('/')
-            ->with('msg', 'فشلت العملية يحب حاول تاني');
+                ->with('msg', 'فشلت العملية يحب حاول تاني');
         }
     }
 }

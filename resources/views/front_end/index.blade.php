@@ -8,73 +8,72 @@
                 <div class="content">
                     <div class="row align-items-center">
                         <div class="col-lg-5 order-lg-0 order-1">
-                            <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">  {{ __('front.title')}}
+                            <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s"> {{ __('front.title') }}
                             </h1>
                             <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"> رايت جايد منصة دولية للبحث
                                 عن أفضل المستشفيات والأخصائيين
                                 ،المتميزين في تركيا لتقديم أفضل خدمات السياحة العلاجية والطبية لك
                                 .نعمل بجد كل يوم لجعل الناس أكثر صحة وأكثر سعادة</p>
-                            <form action="#" method="post" class="mt-5 mb-3 wow fadeInUp" data-wow-duration="1s"
+                            <form action="#" class="mt-5 mb-3 wow fadeInUp" data-wow-duration="1s"
                                 data-wow-delay="0.3s">
                                 <div class="form-group">
                                     <div class="cs-search-input">
                                         <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20.003" height="20"
-                                                viewBox="0 0 20.003 20">
-                                                <g id="search-normal" transform="translate(-430 -190)">
-                                                    <path id="Vector"
-                                                        d="M19,9.5A9.5,9.5,0,1,1,9.5,0,9.5,9.5,0,0,1,19,9.5Z"
-                                                        transform="translate(430 190)" fill="#e2e2e2"></path>
-                                                    <path id="Vector-2" data-name="Vector"
-                                                        d="M2.552,3.252a.7.7,0,0,1-.49-.2L.2,1.192A.706.706,0,0,1,.2.2a.706.706,0,0,1,.99,0l1.86,1.86a.706.706,0,0,1,0,.99A.738.738,0,0,1,2.552,3.252Z"
-                                                        transform="translate(446.747 206.747)" fill="#05060f"></path>
-                                                </g>
-                                            </svg>
+                                            🔍
                                         </span>
-                                        <input type="text" class="form-control custom-input"
-                                            placeholder="...ابحث عن مستشفى أو أخصائي أو تخصص">
-                                        <button type="button" class="btn cs-btn v2">بحث</button>
+
+                                        <input type="text" id="searchInput" class="form-control custom-input"
+                                            placeholder="...ابحث عن مستشفى أو طبيب أو تخصص">
+
+                                        <button type="button" class="btn cs-btn v2" onclick="triggerSearch()">بحث</button>
                                     </div>
                                 </div>
                             </form>
                             <div class="suggestions wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
                                 <h4>إقتراحات</h4>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                                        <a href="#">طب الأعصاب</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                        <a href="#">مستشفى الأناضول</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                                        <a href="#">أمراض الكلى</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                                        <a href="#">جراحة الأعصاب</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-                                        <a href="#">استيتك انترناشونال</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-                                        <a href="#">أمراض السكري</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-                                        <a href="#">أوغور شاهين</a>
-                                    </div>
-                                    <div class="suggestion wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">
-                                        <a href="#">أمراض الجهاز الهضمي</a>
-                                    </div>
+                                    @foreach ($mixedData as $item)
+                                        <div class="suggestion wow fadeInUp" onclick="openDetails(this)"
+                                            data-type="{{ $item['type'] }}" data-name="{{ $item['name'] }}"
+                                            data-specialization="{{ $item['specialization'] ?? '' }}"
+                                            data-hospital="{{ $item['hospital'] ?? '' }}"
+                                            data-bio="{{ $item['bio'] ?? '' }}" data-country="{{ $item['country'] ?? '' }}"
+                                            data-description="{{ $item['description'] ?? '' }}">
+                                            <a href="javascript:void(0)">
+                                                {{ $item['name'] }}
+                                            </a>
+                                        </div>
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 offset-lg-1  order-0">
                             <figure>
-                                <img src="assets/images/h-banner-img.png" class="img-fluid" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/h-banner-img.png') }}" class="img-fluid"
+                                    alt="" srcset="">
                             </figure>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="detailsModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <p id="modalBody"></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </section>
         <!-- ./banner-section -->
 
@@ -856,10 +855,11 @@
                     <div class="row">
                         @foreach ($offers as $offer)
                             <div class="col-lg-3 col-md-6">
-                                <a href="{{ route('pay',$offer) }}">
+                                <a href="{{ route('pay', $offer) }}">
                                     <div class="offer-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                         <figure>
-                                            <img src="{{ asset('assets/front_end/images/offer-1.png')   }}" alt="" srcset="">
+                                            <img src="{{ asset('assets/front_end/images/offer-1.png') }}" alt=""
+                                                srcset="">
                                             <div class="discount">
                                                 ‏{{ intval($offer->discount_value) }}% خصم
                                             </div>
@@ -1445,4 +1445,67 @@
         </div>
         <!-- ./contact-us-btn -->
     </div>
+@endsection
+@section('js')
+    <script>
+        function openDetails(el) {
+            const type = el.dataset.type;
+            let title = '';
+            let body = '';
+
+            if (type === 'doctor') {
+                title = 'Doctor Details';
+                body = `
+            <p><strong>Name:</strong> ${el.dataset.name}</p>
+            <p><strong>Specialization:</strong> ${el.dataset.specialization}</p>
+            <p><strong>Hospital:</strong> ${el.dataset.hospital}</p>
+            <p><strong>Bio:</strong><br>${el.dataset.bio}</p>
+        `;
+            }
+
+            if (type === 'hospital') {
+                title = 'Hospital Details';
+                body = `
+            <p><strong>Name:</strong> ${el.dataset.name}</p>
+            <p><strong>Country:</strong> ${el.dataset.country}</p>
+            <p><strong>Description:</strong><br>${el.dataset.description}</p>
+        `;
+            }
+
+            if (type === 'specialization') {
+                title = 'Specialization Details';
+                body = `
+            <p><strong>Name:</strong> ${el.dataset.name}</p>
+        `;
+            }
+
+            document.getElementById('modalTitle').innerHTML = title;
+            document.getElementById('modalBody').innerHTML = body;
+
+            new bootstrap.Modal(document.getElementById('detailsModal')).show();
+        }
+    </script>
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const keyword = this.value.toLowerCase().trim();
+            const items = document.querySelectorAll('.suggestion');
+
+            items.forEach(item => {
+                const text = (
+                    item.dataset.name +
+                    item.dataset.type +
+                    item.dataset.specialization +
+                    item.dataset.hospital +
+                    item.dataset.country
+                ).toLowerCase();
+
+                item.style.display = text.includes(keyword) ? 'block' : 'none';
+            });
+        });
+
+        function triggerSearch() {
+            document.getElementById('searchInput')
+                .dispatchEvent(new Event('keyup'));
+        }
+    </script>
 @endsection

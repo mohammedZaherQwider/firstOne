@@ -48,9 +48,7 @@
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                     </button>
-
                 </form>
-
             </div>
         </div>
     </div>

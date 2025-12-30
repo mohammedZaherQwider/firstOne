@@ -39,7 +39,18 @@
                         @foreach ($specializations as $specialization)
                             <tr>
                                 <td>{{ $specialization->id }}</td>
-                                <td>{{ $specialization->name }}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-45px me-5">
+                                            <img src="{{ asset('uploads/specializations/' . ($specialization->image?->image ?? 'default.jpg')) }}"
+                                                alt="Specialization Image" />
+                                        </div>
+                                        <div class="d-flex justify-content-start flex-column">
+                                            <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">
+                                                {{ $specialization->name }}</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
 

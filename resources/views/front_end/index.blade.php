@@ -1,7 +1,7 @@
 @extends('front_end.layout.app')
 @section('content')
     <div class="body-content">
-
+        {{-- {{ dd($mixedData) }} --}}
         <!-- banner-section -->
         <section class="banner-section">
             <div class="container">
@@ -88,11 +88,13 @@
                 <div class="content">
                     <div class="row">
                         @foreach ($specializations as $specialization)
+                            {{-- {{ dd($specialization->image) }} --}}
                             <div class="col-lg-auto col-md-4 col-6">
                                 <div class="major-card">
-                                    <figure>
-                                        <img src="assets/images/major-1.svg" class="wow zoomIn" data-wow-duration="1s"
-                                            data-wow-delay="0.1s" alt="" srcset="">
+                                    <figure style="width: 100%; height: 200px; overflow: hidden;">
+                                        <img src="{{ asset('uploads/specializations/' . ($specialization->image?->image ?? 'default.jpg')) }}"
+                                            alt="" class="wow zoomIn" data-wow-duration="1s" data-wow-delay="0.1s"
+                                            style="width: 100%; height: 100%; object-fit: cover;">
                                     </figure>
                                     <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                         {{ $specialization->name }} </h4>

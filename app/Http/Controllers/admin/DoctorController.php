@@ -50,6 +50,7 @@ class DoctorController extends Controller
             'gender' => 'required|in:male,female',
             'bio' => 'required | string',
         ]);
+        dd($request->uploaded_images);
         // $doctor = Doctor::Create($request->all());
         $doctor = Doctor::Create(
             [

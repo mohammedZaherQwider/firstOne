@@ -23,7 +23,7 @@ class mainController extends Controller
 {
     function index()
     {
-        $specializations = Specialization::select('name')->limit(10)->get();
+        $specializations = Specialization::select('name','id')->limit(10)->get();
         $hostpials = Hospital::select('id', 'name', 'country_id', 'city_id')->with('ratings')->limit(3)->get();
         $doctors = Doctor::with(['nationalitie', 'ratings'])->limit(4)->get();
         $offers = Offer::all();
@@ -32,7 +32,6 @@ class mainController extends Controller
         $specs = $specializations->shuffle()->take(3)->map(fn($s) => [
             'type' => 'specialization',
             'name' => $s->name,
-            'id' => $s->id,
         ]);
 
         $hosps = $hostpials->shuffle()->take(2)->map(fn($h) => [
@@ -135,7 +134,8 @@ class mainController extends Controller
     function specialization_details(Specialization $specialization)
     {
         $specializations = Specialization::select('name')->limit(10)->get();
-        return view('front_end.specialization-details', compact('specialization', 'specializations'));
+        $doctors = Doctor::select('name')->limit(10)->get();
+        return view('front_end.specialization-details', compact('specialization', 'specializations','doctors'));
     }
 
     function register()

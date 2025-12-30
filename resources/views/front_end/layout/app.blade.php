@@ -38,8 +38,24 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/front_end/cssRTL/style.css') }}">
-
     @endif
+    <style>
+    .circle-img {
+        width: 120px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    .circle-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    </style>
 
 
 </head>

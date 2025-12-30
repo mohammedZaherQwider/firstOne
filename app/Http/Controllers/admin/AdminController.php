@@ -14,13 +14,7 @@ class AdminController extends Controller
 {
     function dashboard()
     {
-        if (Auth::check() && Auth::user()->type == "admin") {
-            return redirect()->route('dashboard');
-            // return view('dashboard');
-        }
-        if (Auth::user()->type == "user") {
-            // return redirect()->route('/');
-        }
+        return view('back_end.index');
     }
     function notification()
     {

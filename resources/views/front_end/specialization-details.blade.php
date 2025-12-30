@@ -1,5 +1,6 @@
 @extends('front_end.layout.app')
 @section('content')
+
     <div class="body-content hospital-details-page">
         <div class="container">
             <nav aria-label="breadcrumb">
@@ -56,10 +57,11 @@
                 <div class="content">
 
                     <div class="d-flex align-items-center gap-3">
-                        <figure class="mb-0">
-                            {{-- الصورة بدها تعديل  --}}
-                            <img src="{{ asset('assets/images/hospital-details-logo.png') }}" alt="" srcset="">
+                        <figure class="circle-img mb-0">
+                            <img src="{{ asset('uploads/specializations/' . ($specialization->image?->image ?? 'default.jpg')) }}"
+                                alt="">
                         </figure>
+
                         <div>
                             <h2> {{ $specialization->name }} </h2>
                             <div class="d-flex ">
@@ -76,19 +78,10 @@
                                     </span>
                                 </div>
                                 <div class="address">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17.75" height="20.5"
-                                            viewBox="0 0 17.75 20.5">
-                                            <g id="location" transform="translate(0)">
-                                                <path id="Vector"
-                                                    d="M17.5,6.7A8.626,8.626,0,0,0,8.88,0H8.87A8.624,8.624,0,0,0,.25,6.69C-.92,11.85,2.24,16.22,5.1,18.97a5.422,5.422,0,0,0,7.55,0C15.51,16.22,18.67,11.86,17.5,6.7Z"
-                                                    fill="#d3d3d8" />
-                                                <path id="Vector-2" data-name="Vector"
-                                                    d="M6.3,3.15A3.15,3.15,0,1,1,3.15,0,3.15,3.15,0,0,1,6.3,3.15Z"
-                                                    transform="translate(5.73 5.41)" fill="#868692" />
-                                            </g>
-                                        </svg>
-                                    </span>
+                                   <h4> اسماء المستشفيات الي تتواجد فيها التخصص :</h4>
+                                    @foreach ($specialization->hostpials as $h)
+                                        {{ $h->name }} ,
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -123,37 +116,12 @@
                         </figure>
                     </div>
                     <div id="cs-tabs" class="list-group cs-tabs">
-                        <a class="list-group-item list-group-item-action" href="#list-item-1">نظرة عامة</a>
                         <a class="list-group-item list-group-item-action" href="#list-item-2">التخصصات</a>
                         <a class="list-group-item list-group-item-action" href="#list-item-3">الأخصائيين</a>
                         <a class="list-group-item list-group-item-action" href="#list-item-4">الخريطة</a>
                     </div>
                     <div data-bs-spy="scroll" data-bs-target="#cs-tabs" data-bs-offset="0" class="scrollspy-example"
                         tabindex="0">
-                        <div id="list-item-1" class="tab-section">
-                            <h4>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24">
-                                    <g id="vuesax_bulk_info-circle" data-name="vuesax/bulk/info-circle"
-                                        transform="translate(-366 -254)">
-                                        <g id="info-circle" transform="translate(366 254)">
-                                            <path id="Vector" d="M24,12A12,12,0,1,1,12,0,12,12,0,0,1,24,12Z"
-                                                fill="#99ebc2" />
-                                            <g id="Group_63665" data-name="Group 63665"
-                                                transform="translate(0.399 -0.313)">
-                                                <path id="Vector-2" data-name="Vector"
-                                                    d="M1,8a.971.971,0,0,0,1-.923V.923A.971.971,0,0,0,1,0,.971.971,0,0,0,0,.923V7.077A.971.971,0,0,0,1,8Z"
-                                                    transform="translate(11 6.313)" fill="#00ce68" />
-                                                <path id="Vector-3" data-name="Vector"
-                                                    d="M2.4.769A1.443,1.443,0,0,0,2.138.356,1.443,1.443,0,0,0,1.725.094a1.25,1.25,0,0,0-.95,0A1.443,1.443,0,0,0,.362.356,1.443,1.443,0,0,0,.1.769a1.244,1.244,0,0,0-.1.475,1.244,1.244,0,0,0,.1.475,1.29,1.29,0,0,0,.263.412,1.443,1.443,0,0,0,.412.263,1.244,1.244,0,0,0,.475.1,1.244,1.244,0,0,0,.475-.1,1.443,1.443,0,0,0,.412-.263A1.29,1.29,0,0,0,2.4,1.719a1.244,1.244,0,0,0,.1-.475A1.244,1.244,0,0,0,2.4.769Z"
-                                                    transform="translate(10.6 16)" fill="#00ce68" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-
-
-                        </div>
                         <div id="list-item-2" class="tab-section">
                             <h4>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -194,9 +162,14 @@
                                             transform="translate(2.795 1.397)" fill="#00ce68" fill-rule="evenodd" />
                                     </g>
                                 </svg>
-
-
+                                الاخصائين
                             </h4>
+                            <ul class="majors-list">
+                                @foreach ($doctors as $doctor)
+                                    <li> {{ $doctor->name }} </li>
+                                @endforeach
+
+                            </ul>
                         </div>
                         <div id="list-item-4" class="tab-section">
                             <h4>
@@ -214,7 +187,7 @@
                                 الخريطة
                             </h4>
                             <figure class="map">
-                                <img src="{{ asset('assets/images/Location.png') }}" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/Location.png') }}" alt="" srcset="">
                             </figure>
                         </div>
 

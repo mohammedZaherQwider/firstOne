@@ -34,17 +34,35 @@ class SpecializationController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
+        // dd($request->uploaded_images);
 
         $data = $request->only(['name']);
 
         if ($request->id) {
             $specialization = Specialization::findOrFail($request->id);
             $specialization->update($data);
+            if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $specialization->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
             $msg = 'Specialization updated successfully';
         } else {
             $specialization = Specialization::create($data);
+            if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $specialization->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
             $msg = 'Specialization created successfully';
         }
+
 
         return redirect()->route('specializations.index')->with([
             'status' => 'success',

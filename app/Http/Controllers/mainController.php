@@ -115,7 +115,7 @@ class mainController extends Controller
     function hostpial_details(Hospital $hostpial)
     {
         $hostpial->load(['ratings', 'country', 'city', 'specializations']);
-        $hostpials = Hospital::select('id', 'name', 'img', 'country_id', 'city_id')
+        $hostpials = Hospital::select('id', 'name', 'country_id', 'city_id')
             ->withAvg('ratings', 'rating')
             ->orderByDesc('ratings_avg_rating')
             ->take(3)

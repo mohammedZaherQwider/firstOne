@@ -122,7 +122,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="hospital-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                     <figure>
-                                        <img src="assets/images/hospital-1.png" alt="" srcset="">
+                                        <img src="{{ asset('uploads/hospitals/' . $hostpial->images->first()->image) }}" alt="" srcset="">
                                     </figure>
                                     <div class="hospital-rate">
                                         <div class="d-flex align-items-center">

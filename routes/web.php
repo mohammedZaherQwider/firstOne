@@ -49,7 +49,7 @@ require __DIR__ . '/auth.php';
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
     Route::get('/', [mainController::class, 'index'])->name('index');
-    Route::get('/hostpial', [mainController::class, 'hostpial'])->name('hostpial');
+    Route::get('/hostpials', [mainController::class, 'hostpial'])->name('hostpial');
     Route::get('/hostpial_details/{hostpial}', [mainController::class, 'hostpial_details'])->name('hostpial_details');
     Route::get('/doctors', [mainController::class, 'doctors'])->name('doctors');
     Route::get('/doctors_details/{doctor}', [mainController::class, 'doctor_details'])->name('doctor_details');

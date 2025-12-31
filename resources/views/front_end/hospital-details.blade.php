@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="hospitals.html">
+                        <a href="{{ route('hostpial') }}">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="6.811" height="12.121"
                                     viewBox="0 0 6.811 12.121">
@@ -56,10 +56,16 @@
                 <div class="content">
 
                     <div class="d-flex align-items-center gap-3">
-                        <figure class="mb-0">
-                            {{-- الصورة بدها تعديل  --}}
-                            <img src="{{ asset('assets/images/hospital-details-logo.png') }}" alt="" srcset="">
+                        @php
+                            $image = $hostpial->images->isNotEmpty()
+                                ? $hostpial->images->first()->image
+                                : 'default.jpg';
+                        @endphp
+                        <figure class="circle-img mb-0">
+                            <img src="{{ asset('uploads/hospitals/' . $image) }}" alt=""
+                                style="width:100%;height:100%;object-fit:cover;">
                         </figure>
+
                         <div>
                             <h2> {{ $hostpial->name }} </h2>
                             @php
@@ -284,7 +290,7 @@
                             </h4>
                             <ul class="majors-list">
                                 @foreach ($hostpial->specializations as $specialization)
-                                    <li> {{ $specializations->name }} </li>
+                                    <li> {{ $specialization->name }} </li>
                                 @endforeach
 
                             </ul>
@@ -314,9 +320,17 @@
                                     @foreach ($hostpial->doctors as $doctor)
                                         <div class="general-card specialist-card v2 wow fadeInUp" data-wow-duration="1s"
                                             data-wow-delay="0.1s">
-                                            <figure>
-                                                <img src="assets/images/specialist.png" alt="" srcset="">
+                                            @php
+                                                $doctorImage = $doctor->image ?? 'default.jpg';
+                                            @endphp
+                                            <figure class="circle-img mb-0"
+                                                style="width:120px; height:120px; overflow:hidden; border-radius:50%; margin:auto;">
+                                                <img src="{{ asset('uploads/doctors/' . $doctorImage) }}"
+                                                    alt="{{ $doctor->name }}"
+                                                    style="width:100%; height:100%; object-fit:cover; display:block;">
                                             </figure>
+
+
                                             <div class="general-card-body">
                                                 <h4> {{ $doctor->name }} </h4>
                                                 <h6> {{ $doctor->specialization->name }} </h6>
@@ -338,7 +352,6 @@
                                             </div>
                                         </div>
                                     @endforeach
-
                                 </div>
                             </div>
                         </div>
@@ -358,7 +371,8 @@
                                 الخريطة
                             </h4>
                             <figure class="map">
-                                <img src="{{ asset('assets/images/Location.png') }}" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/Location.png') }}" alt=""
+                                    srcset="">
                             </figure>
                         </div>
 
@@ -424,7 +438,8 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="hospital-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                 <figure>
-                                    <img src="assets/images/hospital-1.png" alt="" srcset="">
+                                    <img src="{{ asset('uploads/hospitals/' . $hostpial->images->first()->image) }}"
+                                        alt="" srcset="">
                                 </figure>
                                 <div class="hospital-rate">
                                     <div class="d-flex align-items-center">
@@ -465,4 +480,28 @@
         <p>طلب مساعدة</p>
     </div>
     <!-- ./contact-us-btn -->
+@endsection
+@section('js')
+    <script>
+        $('.specialists-slider').owlCarousel({
+            loop: false, // منع التكرار
+            margin: 20,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 2
+                }, // أو 4 حسب تصميمك
+            }
+        });
+    </script>
 @endsection

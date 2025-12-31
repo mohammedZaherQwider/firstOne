@@ -23,9 +23,13 @@
                                 <div class="h-100 d-flex flex-column justify-content-between pe-lg-6 mb-lg-0 mb-10">
                                     <!--begin::Video-->
                                     <div class="mb-3">
-                                        <iframe class="embed-responsive-item card-rounded h-275px w-100"
-                                            src="https://www.youtube.com/embed/qIHXpnASPAA"
-                                            allowfullscreen="allowfullscreen"></iframe>
+                                        @if ($hospital->images->isNotEmpty())
+                                            <img src="{{ asset('uploads/hospitals/' . $hospital->images->first()->image) }}"
+                                                class="img-fluid rounded" alt="Hospital Image">
+                                        @else
+                                            <img src="{{ asset('uploads/hospitals/default.jpg') }}"
+                                                class="img-fluid rounded" alt="Default Image">
+                                        @endif
                                     </div>
                                     <!--end::Video-->
                                     <!--begin::Body-->
@@ -63,13 +67,12 @@
                                         <form id="hospitalForm" action="{{ route('uploadImage') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
-
                                             <div class="fw-bold fs-5 mt-4 text-dark">
                                                 <label class="fs-5 fw-bold mb-2">Images</label>
-
                                                 <!-- Dropzone فقط -->
                                                 <div id="myDropzone" class="dropzone"></div>
-                                                <input type="hidden" id="id" name="hospital_id" value="{{ $hospital->id }}">
+                                                <input type="hidden" id="id" name="hospital_id"
+                                                    value="{{ $hospital->id }}">
 
 
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -110,37 +113,40 @@
                         <!--begin::Row-->
                         <div class="row g-10">
                             <!--begin::Col-->
+                            {{-- {{ dd($hospital->services) }} --}}
                             @foreach ($hospital->services as $s)
-                                <div class="col-md-4">
-                                    {{-- {{ dd($s) }} --}}
-                                    <!--begin::Feature post-->
-                                    <div class="card-xl-stretch me-md-6">
-                                        <!--begin::Image-->
-                                        <a class="d-block bgi-no-repeat bgi-size-cover bgi-position-center card-rounded position-relative min-h-175px mb-5"
-                                            href="#">
-                                            {{ $s['icon'] }}
-                                        </a>
-                                        <!--end::Image-->
-                                        <!--begin::Body-->
-                                        <div class="m-0">
-                                            <!--begin::Title-->
-                                            <a href="#"
-                                                class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">
-                                                {{ $s['name'] }}
+                                @if (is_array($s))
+                                    <div class="col-md-4">
+                                        {{-- {{ dd($s) }} --}}
+                                        <!--begin::Feature post-->
+                                        <div class="card-xl-stretch me-md-6">
+                                            <!--begin::Image-->
+                                            <a class="d-block bgi-no-repeat bgi-size-cover bgi-position-center card-rounded position-relative min-h-175px mb-5"
+                                                href="#">
+                                                {{ $s['img'] }}
                                             </a>
-                                            <!--end::Title-->
-                                            <!--begin::Text-->
-                                            <div class="fw-bold fs-5 text-gray-600 text-dark my-4">
-                                                {{ $s['type'] }}
+                                            <!--end::Image-->
+                                            <!--begin::Body-->
+                                            <div class="m-0">
+                                                <!--begin::Title-->
+                                                <a href="#"
+                                                    class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">
+                                                    {{ $s['name'] }}
+                                                </a>
+                                                <!--end::Title-->
+                                                <!--begin::Text-->
+                                                <div class="fw-bold fs-5 text-gray-600 text-dark my-4">
+                                                    {{ $s['type'] }}
+                                                </div>
+                                                <!--end::Text-->
+                                                <!--begin::Content-->
+                                                <!--end::Content-->
                                             </div>
-                                            <!--end::Text-->
-                                            <!--begin::Content-->
-                                            <!--end::Content-->
+                                            <!--end::Body-->
                                         </div>
-                                        <!--end::Body-->
+                                        <!--end::Feature post-->
                                     </div>
-                                    <!--end::Feature post-->
-                                </div>
+                                @endif
                             @endforeach
                             <!--end::Col-->
                             <!--end::Row-->

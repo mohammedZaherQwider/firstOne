@@ -56,9 +56,9 @@
                 <div class="content">
 
                     <div class="d-flex align-items-center gap-3">
-                        <figure class="mb-0">
-                            {{-- الصورة بدها تعديل  --}}
-                            <img src="{{ asset('assets/images/hospital-details-logo.png') }}" alt="" srcset="">
+                        <figure class="circle-img mb-0">
+                            <img src="{{ asset('uploads/doctors/' . $doctor->image->image) }}" alt=""
+                                style="width:100%;height:100%;object-fit:cover;">
                         </figure>
                         <div>
                             <h2> {{ $doctor->name }} </h2>
@@ -79,7 +79,7 @@
                                         </svg>
                                     </span>
 
-                                    {{ $doctor->doctor }}
+                                    {{-- {{ $doctor->doctor }} --}}
                                     <p class="mb-0">({{ $count }}) تقييم</p>
                                 </div>
                                 <div class="address">
@@ -96,7 +96,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    {{ $doctor->hospital->country->name }} ، {{$doctor->hospital->city->name }}
+                                    {{ $doctor->hospital->country->name }} ، {{ $doctor->hospital->city->name }}
                                 </div>
                             </div>
                         </div>
@@ -108,28 +108,7 @@
         <div class="container">
             <div class="row mt-4">
                 <div class="col-lg-9">
-                    <div class="owl-carousel hospital-details-slider owl-slider mt-32">
-                        <figure class="overlay video-img" href="assets/images/img-hospital-details.png" data-fancybox="">
-                            <img src="assets/images/img-hospital-details.png" alt="" srcset="">
-                            <div class="play">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22.168" height="25.728"
-                                    viewBox="0 0 22.168 25.728">
-                                    <path id="Shape"
-                                        d="M5.547.55l14.9,9.224a3.634,3.634,0,0,1,0,6.18l-14.9,9.224A3.634,3.634,0,0,1,0,22.088V3.64A3.634,3.634,0,0,1,5.547.55Z"
-                                        fill="#05051b"></path>
-                                </svg>
-                            </div>
-                        </figure>
-                        <figure class="overlay">
-                            <img src="assets/images/img-hospital-details.png" alt="" srcset="">
-                        </figure>
-                        <figure class="overlay">
-                            <img src="assets/images/img-hospital-details.png" alt="" srcset="">
-                        </figure>
-                        <figure class="overlay">
-                            <img src="assets/images/img-hospital-details.png" alt="" srcset="">
-                        </figure>
-                    </div>
+
                     <div id="cs-tabs" class="list-group cs-tabs">
                         <a class="list-group-item list-group-item-action" href="#list-item-1">نظرة عامة</a>
                         <a class="list-group-item list-group-item-action" href="#list-item-2">التخصصات</a>
@@ -179,7 +158,7 @@
                                     <p>الجنسية </p>
                                 </div>
                                 <div class="count-card">
-                                    <p>{{ $doctor->hospital->name }}</p>
+                                    <p>{{ $doctor->operations->count() }}</p>
                                     <p>عدد العمليات</p>
                                 </div>
 
@@ -200,7 +179,12 @@
                                     </g>
                                 </svg>
 
+                                التخصصات
 
+                            </h4>
+                            <ul class="majors-list">
+                                <li> {{ $doctor->specialization->name }} </li>
+                            </ul>
                         </div>
                         <div id="list-item-3" class="tab-section">
                             <h4>
@@ -222,13 +206,16 @@
                                 الأخصائيين
 
                             </h4>
-                            {{-- <div class="specialists-slider-section">
+                            <div class="specialists-slider-section">
                                 <div class="owl-carousel specialists-slider owl-slider mt-32">
-                                    @foreach ($doctor->doctors as $doctor)
+                                    @foreach ($doctors as $doctor)
                                         <div class="general-card specialist-card v2 wow fadeInUp" data-wow-duration="1s"
                                             data-wow-delay="0.1s">
-                                            <figure>
-                                                <img src="assets/images/specialist.png" alt="" srcset="">
+                                            <figure class="circle-img mb-0"
+                                                style="width:120px; height:120px; overflow:hidden; border-radius:50%; margin:auto;">
+                                                <img src="{{ asset('uploads/doctors/' . $doctor->image->image) }}"
+                                                    alt="{{ $doctor->name }}"
+                                                    style="width:100%; height:100%; object-fit:cover; display:block;">
                                             </figure>
                                             <div class="general-card-body">
                                                 <h4> {{ $doctor->name }} </h4>
@@ -253,7 +240,7 @@
                                     @endforeach
 
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                         <div id="list-item-4" class="tab-section">
                             <h4>
@@ -271,7 +258,7 @@
                                 الخريطة
                             </h4>
                             <figure class="map">
-                                <img src="{{ asset('assets/images/Location.png') }}" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/Location.png') }}" alt="" srcset="">
                             </figure>
                         </div>
 
@@ -279,7 +266,7 @@
                     </div>
 
                 </div>
-                {{-- <div class="col-lg-3">
+                <div class="col-lg-3">
                     <div class="form-hospital">
                         <h2>احصل على استشارة مجانية</h2>
                         <form action="#" method="get">
@@ -324,7 +311,7 @@
                             <button type="button" class="btn cs-btn v2 w-100 mt-4">أرسل الطلب</button>
                         </form>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
         <div class="other-hospitals">
@@ -333,11 +320,12 @@
             </div>
             <div class="container">
                 <div class="row mt-5">
-                    @foreach ($doctors as $doctor)
+                      @foreach ($hostpials as $hostpial)
                         <div class="col-lg-4 col-md-6">
                             <div class="hospital-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                 <figure>
-                                    <img src="assets/images/hospital-1.png" alt="" srcset="">
+                                    <img src="{{ asset('uploads/hospitals/' . $hostpial->images->first()->image) }}"
+                                        alt="" srcset="">
                                 </figure>
                                 <div class="hospital-rate">
                                     <div class="d-flex align-items-center">
@@ -350,15 +338,16 @@
                                             </g>
                                         </svg>
                                         @php
-                                            $count = $doctor->ratings->count();
-                                            $average = $count > 0 ? $doctor->ratings->avg('rating') : 0;
+                                            $count = $hostpial->ratings->count();
+                                            $average = $count > 0 ? $hostpial->ratings->avg('rating') : 0;
                                         @endphp
                                         <span class="ml-1">{{ $average }}</span>
                                     </div>
-                                    <p> ({{ $count }}) تقييم | {{ $doctor->hospital->country->name }}،
-                                        {{  $doctor->hospital->city->name }} </p>
+                                    {{-- {{ dd($hostpial->ratings) }} --}}
+                                    <p> ({{ $count }}) تقييم | {{ $hostpial->country->name }}،
+                                        {{ $hostpial->city->name }} </p>
                                 </div>
-                                <h4> {{ $doctor->name }}</h4>
+                                <h4> {{ $hostpial->name }}</h4>
                             </div>
                         </div>
                     @endforeach

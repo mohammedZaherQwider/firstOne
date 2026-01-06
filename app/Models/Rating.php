@@ -14,12 +14,16 @@ class Rating extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function hospital()
+    // public function hospital()
+    // {
+    //     return $this->morphTo();
+    // }
+    // public function doctor()
+    // {
+    //     return $this->morphTo();
+    // }
+     public function ratable()
     {
-        return $this->morphTo();
-    }
-    public function doctor()
-    {
-        return $this->morphTo();
+        return $this->morphTo(); // ratable_type + ratable_id
     }
 }

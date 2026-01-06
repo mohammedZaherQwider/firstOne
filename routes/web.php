@@ -52,7 +52,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/hostpials', [mainController::class, 'hostpial'])->name('hostpial');
     Route::get('/hostpial_details/{hostpial}', [mainController::class, 'hostpial_details'])->name('hostpial_details');
     Route::get('/doctors', [mainController::class, 'doctors'])->name('doctors');
+    Route::get('/offers', [mainController::class, 'offers'])->name('offers');
     Route::get('/doctors_details/{doctor}', [mainController::class, 'doctor_details'])->name('doctor_details');
+    Route::get('/blog/{id}', [mainController::class, 'show'])->name('blog.details');
+    // Route::get('/offers_details/{offer}', [mainController::class, 'offer_details'])->name('offer_details');
     Route::get('/specializations', [mainController::class, 'specializations'])->name('specializations');
     Route::get('/specialization_details/{specialization}', [mainController::class, 'specialization_details'])->name('specialization_details');
     Route::get('/register', [mainController::class, 'register'])->name('register');

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\OperationController;
 use App\Http\Controllers\Admin\SpecializationController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -51,6 +52,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::resource('/offers', OfferController::class);
     Route::resource('/countries', CountryController::class);
     Route::resource('/specializations', SpecializationController::class);
+    Route::resource('/contents', ContentController::class);
     Route::get('/payments', [AdminController::class, 'payment'])->name('payment');
     Route::delete('/payments/{payment}', [AdminController::class, 'destroy'])->name('payments.destroy');
 

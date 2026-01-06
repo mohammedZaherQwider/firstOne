@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Content;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ContentController extends Controller
      */
     public function index()
     {
-        //
+        $contents = Content::with('image')->latest()->get();
+        return view('back_end.contents.index', compact('contents'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        //
+        return view('back_end.contents.create');
     }
 
     /**
@@ -28,7 +30,44 @@ class ContentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'   => 'required|string|max:255',
+            'content' => 'required|string',
+            'link'    => 'nullable|max:1000',
+            'id'      => 'nullable|integer|exists:contents,id',
+        ]);
+        // dd("dd");
+        $data = $request->only(['title', 'content', 'link']);
+
+        if ($request->id) {
+            $content = Content::findOrFail($request->id);
+            $content->update($data);
+            if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $content->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
+            $msg = 'Content updated successfully';
+        } else {
+            $content = Content::create($data);
+             if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $content->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
+            $msg = 'Content created successfully';
+        }
+
+        return redirect()->route('contents.index')->with([
+            'status' => 'success',
+            'msg'    => $msg,
+        ]);
     }
 
     /**
@@ -36,7 +75,7 @@ class ContentController extends Controller
      */
     public function show(Content $content)
     {
-        //
+        return view('back_end.contents.show', compact('content'));
     }
 
     /**
@@ -44,7 +83,7 @@ class ContentController extends Controller
      */
     public function edit(Content $content)
     {
-        //
+        return view('back_end.contents.create', compact('content'));
     }
 
     /**
@@ -60,6 +99,11 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
-        //
+        $content->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'msg'    => 'Content deleted successfully',
+        ]);
     }
 }

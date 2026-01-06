@@ -50,9 +50,26 @@ class OfferController extends Controller
         if ($request->id) {
             $offer = Offer::findOrFail($request->id);
             $offer->update($data);
+            if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $offer->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
             $msg = 'Offer updated successfully';
         } else {
             $offer = Offer::create($data);
+            // dd($offer->image());
+           if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $offer->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
             $msg = 'Offer created successfully';
         }
 

@@ -9,7 +9,9 @@ use App\Models\Country;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\Offer;
+use App\Models\Operation;
 use App\Models\Payment;
+use App\Models\Rating;
 use App\Models\Specialization;
 use App\Models\User;
 use Carbon\Carbon;
@@ -23,11 +25,13 @@ class mainController extends Controller
 {
     function index()
     {
-        $specializations = Specialization::select('name','id')->limit(10)->get();
+        $specializations = Specialization::select('name', 'id')->limit(10)->get();
         $hostpials = Hospital::select('id', 'name', 'country_id', 'city_id')->with('ratings')->limit(3)->get();
         $doctors = Doctor::with(['nationalitie', 'ratings'])->limit(4)->get();
-        $offers = Offer::all();
+        $offers = Offer::orderBy('created_at', 'desc')->limit(4)->get();
         $contents = Content::all();
+        $ratings = Rating::all();
+        $op = Operation::where('status', 'done')->count();
 
         $specs = $specializations->shuffle()->take(3)->map(fn($s) => [
             'type' => 'specialization',
@@ -54,7 +58,7 @@ class mainController extends Controller
             ->merge($docs)
             ->shuffle();
 
-        return view('front_end.index', compact('specializations', 'hostpials', 'doctors', 'offers', 'contents', 'mixedData'));
+        return view('front_end.index', compact('specializations', 'hostpials', 'doctors', 'offers', 'contents', 'mixedData', 'op', 'ratings'));
     }
     function hostpial(Request $request)
     {
@@ -129,13 +133,18 @@ class mainController extends Controller
             ->orderByDesc('ratings_avg_rating')
             ->take(3)
             ->get();
-        return view('front_end.doctor-details', compact('doctor', 'doctors'));
+        $hostpials = Hospital::select('id', 'name', 'country_id', 'city_id')
+            ->withAvg('ratings', 'rating')
+            ->orderByDesc('ratings_avg_rating')
+            ->take(3)
+            ->get();
+        return view('front_end.doctor-details', compact('doctor', 'doctors', 'hostpials'));
     }
     function specialization_details(Specialization $specialization)
     {
         $specializations = Specialization::select('name')->limit(10)->get();
         $doctors = Doctor::select('name')->limit(10)->get();
-        return view('front_end.specialization-details', compact('specialization', 'specializations','doctors'));
+        return view('front_end.specialization-details', compact('specialization', 'specializations', 'doctors'));
     }
 
     function register()
@@ -328,5 +337,57 @@ class mainController extends Controller
             return redirect()->route('/')
                 ->with('msg', 'فشلت العملية يحب حاول تاني');
         }
+    }
+
+    function offers(Request $request)
+    {
+        $query = Offer::with(['doctor', 'hospital', 'specialization']);
+
+        $doctors = Doctor::select('id', 'name')->get();
+        $hospitals = Hospital::select('id', 'name')->get();
+        $specializations = Specialization::select('id', 'name')->get();
+
+        if ($request->filled('offer_name')) {
+            $query->where('name', 'like', '%' . $request->offer_name . '%');
+        }
+
+        if ($request->filled('doctor_id')) {
+            $query->where('doctor_id', $request->doctor_id);
+        }
+
+        if ($request->filled('hospital_id')) {
+            $query->where('hospital_id', $request->hospital_id);
+        }
+
+        if ($request->filled('specialization_id')) {
+            $query->where('specialization_id', $request->specialization_id);
+        }
+
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
+        }
+
+        $offers = $query->paginate(5)->appends(request()->query());
+
+        return view('front_end.offers', compact(
+            'offers',
+            'doctors',
+            'hospitals',
+            'specializations'
+        ));
+    }
+    public function show($id)
+    {
+        $content = Content::with('image')
+            ->where('link', 'blog')
+            ->findOrFail($id);
+        $contents = Content::all();
+
+
+        return view('front_end.blog-details', compact('content','contents'));
     }
 }

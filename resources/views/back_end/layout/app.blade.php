@@ -571,6 +571,14 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                 </div>
                                 <div class="menu-item">
+                                        <a class="menu-link" href="{{ route('contents.index') }}">
+                                            <span class="menu-bullet">
+                                                <span class="bullet bullet-dot"></span>
+                                            </span>
+                                            <span class="menu-title"> Contents </span>
+                                        </a>
+                                </div>
+                                 <div class="menu-item">
                                         <a class="menu-link" href="{{ route('notification') }}">
                                             <span class="menu-bullet">
                                                 <span class="bullet bullet-dot"></span>

@@ -27,4 +27,8 @@ class Offer extends Model
     {
         return $this->hasMany(Payment::class);
     }
+    function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

@@ -386,8 +386,13 @@ class mainController extends Controller
             ->where('link', 'blog')
             ->findOrFail($id);
         $contents = Content::all();
-
-
         return view('front_end.blog-details', compact('content','contents'));
+    }
+    function service_details() {
+         $content = Content::with('image')
+            ->where('link', 'service')
+            ->where('title','التأمين الصحي')
+            ->first();
+        return view('front_end.service-details',compact('content'));
     }
 }

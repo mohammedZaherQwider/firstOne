@@ -60,7 +60,7 @@
                                 <td>{{ $content->title }}</td>
 
                                 <td>
-                                    @if ($content->link == "why_choose_us" || $content->link == "hospital_criteria" || $content->link == "blog")
+                                    @if ($content->link == "why_choose_us" || $content->link == "hospital_criteria" || $content->link == "blog" || $content->link == "service" )
                                         {{ $content->link }}
                                     @else
                                         <a href="{{ $content->link }}" target="_blank">{{ $content->link }}</a>

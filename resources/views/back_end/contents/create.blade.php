@@ -46,6 +46,10 @@
                                 <option value="blog" {{ isset($content) && $content->link === 'blog' ? 'selected' : '' }}>
                                     مدونة
                                 </option>
+                                <option value="service"
+                                    {{ isset($content) && $content->link === 'service' ? 'selected' : '' }}>
+                                    التأمين الصحي
+                                </option>
                             </select>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -149,52 +153,109 @@
         });
     </script>
     <script>
+        // const typeSelector = document.getElementById('type_selector');
+        // const linkWrapper = document.getElementById('link_wrapper');
+        // const linkHidden = document.getElementById('link_hidden');
+        // const linkVisible = document.getElementById('link_input_visible');
+
+        // function syncTypeToLink() {
+        //     const type = typeSelector.value;
+
+        //     if (type === 'banner') {
+        //         // show input for user
+        //         linkWrapper.style.display = 'block';
+
+        //         // لو موجود قيمة قديمة (edit) وحابب تظهر للمستخدم
+        //         if (linkHidden.value && !['why_choose_us', 'hospital_criteria', 'blog'].includes(linkHidden.value)) {
+        //             linkVisible.value = linkHidden.value;
+        //         }
+
+        //         // خزّن اللي يكتبه المستخدم في hidden
+        //         linkHidden.value = linkVisible.value || '';
+        //     } else {
+        //         // hide input and set fixed value
+        //         linkWrapper.style.display = 'none';
+        //         linkVisible.value = '';
+        //         linkHidden.value = type; // why_choose_us / hospital_criteria / blog
+        //     }
+        // }
+
+        // // when user changes type
+        // typeSelector.addEventListener('change', syncTypeToLink);
+
+        // // when user types banner link, mirror to hidden
+        // linkVisible.addEventListener('input', function() {
+        //     if (typeSelector.value === 'banner') {
+        //         linkHidden.value = this.value;
+        //     }
+        // });
+
+        // // on load (edit mode)
+        // window.addEventListener('DOMContentLoaded', function() {
+        //     // لو edit وكان link قيمته واحدة من الثوابت، نختارها تلقائياً
+        //     const current = linkHidden.value;
+
+        //     if (['why_choose_us', 'hospital_criteria', 'blog'].includes(current)) {
+        //         typeSelector.value = current;
+        //     } else if (current) {
+        //         // غير هيك اعتبره banner link
+        //         typeSelector.value = 'banner';
+        //         linkVisible.value = current;
+        //     }
+
+        //     syncTypeToLink();
+        // });
         const typeSelector = document.getElementById('type_selector');
         const linkWrapper = document.getElementById('link_wrapper');
         const linkHidden = document.getElementById('link_hidden');
         const linkVisible = document.getElementById('link_input_visible');
 
+        // الأنواع الثابتة (بدون رابط يدوي)
+        const fixedTypes = [
+            'why_choose_us',
+            'hospital_criteria',
+            'blog',
+            'service' // ← التأمين الصحي صار زي blog تمامًا
+        ];
+
         function syncTypeToLink() {
             const type = typeSelector.value;
 
+            // فقط banner يسمح بإدخال رابط
             if (type === 'banner') {
-                // show input for user
                 linkWrapper.style.display = 'block';
 
-                // لو موجود قيمة قديمة (edit) وحابب تظهر للمستخدم
-                if (linkHidden.value && !['why_choose_us', 'hospital_criteria', 'blog'].includes(linkHidden.value)) {
+                // في حالة edit لو القيمة مش نوع ثابت
+                if (linkHidden.value && !fixedTypes.includes(linkHidden.value)) {
                     linkVisible.value = linkHidden.value;
                 }
 
-                // خزّن اللي يكتبه المستخدم في hidden
                 linkHidden.value = linkVisible.value || '';
             } else {
-                // hide input and set fixed value
+                // أي نوع ثابت
                 linkWrapper.style.display = 'none';
                 linkVisible.value = '';
-                linkHidden.value = type; // why_choose_us / hospital_criteria / blog
+                linkHidden.value = type; // blog / service / ...
             }
         }
 
-        // when user changes type
+        // تغيير النوع
         typeSelector.addEventListener('change', syncTypeToLink);
 
-        // when user types banner link, mirror to hidden
+        // كتابة رابط banner
         linkVisible.addEventListener('input', function() {
             if (typeSelector.value === 'banner') {
                 linkHidden.value = this.value;
             }
         });
 
-        // on load (edit mode)
+        // عند التحميل (edit mode)
         window.addEventListener('DOMContentLoaded', function() {
-            // لو edit وكان link قيمته واحدة من الثوابت، نختارها تلقائياً
             const current = linkHidden.value;
 
-            if (['why_choose_us', 'hospital_criteria', 'blog'].includes(current)) {
+            if (fixedTypes.includes(current)) {
                 typeSelector.value = current;
             } else if (current) {
-                // غير هيك اعتبره banner link
                 typeSelector.value = 'banner';
                 linkVisible.value = current;
             }

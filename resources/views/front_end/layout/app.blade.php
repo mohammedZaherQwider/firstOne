@@ -102,9 +102,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="contact-us.html">{{__('front.contect') }}</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="#" class="btn cs-btn">
                             <span>
@@ -237,10 +237,8 @@
                                         الخدمات الصحية
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="achievements">
-                                        <li><a class="dropdown-item" href="service-details.html">التأمين الصحي</a>
+                                        <li><a class="dropdown-item" href="{{ route('service-details') }}">التأمين الصحي</a>
                                         </li>
-                                        <li><a class="dropdown-item" href="service-details.html">الاستشارات
-                                                القانونية</a></li>
                                     </ul>
                                 </div>
                             </div>

@@ -23,7 +23,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <li class="breadcrumb-item">
@@ -37,7 +37,7 @@
                                 </svg>
 
                             </span>
-                            <span>التخصصات </span>
+                            <span>{{ __('site.specializations') }} </span>
                         </a>
                     </li>
                     <span>
@@ -48,7 +48,7 @@
                         </svg>
 
                     </span>
-                    <li class="breadcrumb-item active" aria-current="page">تفاصيل التخصص</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.details') }} {{ __('site.specialization') }}</li>
                 </ol>
             </nav>
         </div>
@@ -78,7 +78,7 @@
                                     </span>
                                 </div>
                                 <div class="address">
-                                   <h4> اسماء المستشفيات الي تتواجد فيها التخصص :</h4>
+                                   <h4> {{ __('site.nameH') }}:</h4>
                                     @foreach ($specialization->hostpials as $h)
                                         {{ $h->name }} ,
                                     @endforeach
@@ -86,14 +86,14 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn cs-btn v2 cs-w-h">طلب عرض سعر</a>
+                    <a href="#" class="btn cs-btn v2 cs-w-h">{{ __('site.request_for_quotation') }} </a>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row mt-4">
                 <div class="col-lg-9">
-                    <div class="owl-carousel hospital-details-slider owl-slider mt-32">
+                    {{-- <div class="owl-carousel hospital-details-slider owl-slider mt-32">
                         <figure class="overlay video-img" href="assets/images/img-hospital-details.png" data-fancybox="">
                             <img src="assets/images/img-hospital-details.png" alt="" srcset="">
                             <div class="play">
@@ -114,11 +114,11 @@
                         <figure class="overlay">
                             <img src="assets/images/img-hospital-details.png" alt="" srcset="">
                         </figure>
-                    </div>
+                    </div> --}}
                     <div id="cs-tabs" class="list-group cs-tabs">
-                        <a class="list-group-item list-group-item-action" href="#list-item-2">التخصصات</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-3">الأخصائيين</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-4">الخريطة</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-2">{{ __('site.specializations') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-3">{{ __('site.doctors') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-4">{{ __('site.map') }}</a>
                     </div>
                     <div data-bs-spy="scroll" data-bs-target="#cs-tabs" data-bs-offset="0" class="scrollspy-example"
                         tabindex="0">
@@ -136,7 +136,7 @@
                                     </g>
                                 </svg>
 
-                                التخصصات
+                                {{ __('site.specializations') }}
 
                             </h4>
                             <ul class="majors-list">
@@ -162,7 +162,7 @@
                                             transform="translate(2.795 1.397)" fill="#00ce68" fill-rule="evenodd" />
                                     </g>
                                 </svg>
-                                الاخصائين
+                                {{ __('site.doctors') }}
                             </h4>
                             <ul class="majors-list">
                                 @foreach ($doctors as $doctor)
@@ -184,7 +184,7 @@
                                             transform="translate(437.829 196.084)" fill="#00ce68" />
                                     </g>
                                 </svg>
-                                الخريطة
+                                {{ __('site.map') }}
                             </h4>
                             <figure class="map">
                                 <img src="{{ asset('assets/front_end/images/Location.png') }}" alt="" srcset="">
@@ -195,7 +195,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3">
+                {{-- <div class="col-lg-3">
                     <div class="form-hospital">
                         <h2>احصل على استشارة مجانية</h2>
                         <form action="#" method="get">
@@ -240,7 +240,7 @@
                             <button type="button" class="btn cs-btn v2 w-100 mt-4">أرسل الطلب</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 

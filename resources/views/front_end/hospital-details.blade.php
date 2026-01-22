@@ -22,7 +22,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <li class="breadcrumb-item">
@@ -36,7 +36,7 @@
                                 </svg>
 
                             </span>
-                            <span>المستشفيات</span>
+                            <span>{{ __('site.hospitels') }}</span>
                         </a>
                     </li>
                     <span>
@@ -47,7 +47,7 @@
                         </svg>
 
                     </span>
-                    <li class="breadcrumb-item active" aria-current="page">تفاصيل المستشفى</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.details') }} {{ __('site.hospitel') }}</li>
                 </ol>
             </nav>
         </div>
@@ -86,7 +86,7 @@
                                     </span>
 
                                     {{ $hostpial->hostpial }}
-                                    <p class="mb-0">({{ $count }}) تقييم</p>
+                                    <p class="mb-0">({{ $count }}) {{ __('site.reviews') }}</p>
                                 </div>
                                 <div class="address">
                                     <span>
@@ -107,14 +107,14 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn cs-btn v2 cs-w-h">طلب عرض سعر</a>
+                    <a href="#" class="btn cs-btn v2 cs-w-h">{{ __('site.request_for_quotation') }} </a>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row mt-4">
                 <div class="col-lg-9">
-                    <div class="owl-carousel hospital-details-slider owl-slider mt-32">
+                    {{-- <div class="owl-carousel hospital-details-slider owl-slider mt-32">
                         <figure class="overlay video-img" href="assets/images/img-hospital-details.png" data-fancybox="">
                             <img src="assets/images/img-hospital-details.png" alt="" srcset="">
                             <div class="play">
@@ -135,12 +135,12 @@
                         <figure class="overlay">
                             <img src="assets/images/img-hospital-details.png" alt="" srcset="">
                         </figure>
-                    </div>
+                    </div> --}}
                     <div id="cs-tabs" class="list-group cs-tabs">
-                        <a class="list-group-item list-group-item-action" href="#list-item-1">نظرة عامة</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-2">التخصصات</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-3">الأخصائيين</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-4">الخريطة</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-1">{{ __('site.a_look_at') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-2">{{ __('site.specializations') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-3">{{ __('site.doctors') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-4">{{ __('site.map') }}</a>
                     </div>
                     <div data-bs-spy="scroll" data-bs-target="#cs-tabs" data-bs-offset="0" class="scrollspy-example"
                         tabindex="0">
@@ -165,14 +165,14 @@
                                         </g>
                                     </g>
                                 </svg>
-                                حول المستشفى
+                                {{ __('about') }}  {{ __('site.hospitel') }}
 
                             </h4>
                             <p>
                                 {{ $hostpial->description }}
                             </p>
                             <h6 class="font-16 font500 black-color">
-                                الخدمات داخل المستشفى
+                               {{ __('site.services_within_the_hospital') }}
                             </h6>
                             <div class="d-flex flex-wrap gap-lg-5 gap-3 mt-3">
                                 {{-- [1, {"name":"dd","img":"dd" , "type":"out"}, 2] --}}
@@ -217,7 +217,7 @@
 
                             </div>
                             <h6 class="mt-4 font-16 font500 black-color">
-                                التجهيزات والمرافق
+                               {{ __('site.equipment_and_facilities') }}
                             </h6>
                             <div class="d-flex flex-wrap gap-lg-5 gap-3 mt-3">
                                 @foreach ($hostpial->services as $service)
@@ -250,23 +250,23 @@
                             <div class="d-flex flex-wrap gap-lg-4 gap-3 mt-4">
                                 <div class="count-card">
                                     <p>{{ $hostpial->created_at->format('Y') }}</p>
-                                    <p>سنة التأسيس</p>
+                                    <p>{{ __('site.year_of_establishment') }}</p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $hostpial->users->count() }}</p>
-                                    <p>طاقم العمل</p>
+                                    <p>{{ __('site.staff') }}</p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $hostpial->doctors->count() }}</p>
-                                    <p>عدد الأطباء</p>
+                                    <p>{{ __('site.number') }} {{ __('site.doctors') }}</p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $hostpial->operations->count() }}</p>
-                                    <p>عدد العمليات</p>
+                                    <p>{{ __('site.number') }} {{ __('site.operations') }}</p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $hostpial->bed_number }}</p>
-                                    <p>عدد الأسرة</p>
+                                    <p>{{ __('site.number') }} {{ __('site.bed') }}</p>
                                 </div>
                             </div>
 
@@ -285,7 +285,7 @@
                                     </g>
                                 </svg>
 
-                                التخصصات
+                                {{ __('site.specializations') }}
 
                             </h4>
                             <ul class="majors-list">
@@ -312,7 +312,7 @@
                                     </g>
                                 </svg>
 
-                                الأخصائيين
+                                {{ __('site.doctors') }}
 
                             </h4>
                             <div class="specialists-slider-section">
@@ -368,7 +368,7 @@
                                             transform="translate(437.829 196.084)" fill="#00ce68" />
                                     </g>
                                 </svg>
-                                الخريطة
+                                {{ __('site.map') }}
                             </h4>
                             <figure class="map">
                                 <img src="{{ asset('assets/front_end/images/Location.png') }}" alt=""
@@ -380,7 +380,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3">
+                {{-- <div class="col-lg-3">
                     <div class="form-hospital">
                         <h2>احصل على استشارة مجانية</h2>
                         <form action="#" method="get">
@@ -425,12 +425,12 @@
                             <button type="button" class="btn cs-btn v2 w-100 mt-4">أرسل الطلب</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="other-hospitals">
             <div class="main-title text-center">
-                <h2>مستشفيات أخرى</h2>
+                <h2> {{ __('site.hospitels') }}</h2>
             </div>
             <div class="container">
                 <div class="row mt-5">
@@ -458,7 +458,7 @@
                                         <span class="ml-1">{{ $average }}</span>
                                     </div>
                                     {{-- {{ dd($hostpial->ratings) }} --}}
-                                    <p> ({{ $count }}) تقييم | {{ $hostpial->country->name }}،
+                                    <p> ({{ $count }}) {{ __('site.reviews') }} | {{ $hostpial->country->name }}،
                                         {{ $hostpial->city->name }} </p>
                                 </div>
                                 <h4> {{ $hostpial->name }}</h4>

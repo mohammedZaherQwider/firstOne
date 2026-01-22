@@ -23,7 +23,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>

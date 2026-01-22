@@ -5,12 +5,11 @@
         <div class="card">
             <div class="card-body p-lg-17">
 
-                <form action="{{ isset($content) ? route('contents.update', $content->id) : route('contents.store') }}"
-                    method="POST" enctype="multipart/form-data" id="contentForm">
+                <form action="{{ route('contents.store') }}" method="POST" enctype="multipart/form-data" id="contentForm">
                     @csrf
-                    @if (isset($content))
+                    {{-- @if (isset($content))
                         @method('PUT')
-                    @endif
+                    @endif --}}
 
                     <h1 class="fw-bolder text-dark mb-9">
                         {{ isset($content) ? 'Edit Content' : 'Add Content' }}
@@ -23,6 +22,18 @@
                             <label class="fs-5 fw-bold mb-2">Title</label>
                             <input type="text" class="form-control form-control-solid" name="title"
                                 value="{{ $content->title ?? '' }}">
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        @php
+                            $contentTranslation = $content->translations()->where('locale', 'en')->first();
+                            $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
+                            $contentTranslation = $contentTranslation ? json_decode($contentTranslation->content)->content : null;
+                        @endphp
+                        <!-- Translation Title (English) -->
+                        <div class="col-12 fv-row fv-plugins-icon-container mb-3">
+                            <label class="fs-5 fw-bold mb-2">Title (English)</label>
+                            <input type="text" class="form-control form-control-solid" name="title_en"
+                                {{-- value="{{ old('title_en', isset($content) ? optional($content->translations()->where('locale', 'en')->first())->content['title'] ?? '' : '') }}" --}} value="{{ $title ?? '' }}">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
 
@@ -64,19 +75,26 @@
 
                         <!-- The real link that will be submitted -->
                         <input type="hidden" name="link" id="link_hidden" value="{{ $content->link ?? '' }}">
+                        <input type="hidden" name="id" value="{{ isset($content) ? $content->id : null }}">
 
 
                         <!-- Content -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
                             <label class="fs-5 fw-bold mb-2">Content</label>
-
                             <textarea name="content" id="summernote">
                                {{ old('content', $content->content ?? '') }}
                             </textarea>
-
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
-
+                        <!-- Translation Content (English) -->
+                        <div class="col-12 fv-row fv-plugins-icon-container mb-3">
+                            <label class="fs-5 fw-bold mb-2">Content (English)</label>
+                            <textarea name="content_en" id="summernote_en">
+                                 {{-- {{ old('content_en', isset($content) ? optional($content->translations()->where('locale', 'en')->first())->content['content'] ?? '' : '') }} --}}
+                                {{ old('content', $contentTranslation ?? '') }}
+                            </textarea>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!-- Images (Morph) -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
                             <label class="fs-5 fw-bold mb-2">Image</label>
@@ -270,6 +288,18 @@
                 dialogsInBody: true,
                 disableResizeEditor: true,
                 placeholder: 'اكتب المحتوى هنا...',
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline']],
+                    ['para', ['ul', 'ol']],
+                    ['insert', ['link']],
+                    ['view', ['codeview']]
+                ]
+            });
+            $('#summernote_en').summernote({
+                height: 250,
+                dialogsInBody: true,
+                disableResizeEditor: true,
+                placeholder: 'Write content here...',
                 toolbar: [
                     ['style', ['bold', 'italic', 'underline']],
                     ['para', ['ul', 'ol']],

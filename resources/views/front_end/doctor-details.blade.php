@@ -22,7 +22,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <li class="breadcrumb-item">
@@ -36,7 +36,7 @@
                                 </svg>
 
                             </span>
-                            <span>الدكاترة </span>
+                            <span>{{ __('site.doctors') }} </span>
                         </a>
                     </li>
                     <span>
@@ -47,7 +47,7 @@
                         </svg>
 
                     </span>
-                    <li class="breadcrumb-item active" aria-current="page">تفاصيل الدكتور</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.details') }} {{ __('site.doctor') }}</li>
                 </ol>
             </nav>
         </div>
@@ -80,7 +80,7 @@
                                     </span>
 
                                     {{-- {{ $doctor->doctor }} --}}
-                                    <p class="mb-0">({{ $count }}) تقييم</p>
+                                    <p class="mb-0">({{ $count }}) {{ __('site.reviews') }}</p>
                                 </div>
                                 <div class="address">
                                     <span>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn cs-btn v2 cs-w-h">طلب عرض سعر</a>
+                    <a href="#" class="btn cs-btn v2 cs-w-h">{{ __('site.request_for_quotation') }}</a>
                 </div>
             </div>
         </div>
@@ -110,10 +110,10 @@
                 <div class="col-lg-9">
 
                     <div id="cs-tabs" class="list-group cs-tabs">
-                        <a class="list-group-item list-group-item-action" href="#list-item-1">نظرة عامة</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-2">التخصصات</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-3">الأخصائيين</a>
-                        <a class="list-group-item list-group-item-action" href="#list-item-4">الخريطة</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-1"> {{ __('site.a_look_at') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-2">{{ __('site.specializations') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-3">{{ __('site.doctors') }}</a>
+                        <a class="list-group-item list-group-item-action" href="#list-item-4">{{ __('site.doctors') }}</a>
                     </div>
                     <div data-bs-spy="scroll" data-bs-target="#cs-tabs" data-bs-offset="0" class="scrollspy-example"
                         tabindex="0">
@@ -138,7 +138,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                حول الدكتور
+                                {{ __('site.about') }} {{ __('site.doctor') }}
 
                             </h4>
                             <p>
@@ -147,19 +147,19 @@
                             <div class="d-flex flex-wrap gap-lg-4 gap-3 mt-4">
                                 <div class="count-card">
                                     <p>{{ $doctor->created_at->format('Y') }}</p>
-                                    <p>سنة التسجيل</p>
+                                    <p>{{ __('site.year_of_establishment') }} </p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $doctor->gender }}</p>
-                                    <p> الجنس</p>
+                                    <p> {{ __('site.gender') }}</p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $doctor->nationalitie->name }}</p>
-                                    <p>الجنسية </p>
+                                    <p>{{ __('site.nationality') }} </p>
                                 </div>
                                 <div class="count-card">
                                     <p>{{ $doctor->operations->count() }}</p>
-                                    <p>عدد العمليات</p>
+                                    <p>{{ __('site.number') }} {{ __('site.operations') }}</p>
                                 </div>
 
                             </div>
@@ -179,7 +179,7 @@
                                     </g>
                                 </svg>
 
-                                التخصصات
+                                {{ __('site.specializations') }}
 
                             </h4>
                             <ul class="majors-list">
@@ -203,7 +203,7 @@
                                     </g>
                                 </svg>
 
-                                الأخصائيين
+                                {{ __('site.doctors') }}
 
                             </h4>
                             <div class="specialists-slider-section">
@@ -255,7 +255,7 @@
                                             transform="translate(437.829 196.084)" fill="#00ce68" />
                                     </g>
                                 </svg>
-                                الخريطة
+                                {{ __('site.map') }}
                             </h4>
                             <figure class="map">
                                 <img src="{{ asset('assets/front_end/images/Location.png') }}" alt="" srcset="">
@@ -266,7 +266,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3">
+                {{-- <div class="col-lg-3">
                     <div class="form-hospital">
                         <h2>احصل على استشارة مجانية</h2>
                         <form action="#" method="get">
@@ -311,12 +311,12 @@
                             <button type="button" class="btn cs-btn v2 w-100 mt-4">أرسل الطلب</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="other-hospitals">
             <div class="main-title text-center">
-                <h2>مستشفيات أخرى</h2>
+                <h2> {{ __('site.other') }} {{ __('site.hospitels') }}</h2>
             </div>
             <div class="container">
                 <div class="row mt-5">
@@ -344,7 +344,7 @@
                                         <span class="ml-1">{{ $average }}</span>
                                     </div>
                                     {{-- {{ dd($hostpial->ratings) }} --}}
-                                    <p> ({{ $count }}) تقييم | {{ $hostpial->country->name }}،
+                                    <p> ({{ $count }}) {{ __('site.reviews') }} | {{ $hostpial->country->name }}،
                                         {{ $hostpial->city->name }} </p>
                                 </div>
                                 <h4> {{ $hostpial->name }}</h4>

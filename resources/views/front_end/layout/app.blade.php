@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="{{app()->getLocale()}}" dir="{{  app()->getLocale() == 'ar' ? 'rtl': 'ltr'}}">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -13,8 +13,8 @@
     <meta name="keywords" content="">
     <meta name="copyright" content="" />
 
-{{--   --}}
-   <link rel="icon" href="{{ asset('assets/front_end/images/icon.svg') }}">
+    {{--   --}}
+    <link rel="icon" href="{{ asset('assets/front_end/images/icon.svg') }}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-rtl.min.css"> -->
 
@@ -26,35 +26,32 @@
     <link rel="stylesheet" href="{{ asset('assets/front_end/plugins/fancybox/jquery.fancybox.min.css') }}" />
 
     <!-- <link rel="stylesheet" href="assets/css/style-en.css"> -->
-{{--  --}}
-    @if (app()->getLocale()== 'ar')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    {{--  --}}
+    @if (app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{{ asset('assets/front_end/css/style.css') }}">
-
-
+        <link rel="stylesheet" href="{{ asset('assets/front_end/css/style.css') }}">
     @else
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/front_end/cssRTL/style.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('assets/front_end/cssRTL/style.css') }}">
     @endif
     <style>
-    .circle-img {
-        width: 120px;
-        height: 150px;
-        border-radius: 50%;
-        overflow: hidden;
-        flex-shrink: 0;
-    }
+        .circle-img {
+            width: 120px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
 
-    .circle-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
+        .circle-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 
 
@@ -92,124 +89,123 @@
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="achievements"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    الخدمات الصحية
+                                    {{ __('site.health_services') }}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="achievements">
-                                    <li><a class="dropdown-item" href="service-details.html">التأمين الصحي</a></li>
-                                    <li><a class="dropdown-item" href="service-details.html">الاستشارات القانونية</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">{{__('front.contect') }}</a>
-                    </li> --}}
-                    <li class="nav-item">
-                        <a href="#" class="btn cs-btn">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26.605" height="24"
-                                    viewBox="0 0 26.605 24">
-                                    <g id="Group_63524" data-name="Group 63524" transform="translate(-371.4 -32)">
-                                        <g id="Pin_-_1" data-name="Pin - 1" transform="translate(375.232 32)">
-                                            <g id="Group_63492" data-name="Group 63492">
-                                                <path id="Path_42105" data-name="Path 42105"
-                                                    d="M447.555,329.927a1.624,1.624,0,0,1-1.274-.613c-2.93-3.668-6.477-8.12-6.727-8.5-.109-.165-.214-.337-.313-.51a1.474,1.474,0,0,1,1.273-2.211h1.521a1.47,1.47,0,0,1,1.255.707,1.869,1.869,0,0,0,1.653.819h4.47a3.574,3.574,0,0,0,1.584-2.7,2,2,0,0,0-.364-1.416,1.191,1.191,0,0,0-.844-.325h-1.915a1.372,1.372,0,0,1-1.223-.6,1.418,1.418,0,0,1,0-1.412l.015-.03.378-.679a1.325,1.325,0,0,0,0-1.5l-2.308,3.422a1.809,1.809,0,0,1-1.5.8h-3.567a1.468,1.468,0,0,1-1.156-.559,1.451,1.451,0,0,1-.28-1.235,9.589,9.589,0,0,1,2.538-4.6l.048-.048a9.506,9.506,0,0,1,13.477,0l.048.048a9.607,9.607,0,0,1,1.24,12c-.038.059-.154.237-6.751,8.531a1.624,1.624,0,0,1-1.276.617Zm-7.041-10.418a.047.047,0,0,0-.047.026.06.06,0,0,0,0,.065c.084.147.174.293.267.434.19.282,2.739,3.5,6.65,8.4a.215.215,0,0,0,.169.081h0a.215.215,0,0,0,.171-.083c3.933-4.946,6.485-8.168,6.679-8.433a8.188,8.188,0,0,0-1.063-10.219l-.048-.048a8.092,8.092,0,0,0-11.473,0l-.048.049a8.174,8.174,0,0,0-2.162,3.925.034.034,0,0,0,.009.033.059.059,0,0,0,.048.024h3.567a.4.4,0,0,0,.328-.175l2.357-3.495a1.345,1.345,0,0,1,2.065-.2,2.644,2.644,0,0,1,.288,3.267l-.336.6h1.853a2.614,2.614,0,0,1,1.866.761,3.219,3.219,0,0,1,.756,2.457c-.1,2.345-2.089,4.059-2.9,4.059h-4.564a3.249,3.249,0,0,1-2.857-1.491.067.067,0,0,0-.052-.035Zm8.857.13Z"
-                                                    transform="translate(-438.194 -305.927)" fill="#ff9f2d" />
-                                            </g>
-                                        </g>
-                                        <path id="Path_42106" data-name="Path 42106"
-                                            d="M451.7,336.415l-.079.1a.059.059,0,0,0,.042.1c2.263.234,3.684.571,3.684.945,0,.7-5.044,1.274-11.264,1.274s-11.264-.571-11.264-1.274c0-.357,1.282-.678,3.347-.91a.06.06,0,0,0,.041-.1l-.078-.1a.059.059,0,0,0-.054-.023c-3.217.363-5.295.942-5.295,1.592,0,1.1,5.956,2,13.3,2s13.3-.893,13.3-2c0-.673-2.225-1.268-5.631-1.63A.061.061,0,0,0,451.7,336.415Z"
-                                            transform="translate(-59.379 -288.601)" fill="#00ce68" />
-                                    </g>
-                                </svg>
-
-                            </span>
-                            VIP
-                        </a>
-                    </li>
-                    <li>
-                        <a href="login.html" class="btn cs-btn v2">{{ __('front.login')}} </a>
+                                    <li><a class="dropdown-item"
+                                            href="service-details.html">{{ __('site.health_insurance') }}</a></li>
+                                    {{-- <li><a class="dropdown-item" href="service-details.html">الاستشارات القانونية</a> --}}
                     </li>
                 </ul>
-            </nav>
-            <div class="lang d-lg-block d-none">
-                <a href="#">
-                    <label for="">EN</label>
-                    <span class="show">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                            <g id="vuesax_bulk_global" data-name="vuesax/bulk/global" transform="translate(-174 -254)">
-                                <g id="global">
-                                    <path id="Vector"
-                                        d="M4.59,4.57c-.03,0-.07.02-.1.02A10.006,10.006,0,0,1,0,.1C0,.07.02.03.02,0A31.893,31.893,0,0,0,3.75.84,33.548,33.548,0,0,0,4.59,4.57Z"
-                                        transform="translate(175.06 268.34)" fill="#e2e2e2" />
-                                    <path id="Vector-2" data-name="Vector"
-                                        d="M4.65.11A10.093,10.093,0,0,1,0,4.68,30.563,30.563,0,0,0,.91.84,31.281,31.281,0,0,0,4.63,0C4.62.04,4.65.08,4.65.11Z"
-                                        transform="translate(188.29 268.34)" fill="#e2e2e2" />
-                                    <path id="Vector-3" data-name="Vector"
-                                        d="M4.73,4.73A31.643,31.643,0,0,0,.91,3.82,27.914,27.914,0,0,0,0,0,10.052,10.052,0,0,1,4.73,4.73Z"
-                                        transform="translate(188.29 254.98)" fill="#e2e2e2" />
-                                    <path id="Vector-4" data-name="Vector"
-                                        d="M4.67.03a31.248,31.248,0,0,0-.83,3.72A28.87,28.87,0,0,0,0,4.65,10.093,10.093,0,0,1,4.57,0C4.6,0,4.64.03,4.67.03Z"
-                                        transform="translate(174.98 255.06)" fill="#e2e2e2" />
-                                    <path id="Vector-5" data-name="Vector"
-                                        d="M6.98,4.59A31.328,31.328,0,0,0,0,4.59,28.373,28.373,0,0,1,1.02.53,1.635,1.635,0,0,0,1.04.31,10.406,10.406,0,0,1,3.49,0,10.322,10.322,0,0,1,5.93.31a1.66,1.66,0,0,0,.03.22A28.712,28.712,0,0,1,6.98,4.59Z"
-                                        transform="translate(180.51 254)" fill="#05060f" />
-                                    <path id="Vector-6" data-name="Vector"
-                                        d="M4.59,6.98A28.043,28.043,0,0,1,.53,5.96a1.635,1.635,0,0,0-.22-.02A10.406,10.406,0,0,1,0,3.49,10.322,10.322,0,0,1,.31,1.05a1.66,1.66,0,0,0,.22-.03A29.77,29.77,0,0,1,4.59,0,32.574,32.574,0,0,0,4.59,6.98Z"
-                                        transform="translate(174 260.51)" fill="#05060f" />
-                                    <path id="Vector-7" data-name="Vector"
-                                        d="M4.59,3.49a10.406,10.406,0,0,1-.31,2.45,1.635,1.635,0,0,0-.22.02A30.143,30.143,0,0,1,0,6.98,31.329,31.329,0,0,0,0,0,28.373,28.373,0,0,1,4.06,1.02a.833.833,0,0,0,.22.03A10.389,10.389,0,0,1,4.59,3.49Z"
-                                        transform="translate(189.41 260.51)" fill="#05060f" />
-                                    <path id="Vector-8" data-name="Vector"
-                                        d="M6.98,0A28.043,28.043,0,0,1,5.96,4.06a1.66,1.66,0,0,0-.03.22,10.322,10.322,0,0,1-2.44.31,10.406,10.406,0,0,1-2.45-.31,1.635,1.635,0,0,0-.02-.22A29.77,29.77,0,0,1,0,0,31.29,31.29,0,0,0,3.49.22,31.14,31.14,0,0,0,6.98,0Z"
-                                        transform="translate(180.51 269.41)" fill="#05060f" />
-                                    <path id="Vector-9" data-name="Vector"
-                                        d="M7.763,7.763a30.039,30.039,0,0,1-7.527,0,30.039,30.039,0,0,1,0-7.527,30.039,30.039,0,0,1,7.527,0A30.039,30.039,0,0,1,7.763,7.763Z"
-                                        transform="translate(180 260)" fill="#05060f" />
+        </div>
+        </div>
+        </li>
+        {{-- <li class="nav-item">
+                        <a class="nav-link" href="contact-us.html">{{__('front.contect') }}</a>
+                    </li> --}}
+        <li class="nav-item">
+            <a href="#" class="btn cs-btn">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26.605" height="24" viewBox="0 0 26.605 24">
+                        <g id="Group_63524" data-name="Group 63524" transform="translate(-371.4 -32)">
+                            <g id="Pin_-_1" data-name="Pin - 1" transform="translate(375.232 32)">
+                                <g id="Group_63492" data-name="Group 63492">
+                                    <path id="Path_42105" data-name="Path 42105"
+                                        d="M447.555,329.927a1.624,1.624,0,0,1-1.274-.613c-2.93-3.668-6.477-8.12-6.727-8.5-.109-.165-.214-.337-.313-.51a1.474,1.474,0,0,1,1.273-2.211h1.521a1.47,1.47,0,0,1,1.255.707,1.869,1.869,0,0,0,1.653.819h4.47a3.574,3.574,0,0,0,1.584-2.7,2,2,0,0,0-.364-1.416,1.191,1.191,0,0,0-.844-.325h-1.915a1.372,1.372,0,0,1-1.223-.6,1.418,1.418,0,0,1,0-1.412l.015-.03.378-.679a1.325,1.325,0,0,0,0-1.5l-2.308,3.422a1.809,1.809,0,0,1-1.5.8h-3.567a1.468,1.468,0,0,1-1.156-.559,1.451,1.451,0,0,1-.28-1.235,9.589,9.589,0,0,1,2.538-4.6l.048-.048a9.506,9.506,0,0,1,13.477,0l.048.048a9.607,9.607,0,0,1,1.24,12c-.038.059-.154.237-6.751,8.531a1.624,1.624,0,0,1-1.276.617Zm-7.041-10.418a.047.047,0,0,0-.047.026.06.06,0,0,0,0,.065c.084.147.174.293.267.434.19.282,2.739,3.5,6.65,8.4a.215.215,0,0,0,.169.081h0a.215.215,0,0,0,.171-.083c3.933-4.946,6.485-8.168,6.679-8.433a8.188,8.188,0,0,0-1.063-10.219l-.048-.048a8.092,8.092,0,0,0-11.473,0l-.048.049a8.174,8.174,0,0,0-2.162,3.925.034.034,0,0,0,.009.033.059.059,0,0,0,.048.024h3.567a.4.4,0,0,0,.328-.175l2.357-3.495a1.345,1.345,0,0,1,2.065-.2,2.644,2.644,0,0,1,.288,3.267l-.336.6h1.853a2.614,2.614,0,0,1,1.866.761,3.219,3.219,0,0,1,.756,2.457c-.1,2.345-2.089,4.059-2.9,4.059h-4.564a3.249,3.249,0,0,1-2.857-1.491.067.067,0,0,0-.052-.035Zm8.857.13Z"
+                                        transform="translate(-438.194 -305.927)" fill="#ff9f2d" />
                                 </g>
                             </g>
-                        </svg>
-                    </span>
-                    <span class="hide">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                            <g id="vuesax_bulk_global" data-name="vuesax/bulk/global"
-                                transform="translate(-174 -254)">
-                                <g id="global">
-                                    <path id="Vector"
-                                        d="M4.59,4.57c-.03,0-.07.02-.1.02A10.006,10.006,0,0,1,0,.1C0,.07.02.03.02,0A31.893,31.893,0,0,0,3.75.84,33.548,33.548,0,0,0,4.59,4.57Z"
-                                        transform="translate(175.06 268.34)" fill="rgba(237,27,36,0.4)" />
-                                    <path id="Vector-2" data-name="Vector"
-                                        d="M4.65.11A10.093,10.093,0,0,1,0,4.68,30.563,30.563,0,0,0,.91.84,31.281,31.281,0,0,0,4.63,0C4.62.04,4.65.08,4.65.11Z"
-                                        transform="translate(188.29 268.34)" fill="rgba(237,27,36,0.4)" />
-                                    <path id="Vector-3" data-name="Vector"
-                                        d="M4.73,4.73A31.643,31.643,0,0,0,.91,3.82,27.914,27.914,0,0,0,0,0,10.052,10.052,0,0,1,4.73,4.73Z"
-                                        transform="translate(188.29 254.98)" fill="rgba(237,27,36,0.4)" />
-                                    <path id="Vector-4" data-name="Vector"
-                                        d="M4.67.03a31.248,31.248,0,0,0-.83,3.72A28.87,28.87,0,0,0,0,4.65,10.093,10.093,0,0,1,4.57,0C4.6,0,4.64.03,4.67.03Z"
-                                        transform="translate(174.98 255.06)" fill="rgba(237,27,36,0.4)" />
-                                    <path id="Vector-5" data-name="Vector"
-                                        d="M6.98,4.59A31.328,31.328,0,0,0,0,4.59,28.373,28.373,0,0,1,1.02.53,1.635,1.635,0,0,0,1.04.31,10.406,10.406,0,0,1,3.49,0,10.322,10.322,0,0,1,5.93.31a1.66,1.66,0,0,0,.03.22A28.712,28.712,0,0,1,6.98,4.59Z"
-                                        transform="translate(180.51 254)" fill="#be1e2d" />
-                                    <path id="Vector-6" data-name="Vector"
-                                        d="M4.59,6.98A28.043,28.043,0,0,1,.53,5.96a1.635,1.635,0,0,0-.22-.02A10.406,10.406,0,0,1,0,3.49,10.322,10.322,0,0,1,.31,1.05a1.66,1.66,0,0,0,.22-.03A29.77,29.77,0,0,1,4.59,0,32.574,32.574,0,0,0,4.59,6.98Z"
-                                        transform="translate(174 260.51)" fill="#be1e2d" />
-                                    <path id="Vector-7" data-name="Vector"
-                                        d="M4.59,3.49a10.406,10.406,0,0,1-.31,2.45,1.635,1.635,0,0,0-.22.02A30.143,30.143,0,0,1,0,6.98,31.329,31.329,0,0,0,0,0,28.373,28.373,0,0,1,4.06,1.02a.833.833,0,0,0,.22.03A10.389,10.389,0,0,1,4.59,3.49Z"
-                                        transform="translate(189.41 260.51)" fill="#be1e2d" />
-                                    <path id="Vector-8" data-name="Vector"
-                                        d="M6.98,0A28.043,28.043,0,0,1,5.96,4.06a1.66,1.66,0,0,0-.03.22,10.322,10.322,0,0,1-2.44.31,10.406,10.406,0,0,1-2.45-.31,1.635,1.635,0,0,0-.02-.22A29.77,29.77,0,0,1,0,0,31.29,31.29,0,0,0,3.49.22,31.14,31.14,0,0,0,6.98,0Z"
-                                        transform="translate(180.51 269.41)" fill="#be1e2d" />
-                                    <path id="Vector-9" data-name="Vector"
-                                        d="M7.763,7.763a30.039,30.039,0,0,1-7.527,0,30.039,30.039,0,0,1,0-7.527,30.039,30.039,0,0,1,7.527,0A30.039,30.039,0,0,1,7.763,7.763Z"
-                                        transform="translate(180 260)" fill="#be1e2d" />
-                                </g>
-                            </g>
-                        </svg>
-                    </span>
+                            <path id="Path_42106" data-name="Path 42106"
+                                d="M451.7,336.415l-.079.1a.059.059,0,0,0,.042.1c2.263.234,3.684.571,3.684.945,0,.7-5.044,1.274-11.264,1.274s-11.264-.571-11.264-1.274c0-.357,1.282-.678,3.347-.91a.06.06,0,0,0,.041-.1l-.078-.1a.059.059,0,0,0-.054-.023c-3.217.363-5.295.942-5.295,1.592,0,1.1,5.956,2,13.3,2s13.3-.893,13.3-2c0-.673-2.225-1.268-5.631-1.63A.061.061,0,0,0,451.7,336.415Z"
+                                transform="translate(-59.379 -288.601)" fill="#00ce68" />
+                        </g>
+                    </svg>
 
-                </a>
-            </div>
+                </span>
+                VIP
+            </a>
+        </li>
+        <li>
+            <a href="login.html" class="btn cs-btn v2">{{ __('front.login') }} </a>
+        </li>
+        </ul>
+        </nav>
+        <div class="lang d-lg-block d-none">
+            <a href="#">
+                <label for="">EN</label>
+                <span class="show">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <g id="vuesax_bulk_global" data-name="vuesax/bulk/global" transform="translate(-174 -254)">
+                            <g id="global">
+                                <path id="Vector"
+                                    d="M4.59,4.57c-.03,0-.07.02-.1.02A10.006,10.006,0,0,1,0,.1C0,.07.02.03.02,0A31.893,31.893,0,0,0,3.75.84,33.548,33.548,0,0,0,4.59,4.57Z"
+                                    transform="translate(175.06 268.34)" fill="#e2e2e2" />
+                                <path id="Vector-2" data-name="Vector"
+                                    d="M4.65.11A10.093,10.093,0,0,1,0,4.68,30.563,30.563,0,0,0,.91.84,31.281,31.281,0,0,0,4.63,0C4.62.04,4.65.08,4.65.11Z"
+                                    transform="translate(188.29 268.34)" fill="#e2e2e2" />
+                                <path id="Vector-3" data-name="Vector"
+                                    d="M4.73,4.73A31.643,31.643,0,0,0,.91,3.82,27.914,27.914,0,0,0,0,0,10.052,10.052,0,0,1,4.73,4.73Z"
+                                    transform="translate(188.29 254.98)" fill="#e2e2e2" />
+                                <path id="Vector-4" data-name="Vector"
+                                    d="M4.67.03a31.248,31.248,0,0,0-.83,3.72A28.87,28.87,0,0,0,0,4.65,10.093,10.093,0,0,1,4.57,0C4.6,0,4.64.03,4.67.03Z"
+                                    transform="translate(174.98 255.06)" fill="#e2e2e2" />
+                                <path id="Vector-5" data-name="Vector"
+                                    d="M6.98,4.59A31.328,31.328,0,0,0,0,4.59,28.373,28.373,0,0,1,1.02.53,1.635,1.635,0,0,0,1.04.31,10.406,10.406,0,0,1,3.49,0,10.322,10.322,0,0,1,5.93.31a1.66,1.66,0,0,0,.03.22A28.712,28.712,0,0,1,6.98,4.59Z"
+                                    transform="translate(180.51 254)" fill="#05060f" />
+                                <path id="Vector-6" data-name="Vector"
+                                    d="M4.59,6.98A28.043,28.043,0,0,1,.53,5.96a1.635,1.635,0,0,0-.22-.02A10.406,10.406,0,0,1,0,3.49,10.322,10.322,0,0,1,.31,1.05a1.66,1.66,0,0,0,.22-.03A29.77,29.77,0,0,1,4.59,0,32.574,32.574,0,0,0,4.59,6.98Z"
+                                    transform="translate(174 260.51)" fill="#05060f" />
+                                <path id="Vector-7" data-name="Vector"
+                                    d="M4.59,3.49a10.406,10.406,0,0,1-.31,2.45,1.635,1.635,0,0,0-.22.02A30.143,30.143,0,0,1,0,6.98,31.329,31.329,0,0,0,0,0,28.373,28.373,0,0,1,4.06,1.02a.833.833,0,0,0,.22.03A10.389,10.389,0,0,1,4.59,3.49Z"
+                                    transform="translate(189.41 260.51)" fill="#05060f" />
+                                <path id="Vector-8" data-name="Vector"
+                                    d="M6.98,0A28.043,28.043,0,0,1,5.96,4.06a1.66,1.66,0,0,0-.03.22,10.322,10.322,0,0,1-2.44.31,10.406,10.406,0,0,1-2.45-.31,1.635,1.635,0,0,0-.02-.22A29.77,29.77,0,0,1,0,0,31.29,31.29,0,0,0,3.49.22,31.14,31.14,0,0,0,6.98,0Z"
+                                    transform="translate(180.51 269.41)" fill="#05060f" />
+                                <path id="Vector-9" data-name="Vector"
+                                    d="M7.763,7.763a30.039,30.039,0,0,1-7.527,0,30.039,30.039,0,0,1,0-7.527,30.039,30.039,0,0,1,7.527,0A30.039,30.039,0,0,1,7.763,7.763Z"
+                                    transform="translate(180 260)" fill="#05060f" />
+                            </g>
+                        </g>
+                    </svg>
+                </span>
+                <span class="hide">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <g id="vuesax_bulk_global" data-name="vuesax/bulk/global" transform="translate(-174 -254)">
+                            <g id="global">
+                                <path id="Vector"
+                                    d="M4.59,4.57c-.03,0-.07.02-.1.02A10.006,10.006,0,0,1,0,.1C0,.07.02.03.02,0A31.893,31.893,0,0,0,3.75.84,33.548,33.548,0,0,0,4.59,4.57Z"
+                                    transform="translate(175.06 268.34)" fill="rgba(237,27,36,0.4)" />
+                                <path id="Vector-2" data-name="Vector"
+                                    d="M4.65.11A10.093,10.093,0,0,1,0,4.68,30.563,30.563,0,0,0,.91.84,31.281,31.281,0,0,0,4.63,0C4.62.04,4.65.08,4.65.11Z"
+                                    transform="translate(188.29 268.34)" fill="rgba(237,27,36,0.4)" />
+                                <path id="Vector-3" data-name="Vector"
+                                    d="M4.73,4.73A31.643,31.643,0,0,0,.91,3.82,27.914,27.914,0,0,0,0,0,10.052,10.052,0,0,1,4.73,4.73Z"
+                                    transform="translate(188.29 254.98)" fill="rgba(237,27,36,0.4)" />
+                                <path id="Vector-4" data-name="Vector"
+                                    d="M4.67.03a31.248,31.248,0,0,0-.83,3.72A28.87,28.87,0,0,0,0,4.65,10.093,10.093,0,0,1,4.57,0C4.6,0,4.64.03,4.67.03Z"
+                                    transform="translate(174.98 255.06)" fill="rgba(237,27,36,0.4)" />
+                                <path id="Vector-5" data-name="Vector"
+                                    d="M6.98,4.59A31.328,31.328,0,0,0,0,4.59,28.373,28.373,0,0,1,1.02.53,1.635,1.635,0,0,0,1.04.31,10.406,10.406,0,0,1,3.49,0,10.322,10.322,0,0,1,5.93.31a1.66,1.66,0,0,0,.03.22A28.712,28.712,0,0,1,6.98,4.59Z"
+                                    transform="translate(180.51 254)" fill="#be1e2d" />
+                                <path id="Vector-6" data-name="Vector"
+                                    d="M4.59,6.98A28.043,28.043,0,0,1,.53,5.96a1.635,1.635,0,0,0-.22-.02A10.406,10.406,0,0,1,0,3.49,10.322,10.322,0,0,1,.31,1.05a1.66,1.66,0,0,0,.22-.03A29.77,29.77,0,0,1,4.59,0,32.574,32.574,0,0,0,4.59,6.98Z"
+                                    transform="translate(174 260.51)" fill="#be1e2d" />
+                                <path id="Vector-7" data-name="Vector"
+                                    d="M4.59,3.49a10.406,10.406,0,0,1-.31,2.45,1.635,1.635,0,0,0-.22.02A30.143,30.143,0,0,1,0,6.98,31.329,31.329,0,0,0,0,0,28.373,28.373,0,0,1,4.06,1.02a.833.833,0,0,0,.22.03A10.389,10.389,0,0,1,4.59,3.49Z"
+                                    transform="translate(189.41 260.51)" fill="#be1e2d" />
+                                <path id="Vector-8" data-name="Vector"
+                                    d="M6.98,0A28.043,28.043,0,0,1,5.96,4.06a1.66,1.66,0,0,0-.03.22,10.322,10.322,0,0,1-2.44.31,10.406,10.406,0,0,1-2.45-.31,1.635,1.635,0,0,0-.02-.22A29.77,29.77,0,0,1,0,0,31.29,31.29,0,0,0,3.49.22,31.14,31.14,0,0,0,6.98,0Z"
+                                    transform="translate(180.51 269.41)" fill="#be1e2d" />
+                                <path id="Vector-9" data-name="Vector"
+                                    d="M7.763,7.763a30.039,30.039,0,0,1-7.527,0,30.039,30.039,0,0,1,0-7.527,30.039,30.039,0,0,1,7.527,0A30.039,30.039,0,0,1,7.763,7.763Z"
+                                    transform="translate(180 260)" fill="#be1e2d" />
+                            </g>
+                        </g>
+                    </svg>
+                </span>
+
+            </a>
+        </div>
         </div>
     </aside>
 
@@ -222,7 +218,8 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 <a href="{{ route('index') }}" class="logo">
-                    <img src="{{ asset('assets/front_end/images/logo.svg') }}" alt="" srcset="" loading="lazy">
+                    <img src="{{ asset('assets/front_end/images/logo.svg') }}" alt="" srcset=""
+                        loading="lazy">
                 </a>
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
@@ -234,17 +231,19 @@
                                 <div class="dropdown">
                                     <button class="btn dropdown-toggle" type="button" id="achievements"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        الخدمات الصحية
+                                        {{ __('site.health_services') }}
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="achievements">
-                                        <li><a class="dropdown-item" href="{{ route('service-details') }}">التأمين الصحي</a>
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('service-details') }}">{{ __('site.health_insurance') }}
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact-us.html">  {{ __('front.contect')}}</a>
+                            <a class="nav-link" href="contact-us.html"> {{ __('front.contect') }}</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="btn cs-btn">
@@ -274,7 +273,7 @@
                     </ul>
                 </nav>
                 <div class="d-flex align-items-center gap-2">
-                    <a href="{{ route('login') }}" class="btn cs-btn v2"> {{ __('front.login')}}</a>
+                    <a href="{{ route('login') }}" class="btn cs-btn v2"> {{ __('front.login') }}</a>
                     <div class="lang d-flex align-items-center">
                         <!-- <a href="#"> -->
                         <div class="cs-dropdown">
@@ -284,7 +283,7 @@
                                     Languages
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="language">
-                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                         {{-- <li>
                                             <a class="dropdown-item" href="#">
                                                 <span>
@@ -395,13 +394,14 @@
                                                 AR
                                             </a>
                                         </li> --}}
-                                        	<li class="kt-nav__item {{ app()->currentLocale() == $localeCode ? 'kt-nav__item--active'
-                                        : '' }}">
-											<a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="kt-nav__link">
-												{{-- <span class="kt-nav__link-icon"><img src="{{ asset('admin2asset/assets/media/flags/'.$properties['flag']) }}" alt="" /></span> --}}
-												<span class="kt-nav__link-text">{{ $properties['native'] }}</span>
-											</a>
-										</li>
+                                        <li
+                                            class="kt-nav__item {{ app()->currentLocale() == $localeCode ? 'kt-nav__item--active' : '' }}">
+                                            <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                                class="kt-nav__link">
+                                                {{-- <span class="kt-nav__link-icon"><img src="{{ asset('admin2asset/assets/media/flags/'.$properties['flag']) }}" alt="" /></span> --}}
+                                                <span class="kt-nav__link-text">{{ $properties['native'] }}</span>
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -505,41 +505,41 @@
                 <div class="row justify-content-md-start justify-content-center">
                     <div class="col-lg-5 col-md-12 mb-3 mb-md-0">
                         <figure>
-                            <img src="{{ asset('assets/front_end/images/logo.svg') }}" alt="" srcset="">
+                            <img src="{{ asset('assets/front_end/images/logo.svg') }}" alt=""
+                                srcset="">
                         </figure>
                         <p>
-                            رايت جايد هي منصة دولية للبحث عن أفضل المستشفيات
-                            .والأخصائيين المتميزين في تركيا لتقديم أفضل خدمة لك
+                            {{ __('site.f_con1') }}
                         </p>
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">المنصة</h3>
+                            <h3 class="title">{{ __('site.platform') }}</h3>
                             <ul>
-                                <li><a href="">الرئيسية</a></li>
-                                <li><a href="">المستشفيات</a></li>
-                                <li><a href="">الأخصائيين</a></li>
-                                <li><a href="">المدونة</a></li>
+                                <li><a href="{{ url('/') }}">{{ __('front.main') }}</a></li>
+                                <li><a href="{{ route('hostpial') }}">{{ __('site.hospitels') }}</a></li>
+                                <li><a href="{{ route('doctors') }}">{{ __('site.doctors') }}</a></li>
+                                {{-- <li><a href="">المدونة</a></li> --}}
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">روابط مهمة</h3>
+                            <h3 class="title">{{ __('site.important_links') }}</h3>
                             <ul>
-                                <li><a href="about-us.html">من نحن</a></li>
-                                <li><a href="contact-us.html">تواصل معنا</a></li>
-                                <li><a href="policies.html">الشروط والأحكام</a></li>
-                                <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                                <li><a href="about-us.html"> {{ __('site.who_are_we') }}</a></li>
+                                <li><a href="contact-us.html">{{ __('site.contact_us') }} </a></li>
+                                <li><a href="policies.html">{{ __('site.terms_and_conditions') }}</a></li>
+                                <li><a href="privacy.html"> {{ __('site.privacy_policy') }}</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">خدمات صحية</h3>
+                            <h3 class="title"> {{ __('site.health_services') }}</h3>
                             <ul>
-                                <li><a href="service-details.html"> التأمين الصحي</a></li>
-                                <li><a href="service-details.html">الاستشارات القانونية</a></li>
+                                <li><a href="service-details.html">{{ __('site.health_insurance') }} </a></li>
+                                {{-- <li><a href="service-details.html">الاستشارات القانونية</a></li> --}}
                             </ul>
                         </div>
                     </div>
@@ -548,11 +548,12 @@
             <div
                 class="f-bottom d-flex align-items-center justify-content-md-between justify-content-center flex-wrap">
                 <p class="f-copyright">
-                    جميع الحقوق محفوظة لوزارة شؤون المرأة © 2022
+                    {{ __('site.f_con2') }} © 2022
                 </p>
 
                 <div class="f-social">
-                    <a href="{{ $settings['whatsapp'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['whatsapp'] }}" class="when-hover" target="_blank"
+                        rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Group_16" data-name="Group 16" xmlns="http://www.w3.org/2000/svg"
                                 width="32" height="31.997" viewBox="0 0 32 31.997">
@@ -580,7 +581,8 @@
                             </svg>
                         </span>
                     </a>
-                    <a href="{{ $settings['facebook'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['facebook'] }}" class="when-hover" target="_blank"
+                        rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_858_32" data-name="Component 858 – 32"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32.402"
@@ -632,7 +634,8 @@
                         </span>
                     </a>
 
-                    <a href="{{ $settings['instagram'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['instagram'] }}" class="when-hover" target="_blank"
+                        rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_860_23" data-name="Component 860 – 23"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -686,7 +689,8 @@
                             </svg>
                         </span>
                     </a>
-                    <a href="{{ $settings['linkedin'] }}" class="when-hover" target="_blank" rel="noopener noreferrer">
+                    <a href="{{ $settings['linkedin'] }}" class="when-hover" target="_blank"
+                        rel="noopener noreferrer">
                         <span class="before-hover">
                             <svg id="Component_862_28" data-name="Component 862 – 28"
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32"

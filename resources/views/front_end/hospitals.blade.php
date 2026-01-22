@@ -22,7 +22,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>
@@ -33,19 +33,19 @@
                         </svg>
 
                     </span>
-                    <li class="breadcrumb-item active" aria-current="page">المستشفيات</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.hospitels') }}</li>
                 </ol>
             </nav>
             <div class="main-title">
-                <h2>مستشفيات ذات جودة عالية</h2>
+                <h2> {{ __('site.high_quality_hospitals') }}</h2>
             </div>
         </div>
         <div class="hospitals-filter">
             <div class="container">
                 <div class="content">
                     <div class="d-flex justify-content-between">
-                        <h3>عوامل الفلترة</h3>
-                        <a href="#" class="clear-all">امسح الكل</a>
+                        <h3>{{ __('site.filtering_factors') }} </h3>
+                        <a href="#" class="clear-all">{{ __('site.clear_all') }}</a>
                     </div>
                     <div class="form">
                         <form action="{{ route('hostpial') }}" method="get">
@@ -54,18 +54,20 @@
                                 <!-- البحث باسم المستشفى -->
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>المستشفى</label>
+                                        <label>{{ __('site.hospitel') }}</label>
                                         <input type="text" name="hospital_name" class="form-control custom-input"
-                                            placeholder="ابحث عن مستشفى" value="{{ request('hospital_name') }}">
+                                            placeholder="{{ __('site.searchB') }} {{ __('site.for') }} {{ __('site.hospitel') }}"
+                                            value="{{ request('hospital_name') }}">
                                     </div>
                                 </div>
 
                                 <!-- التخصص -->
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>التخصص</label>
+                                        <label>{{ __('site.specialization') }}</label>
                                         <select name="specialization_id" class="form-select custom-input">
-                                            <option value="">اختر التخصص</option>
+                                            <option value="">{{ __('site.choose') }} {{ __('site.specialization') }}
+                                            </option>
                                             @foreach ($specializations as $specialization)
                                                 <option value="{{ $specialization->id }}"
                                                     {{ request('specialization_id') == $specialization->id ? 'selected' : '' }}>
@@ -79,9 +81,10 @@
                                 <!-- الدولة -->
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>الدولة</label>
+                                        <label>{{ __('site.country') }}</label>
                                         <select name="country_id" class="form-select custom-input">
-                                            <option value="">اختر الدولة</option>
+                                            <option value="">{{ __('site.choose') }} {{ __('site.country') }}
+                                            </option>
                                             @foreach ($countries as $country)
                                                 <option value="{{ $country->id }}"
                                                     {{ request('country_id') == $country->id ? 'selected' : '' }}>
@@ -95,9 +98,9 @@
                                 <!-- المدينة -->
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>المدينة</label>
+                                        <label>{{ __('site.city') }}</label>
                                         <select name="city_id" class="form-select custom-input">
-                                            <option value="">اختر المدينة</option>
+                                            <option value="">{{ __('site.choose') }} {{ __('site.city') }}</option>
                                             @foreach ($cities as $city)
                                                 <option value="{{ $city->id }}"
                                                     {{ request('city_id') == $city->id ? 'selected' : '' }}>
@@ -110,7 +113,7 @@
 
                                 <!-- زر البحث -->
                                 <div class="col-lg-auto col-md-6">
-                                    <button type="submit" class="btn cs-btn v2">بحث</button>
+                                    <button type="submit" class="btn cs-btn v2">{{ __('site.searchB') }}</button>
                                 </div>
 
                             </div>
@@ -161,7 +164,8 @@
                                                                 </svg>
                                                                 {{ $average }}
                                                             </span>
-                                                            <p class="mb-0">({{ $count }}) تقييم</p>
+                                                            <p class="mb-0">({{ $count }})
+                                                                {{ __('site.reviews') }}</p>
                                                         </div>
                                                         <div class="address">
                                                             <span>
@@ -248,8 +252,9 @@
                                                             </svg>
 
                                                         </span>
-                                                        <h6 class="me-1">سنة التأسيس: </h6>
-                                                        <h5>في عام {{ $hostpial->created_at->format('Y') }}</h5>
+                                                        <h6 class="me-1">{{ __('site.year_of_establishment') }} : </h6>
+                                                        <h5> {{ __('site.year') }} {{ __('site.in') }}
+                                                            {{ $hostpial->created_at->format('Y') }}</h5>
                                                     </div>
                                                     <div class="info">
                                                         <span class="me-3">
@@ -271,7 +276,8 @@
                                                                 </g>
                                                             </svg>
                                                         </span>
-                                                        <h6 class="me-1">عدد الأسرة: </h6>
+                                                        <h6 class="me-1">{{ __('site.number') }} {{ __('site.bed') }}:
+                                                        </h6>
                                                         <h5>{{ $hostpial->bed_number }}</h5>
                                                     </div>
                                                     <div class="info">
@@ -294,15 +300,17 @@
                                                                 </g>
                                                             </svg>
                                                         </span>
-                                                        <h6 class="me-1">عدد الأطباء: </h6>
+                                                        <h6 class="me-1">{{ __('site.number') }}
+                                                            {{ __('site.doctors') }}: </h6>
                                                         <h5>{{ $count = $hostpial->doctors->count() }}</h5>
                                                     </div>
                                                 </div>
                                                 <div
                                                     class="d-flex flex-wrap gap-2 align-items-center flex-lg-grow-0 flex-grow-1">
                                                     <a href="{{ route('hostpial_details', $hostpial->id) }}"
-                                                        class="btn cs-btn cs-w-h">عرض التفاصيل</a>
-                                                    <a href="#" class="btn cs-btn v2 cs-w-h">طلب عرض سعر</a>
+                                                        class="btn cs-btn cs-w-h"> {{ __('site.view_details') }}</a>
+                                                    <a href="#" class="btn cs-btn v2 cs-w-h">
+                                                        {{ __('site.request_for_quotation') }}</a>
                                                 </div>
                                             </div>
                                         </div>

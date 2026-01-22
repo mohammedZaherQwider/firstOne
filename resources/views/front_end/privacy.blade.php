@@ -51,11 +51,11 @@
             <nav class="scrollspy_menu">
                 <ul class="navbar-nav">
                     <li class="nav-item active underline_header_titles">
-                        <a class="nav-link" href="index.html">الرئيسية </a>
+                        <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                     </li>
                     <li class="nav-item">
                         <div class="cs-dropdown">
-                          
+
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="achievements" data-bs-toggle="dropdown" aria-expanded="false">
                                     الخدمات الصحية
@@ -181,7 +181,7 @@
     <!-- Side Menu -->
 
     <!-- Main header -->
-    
+
         <header class="main-header fixed-top">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
@@ -191,7 +191,7 @@
                     <nav class="navbar navbar-expand-lg">
                         <ul class="navbar-nav">
                             <li class="nav-item active underline_header_titles">
-                                <a class="nav-link" href="index.html">الرئيسية </a>
+                                <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                             </li>
                             <li class="nav-item">
                                 <div class="cs-dropdown">
@@ -232,7 +232,7 @@
                                     VIP
                                 </a>
                             </li>
-                        
+
                         </ul>
                     </nav>
                     <div class="d-flex align-items-center gap-2">
@@ -350,7 +350,7 @@
                                                                 transform="translate(-12.247 -10.729)" fill="#fff" />
                                                         </g>
                                                     </svg>
-        
+
                                                 </span>
                                                 AR
                                             </a>
@@ -481,7 +481,7 @@
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
-                
+
                 </div>
             </div>
 
@@ -511,7 +511,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>
@@ -521,7 +521,7 @@
                                 transform="translate(5.75 1.061) rotate(90)" fill="none" stroke="#727a83"
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         </svg>
-    
+
                     </span>
                     <li class="breadcrumb-item active" aria-current="page">الشروط والأحكام</li>
                 </ol>
@@ -563,7 +563,7 @@
                    </h4>
                    <p>
                     هذه الشروط هي الاتفاق الملزم بينك وبين المنصة أو أي من الشركات التابعة لها، ويخضع استخدامك ووصولك إلى خدماتنا
- سواء كانت متعلقة بتقديم عرض طلب سعر لمستشفى أو أخصائي أو أي من الخدمات الأخرى (جميعها تدرج تحت مسمى 
+ سواء كانت متعلقة بتقديم عرض طلب سعر لمستشفى أو أخصائي أو أي من الخدمات الأخرى (جميعها تدرج تحت مسمى
 .الخدمة") والتي تتوفر لك باستخدامك لموقعنا"
                    </p>
                    <p>
@@ -609,7 +609,7 @@
  التسجيل"، وأثناء التسجيل عليك أن تختار كلمة مرور ستكون مسؤولا مسؤولية كاملة عن حفظها وحمايتها، وعن الأنشطة
  التي تتم من خلال حسابك، وبالتالي فأنت تلتزم بتقديم بيانات تسجيل صحيحة ودقيقة وحديثة وكاملة ويجوز لنا تعليق حسابك
  أو إلغائه أو إنهائه ورفض أي استخدامات حالية أو مستقبلية مرتبطة بك، في حالة ما كان لدينا أسباب معقولة للاشتباه في
-.المعلومات التي قدمتها وكانت غير صحيحة أو غير دقيقة أو ليست حديثة أو غير كاملة 
+.المعلومات التي قدمتها وكانت غير صحيحة أو غير دقيقة أو ليست حديثة أو غير كاملة
 
                    </p>
                    <h4>
@@ -620,7 +620,7 @@
  التسجيل"، وأثناء التسجيل عليك أن تختار كلمة مرور ستكون مسؤولا مسؤولية كاملة عن حفظها وحمايتها، وعن الأنشطة
  التي تتم من خلال حسابك، وبالتالي فأنت تلتزم بتقديم بيانات تسجيل صحيحة ودقيقة وحديثة وكاملة ويجوز لنا تعليق حسابك
  أو إلغائه أو إنهائه ورفض أي استخدامات حالية أو مستقبلية مرتبطة بك، في حالة ما كان لدينا أسباب معقولة للاشتباه في
-.المعلومات التي قدمتها وكانت غير صحيحة أو غير دقيقة أو ليست حديثة أو غير كاملة 
+.المعلومات التي قدمتها وكانت غير صحيحة أو غير دقيقة أو ليست حديثة أو غير كاملة
                    </p>
                    <h4>
                     خامسا: الإنهاء من قبل المستخدم
@@ -663,7 +663,7 @@
                         <div class="f-widget">
                             <h3 class="title">المنصة</h3>
                             <ul>
-                                <li><a href="">الرئيسية</a></li>
+                                <li><a href="">{{ __('front.main') }}</a></li>
                                 <li><a href="">المستشفيات</a></li>
                                 <li><a href="">الأخصائيين</a></li>
                                 <li><a href="">المدونة</a></li>
@@ -683,11 +683,11 @@
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">خدمات صحية</h3>  
+                            <h3 class="title">خدمات صحية</h3>
                             <ul>
                                 <li><a href="service-details.html"> التأمين الصحي</a></li>
                                 <li><a href="service-details.html">الاستشارات القانونية</a></li>
-                            </ul>                 
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -899,5 +899,5 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
     </body>
-    
+
     </html>

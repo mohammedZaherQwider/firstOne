@@ -51,11 +51,11 @@
             <nav class="scrollspy_menu">
                 <ul class="navbar-nav">
                     <li class="nav-item active underline_header_titles">
-                        <a class="nav-link" href="index.html">الرئيسية </a>
+                        <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                     </li>
                     <li class="nav-item">
                         <div class="cs-dropdown">
-                          
+
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="achievements" data-bs-toggle="dropdown" aria-expanded="false">
                                     الخدمات الصحية
@@ -191,7 +191,7 @@
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
                         <li class="nav-item active underline_header_titles">
-                            <a class="nav-link" href="index.html">الرئيسية </a>
+                            <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                         </li>
                         <li class="nav-item">
                             <div class="cs-dropdown">
@@ -232,7 +232,7 @@
                                 VIP
                             </a>
                         </li>
-                       
+
                     </ul>
                 </nav>
                 <div class="d-flex align-items-center gap-2">
@@ -351,7 +351,7 @@
                                                             transform="translate(-12.247 -10.729)" fill="#fff" />
                                                     </g>
                                                 </svg>
-    
+
                                             </span>
                                             AR
                                         </a>
@@ -485,7 +485,7 @@
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
-               
+
             </div>
         </div>
 
@@ -514,7 +514,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>
@@ -524,7 +524,7 @@
                                 transform="translate(5.75 1.061) rotate(90)" fill="none" stroke="#727a83"
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         </svg>
-    
+
                     </span>
                     <li class="breadcrumb-item active" aria-current="page">المدونة</li>
                 </ol>
@@ -533,7 +533,7 @@
                 <h2>أحدث المقالات الطبية</h2>
             </div>
         </div>
-       
+
             <div class="container">
                 <div class="categories-filter mt-4">
                     <a href="#" class="active">كل التصنيفات</a>
@@ -543,7 +543,7 @@
                     <a href="#" >الأدوية الطبية</a>
                 </div>
             </div>
-            
+
         <!-- blog-section -->
             <section class="blog-section">
             <div class="container">
@@ -596,7 +596,7 @@
                                         <h6>‏12 أغسطس، 2022 - طب العيون</h6>
                                         <h4>مرض الربو (الأزمة) عند الأطفال: ماهيته، أهم أعراضه، التشخيص والعلاج</h4>
                                             <p> ينتج مرض الربو عن حساسية زائدة للمجاري الهوائية لبعض
-                                                المحفزات، تظهر على شكل نوبات من صعوبة التنفس عند 
+                                                المحفزات، تظهر على شكل نوبات من صعوبة التنفس عند
                                             .التعرض لهذه المحفزات نتيجة التضيق فيها وزيادة الإفرازات</p>
                                     </div>
                                 </div>
@@ -660,7 +660,7 @@
                                         <h6>‏12 أغسطس، 2022 - طب العيون</h6>
                                         <h4>مرض الربو (الأزمة) عند الأطفال: ماهيته، أهم أعراضه، التشخيص والعلاج</h4>
                                             <p> ينتج مرض الربو عن حساسية زائدة للمجاري الهوائية لبعض
-                                                المحفزات، تظهر على شكل نوبات من صعوبة التنفس عند 
+                                                المحفزات، تظهر على شكل نوبات من صعوبة التنفس عند
                                             .التعرض لهذه المحفزات نتيجة التضيق فيها وزيادة الإفرازات</p>
                                     </div>
                                 </div>
@@ -671,7 +671,7 @@
             </div>
             </section>
         <!-- ./blog-section -->
-                
+
         <!-- consultation-section -->
         <section class="consulation-section callaction-section">
             <div class="container">
@@ -749,7 +749,7 @@
                                         <h6>‏12 أغسطس، 2022 - طب العيون</h6>
                                         <h4>مرض الربو (الأزمة) عند الأطفال: ماهيته، أهم أعراضه، التشخيص والعلاج</h4>
                                             <p> ينتج مرض الربو عن حساسية زائدة للمجاري الهوائية لبعض
-                                                المحفزات، تظهر على شكل نوبات من صعوبة التنفس عند 
+                                                المحفزات، تظهر على شكل نوبات من صعوبة التنفس عند
                                             .التعرض لهذه المحفزات نتيجة التضيق فيها وزيادة الإفرازات</p>
                                     </div>
                                 </div>
@@ -786,9 +786,9 @@
                 </div>
             </section>
             <!-- ./service-request-section -->
-    
-        
-        
+
+
+
     </div>
      <!-- contact-us-btn -->
      <div class="contact-us-btn">
@@ -800,7 +800,7 @@
         <p>طلب مساعدة</p>
     </div>
     <!-- ./contact-us-btn -->
-    
+
     <footer class="main-footer" id="footer">
         <div class="container">
             <div class="f-top">
@@ -818,7 +818,7 @@
                         <div class="f-widget">
                             <h3 class="title">المنصة</h3>
                             <ul>
-                                <li><a href="">الرئيسية</a></li>
+                                <li><a href="">{{ __('front.main') }}</a></li>
                                 <li><a href="">المستشفيات</a></li>
                                 <li><a href="">الأخصائيين</a></li>
                                 <li><a href="">المدونة</a></li>
@@ -838,11 +838,11 @@
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">خدمات صحية</h3>  
+                            <h3 class="title">خدمات صحية</h3>
                             <ul>
                                 <li><a href=""> التأمين الصحي</a></li>
                                 <li><a href="">الاستشارات القانونية</a></li>
-                            </ul>                 
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1056,7 +1056,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
     <script>
-  
+
     </script>
     <!-- <script src="assets/js/scripts.js"></script> -->
     <!-- <script src="assets/js/scripts-en.js"></script> -->

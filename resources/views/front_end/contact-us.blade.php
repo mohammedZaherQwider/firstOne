@@ -51,11 +51,11 @@
             <nav class="scrollspy_menu">
                 <ul class="navbar-nav">
                     <li class="nav-item active underline_header_titles">
-                        <a class="nav-link" href="index.html">الرئيسية </a>
+                        <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                     </li>
                     <li class="nav-item">
                         <div class="cs-dropdown">
-                          
+
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="achievements" data-bs-toggle="dropdown" aria-expanded="false">
                                     الخدمات الصحية
@@ -191,7 +191,7 @@
                     <nav class="navbar navbar-expand-lg">
                         <ul class="navbar-nav">
                             <li class="nav-item active underline_header_titles">
-                                <a class="nav-link" href="index.html">الرئيسية </a>
+                                <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                             </li>
                             <li class="nav-item">
                                 <div class="cs-dropdown">
@@ -232,7 +232,7 @@
                                     VIP
                                 </a>
                             </li>
-                        
+
                         </ul>
                     </nav>
                     <div class="d-flex align-items-center gap-2">
@@ -350,7 +350,7 @@
                                                                 transform="translate(-12.247 -10.729)" fill="#fff" />
                                                         </g>
                                                     </svg>
-        
+
                                                 </span>
                                                 AR
                                             </a>
@@ -484,7 +484,7 @@
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
-                
+
                 </div>
             </div>
 
@@ -513,7 +513,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>
@@ -523,7 +523,7 @@
                                 transform="translate(5.75 1.061) rotate(90)" fill="none" stroke="#727a83"
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         </svg>
-    
+
                     </span>
                     <li class="breadcrumb-item active" aria-current="page">تواصل معنا</li>
                 </ol>
@@ -549,8 +549,8 @@
                                                                 <path id="Vector-3" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(108 252)" fill="none" opacity="0"/>
                                                               </g>
                                                             </g>
-                                                          </svg>                                                          
-                                                    </span>                                                                                              
+                                                          </svg>
+                                                    </span>
                                                     <input type="text" name="name" class="form-control cs-input" id="recipient-name" placeholder="أدخل الاسم كاملا">
                                                 </div>
                                             </div>
@@ -570,8 +570,8 @@
                                                                 </g>
                                                               </g>
                                                             </g>
-                                                          </svg>                                                              
-                                                    </span>                                        
+                                                          </svg>
+                                                    </span>
                                                     <input type="email" class="form-control cs-input" name="email" id="email" placeholder="أدخل رقم المحمول">
                                                 </div>
                                             </div>
@@ -590,8 +590,8 @@
                                                                 <path id="Vector-4" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(108 380)" fill="none" opacity="0"/>
                                                               </g>
                                                             </g>
-                                                          </svg>                                                      
-                                                    </span>                                                
+                                                          </svg>
+                                                    </span>
                                                     <input type="text" class="form-control cs-input" name="number_phone" id="number_phone" placeholder="أدخلرقم الجوال">
                                                 </div>
                                             </div>
@@ -611,14 +611,14 @@
                                                                 </g>
                                                               </g>
                                                             </g>
-                                                          </svg>                                                      
+                                                          </svg>
                                                     </span>
                                                       <select name="status" id="status" class="form-control cs-input">
                                                         <option value="1">اختر سبب الرسالة</option>
                                                         <option value="3">1</option>
                                                         <option value="3">2</option>
                                                         <option value="3">3</option>
-                                                    </select>                                                  
+                                                    </select>
                                                 </div>
                                         </div>
                                         </div>
@@ -638,15 +638,15 @@
                                                               </g>
                                                             </g>
                                                           </svg>
-    
+
                                                     </span>
-                                                      
-                                                      
+
+
                                                     <textarea name="message" class="form-control cs-input" id="" cols="30" rows="8" placeholder="اكتب نص رسالتك هنا..."></textarea>
                                                 </div>
                                             </div>
                                         </div>
-        
+
                                         <div class="col-md-6 ms-auto me-0 mt-4">
                                             <button type="button" class="btn cs-btn v2 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 ارسال الرسالة
@@ -681,7 +681,7 @@
                                                 </g>
                                               </g>
                                             </g>
-                                          </svg>                              
+                                          </svg>
                                     </span>
                                     <h5>راسلنا عبر</h5>
                                     <h6>guide.right@info.com</h6>
@@ -701,7 +701,7 @@
                                               </g>
                                             </g>
                                           </svg>
-                                                                    
+
                                     </span>
                                     <h5>اتصل بنا عبر</h5>
                                     <h6>+90 554 854 68 23</h6>
@@ -718,18 +718,18 @@
                                                 <path id="Vector-3" data-name="Vector" d="M0,0H32V32H0Z" fill="none" opacity="0"/>
                                               </g>
                                             </g>
-                                          </svg>                                                            
+                                          </svg>
                                     </span>
                                     <h5>مقرنا</h5>
                                     <h6>تركيا، إسطنبول، شارع الإستقلال</h6>
                                 </div>
                             </div>
                         </div>
-                  
+
                 </div>
             </div>
         </div>
-      
+
     </div>
 
     <div class="modal custom-modal success fade "id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -742,23 +742,23 @@
                 </div>
                 <div class="modal-body">
                     <img src="assets/images/contact-us-modal.svg" alt="" srcset="">
-                                               
+
                       <h3>شكرا لك</h3>
                       <p>
                         تم إرسال رسالتك بنجاح، سيقوم فريق عملنا
-                        .بالتواصل معك في أقرب وقت 
+                        .بالتواصل معك في أقرب وقت
                       </p>
                       <div class="row justify-content-center">
                         <div class="col-6">
                             <a href="index.html" class="btn cs-btn v2 w-100">
                                 العودة للرئيسية
-                            </a> 
+                            </a>
                         </div>
                       </div>
-                    
-                     
+
+
                 </div>
-                
+
               </div>
         </div>
     </div>
@@ -772,7 +772,7 @@
         <p>طلب مساعدة</p>
     </div>
     <!-- ./contact-us-btn -->
-    
+
 
     <footer class="main-footer" id="footer">
         <div class="container">
@@ -791,7 +791,7 @@
                         <div class="f-widget">
                             <h3 class="title">المنصة</h3>
                             <ul>
-                                <li><a href="">الرئيسية</a></li>
+                                <li><a href="">{{ __('front.main') }}</a></li>
                                 <li><a href="">المستشفيات</a></li>
                                 <li><a href="">الأخصائيين</a></li>
                                 <li><a href="">المدونة</a></li>
@@ -811,11 +811,11 @@
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">خدمات صحية</h3>  
+                            <h3 class="title">خدمات صحية</h3>
                             <ul>
                                 <li><a href="service-details.html"> التأمين الصحي</a></li>
                                 <li><a href="service-details.html">الاستشارات القانونية</a></li>
-                            </ul>                 
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1030,7 +1030,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
     <script>
-  
+
     </script>
     <!-- <script src="assets/js/scripts.js"></script> -->
     <!-- <script src="assets/js/scripts-en.js"></script> -->

@@ -51,11 +51,11 @@
             <nav class="scrollspy_menu">
                 <ul class="navbar-nav">
                     <li class="nav-item active underline_header_titles">
-                        <a class="nav-link" href="index.html">الرئيسية </a>
+                        <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                     </li>
                     <li class="nav-item">
                         <div class="cs-dropdown">
-                          
+
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="achievements" data-bs-toggle="dropdown" aria-expanded="false">
                                     الخدمات الصحية
@@ -191,7 +191,7 @@
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
                         <li class="nav-item active underline_header_titles">
-                            <a class="nav-link" href="index.html">الرئيسية </a>
+                            <a class="nav-link" href="index.html">{{ __('front.main') }} </a>
                         </li>
                         <li class="nav-item">
                             <div class="cs-dropdown">
@@ -232,7 +232,7 @@
                                 VIP
                             </a>
                         </li>
-                       
+
                     </ul>
                 </nav>
                 <div class="d-flex align-items-center gap-2">
@@ -354,7 +354,7 @@
                                                             transform="translate(-12.247 -10.729)" fill="#fff" />
                                                     </g>
                                                 </svg>
-    
+
                                             </span>
                                             AR
                                         </a>
@@ -488,7 +488,7 @@
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
-               
+
             </div>
         </div>
 
@@ -519,7 +519,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>
@@ -529,7 +529,7 @@
                                 transform="translate(5.75 1.061) rotate(90)" fill="none" stroke="#727a83"
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         </svg>
-    
+
                     </span>
                     <li class="breadcrumb-item active" aria-current="page">ملفي الشخصي</li>
                 </ol>
@@ -571,7 +571,7 @@
                                                   </g>
                                                 </g>
                                               </svg>
-                                              
+
                                         </span>
                                         الطلبات
                                     </a>
@@ -587,7 +587,7 @@
                                                     <path id="Vector-3" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(108 252)" fill="none" opacity="0"/>
                                                   </g>
                                                 </g>
-                                              </svg>                                          
+                                              </svg>
                                         </span>
                                         البيانات الشخصية
                                     </a>
@@ -604,7 +604,7 @@
                                                     <path id="Vector-4" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(236 252)" fill="none" opacity="0"/>
                                                   </g>
                                                 </g>
-                                              </svg>                                                                               
+                                              </svg>
                                         </span>
                                         مركز المساعدة
                                     </a>
@@ -618,12 +618,12 @@
                                                   <path id="Vector-2" data-name="Vector" d="M3.568.225.218,3.575a.754.754,0,0,0,0,1.06l3.35,3.35a.75.75,0,1,0,1.06-1.06l-2.07-2.07h10.69a.75.75,0,0,0,0-1.5H2.557l2.07-2.07a.742.742,0,0,0,.22-.53.725.725,0,0,0-.22-.53A.737.737,0,0,0,3.568.225Z" transform="translate(750.003 451.895)" fill="#ff4040"/>
                                                   <path id="Vector-3" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(748 444)" fill="none" opacity="0"/>
                                                 </g>
-                                              </svg>                                                                                                                       
+                                              </svg>
                                         </span>
                                         تسجيل الخروج
                                     </a>
                                 </li>
-    
+
                             </ul>
                         </div>
                     </div>
@@ -641,7 +641,7 @@
                                         <a href="#" class="btn cs-btn">طلب عرض سعر</a>
                                     </div>
                                 </div>
-                         
+
                             </div>
                         </div>
                         <div class="requests-section mt-4">
@@ -709,7 +709,7 @@
                 </div>
             </div>
         </div>
-      
+
 
     </div>
      <!-- contact-us-btn -->
@@ -722,7 +722,7 @@
         <p>طلب مساعدة</p>
     </div>
     <!-- ./contact-us-btn -->
-    
+
     <footer class="main-footer" id="footer">
         <div class="container">
             <div class="f-top">
@@ -740,7 +740,7 @@
                         <div class="f-widget">
                             <h3 class="title">المنصة</h3>
                             <ul>
-                                <li><a href="">الرئيسية</a></li>
+                                <li><a href="">{{ __('front.main') }}</a></li>
                                 <li><a href="">المستشفيات</a></li>
                                 <li><a href="">الأخصائيين</a></li>
                                 <li><a href="">المدونة</a></li>
@@ -760,11 +760,11 @@
                     </div>
                     <div class="col-lg-2 col-md-4 col-6">
                         <div class="f-widget">
-                            <h3 class="title">خدمات صحية</h3>  
+                            <h3 class="title">خدمات صحية</h3>
                             <ul>
                                 <li><a href=""> التأمين الصحي</a></li>
                                 <li><a href="">الاستشارات القانونية</a></li>
-                            </ul>                 
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -978,7 +978,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/main.js"></script>
     <script>
-  
+
     </script>
     <!-- <script src="assets/js/scripts.js"></script> -->
     <!-- <script src="assets/js/scripts-en.js"></script> -->

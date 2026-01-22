@@ -10,10 +10,7 @@
                         <div class="col-lg-5 order-lg-0 order-1">
                             <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s"> {{ __('front.title') }}
                             </h1>
-                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"> رايت جايد منصة دولية للبحث
-                                عن أفضل المستشفيات والأخصائيين
-                                ،المتميزين في تركيا لتقديم أفضل خدمات السياحة العلاجية والطبية لك
-                                .نعمل بجد كل يوم لجعل الناس أكثر صحة وأكثر سعادة</p>
+                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">{{ __('site.con1') }}</p>
                             <form action="#" class="mt-5 mb-3 wow fadeInUp" data-wow-duration="1s"
                                 data-wow-delay="0.3s">
                                 <div class="form-group">
@@ -23,14 +20,15 @@
                                         </span>
 
                                         <input type="text" id="searchInput" class="form-control custom-input"
-                                            placeholder="...ابحث عن مستشفى أو طبيب أو تخصص">
+                                            placeholder="{{ __('site.search') }}">
 
-                                        <button type="button" class="btn cs-btn v2" onclick="triggerSearch()">بحث</button>
+                                        <button type="button" class="btn cs-btn v2"
+                                            onclick="triggerSearch()">{{ __('site.searchB') }}</button>
                                     </div>
                                 </div>
                             </form>
                             <div class="suggestions wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <h4>إقتراحات</h4>
+                                <h4>{{ __('site.suggestions') }}</h4>
                                 <div class="d-flex flex-wrap gap-1">
                                     @foreach ($mixedData as $item)
                                         <div class="suggestion wow fadeInUp" onclick="openDetails(this)"
@@ -82,8 +80,9 @@
             <div class="container">
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>التخصصات الطبية</h2>
-                    <a href="{{ route('specializations') }}" class="btn cs-btn">عرض كل التخصصات</a>
+                    <h2>{{ __('site.medical_specialties') }}</h2>
+                    <a href="{{ route('specializations') }}" class="btn cs-btn">{{ __('site.show') }}
+                        {{ __('site.all') }} {{ __('site.specializations') }} </a>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -113,8 +112,9 @@
             <div class="container">
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>مستشفيات ننصح بها</h2>
-                    <a href="{{ route('hostpial') }}" class="btn cs-btn">عرض كل المستشفيات</a>
+                    <h2>{{ __('site.recommended_hospitals') }} </h2>
+                    <a href="{{ route('hostpial') }}" class="btn cs-btn"> {{ __('site.show') }}
+                        {{ __('site.all') }} {{ __('site.hospitels') }} </a>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -161,8 +161,9 @@
             <div class="container">
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>نخبة من الأخصائيين</h2>
-                    <a href="{{ route('doctors') }}" class="btn cs-btn">عرض كل الأخصائيين</a>
+                    <h2>{{ __('site.group_dr') }} </h2>
+                    <a href="{{ route('doctors') }}" class="btn cs-btn"> {{ __('site.show') }}
+                        {{ __('site.all') }} {{ __('site.doctors') }} </a>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -195,7 +196,8 @@
                                             <span class="ml-1">{{ $average }}</span>
                                         </div>
                                         <p>
-                                            طبيب {{ $doctor->specialization->name }} - {{ $doctor->nationalitie->name }}
+                                            {{ __('site.dr') }} {{ $doctor->specialization->name }} -
+                                            {{ $doctor->nationalitie->name }}
                                             <hr>{{ $doctor->bio }}
                                         </p>
                                     </div>
@@ -216,9 +218,10 @@
                 <div class="content">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-lg-4">
-                            <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">إحصائيات وأرقام</h3>
-                            <h6 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">الأرقام تخبرك عنا بشكل
-                                أكبر</h6>
+                            <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                {{ __('site.statistics_and_figures') }}</h3>
+                            <h6 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">{{ __('site.num') }}
+                            </h6>
                         </div>
                         <div class="col-lg-auto col-md-3 col-6">
                             <div class="number-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
@@ -248,7 +251,7 @@
                                     </svg>
                                 </figure>
                                 <h4>{{ $hostpials->count() }} +</h4>
-                                <h6>مستشفيات</h6>
+                                <h6>{{ __('site.hospitels') }}</h6>
                             </div>
                         </div>
                         <div class="col-lg-auto col-md-3 col-6">
@@ -271,7 +274,7 @@
 
                                 </figure>
                                 <h4>{{ $doctors->count() }}+</h4>
-                                <h6>أخصائيين</h6>
+                                <h6>{{ __('site.doctors') }}</h6>
                             </div>
                         </div>
                         <div class="col-lg-auto col-md-3 col-6">
@@ -291,7 +294,7 @@
 
                                 </figure>
                                 <h4>{{ $specializations->count() }}+</h4>
-                                <h6>تخصصات</h6>
+                                <h6>{{ __('site.specializations') }}</h6>
                             </div>
                         </div>
                         <div class="col-lg-auto col-md-3 col-6">
@@ -311,7 +314,7 @@
 
                                 </figure>
                                 <h4>{{ $op }}+</h4>
-                                <h6>مستفيدين</h6>
+                                <h6>{{ __('site.hospitels') }}</h6>
                             </div>
                         </div>
                         <div class="col-lg-auto col-md-3 col-6">
@@ -330,7 +333,7 @@
                                     </svg>
                                 </figure>
                                 <h4>{{ $ratings->count() }}+</h4>
-                                <h6>تقييمات</h6>
+                                <h6>{{ __('site.reviews') }}</h6>
                             </div>
                         </div>
                     </div>
@@ -343,7 +346,7 @@
         <section class="why-rightguide-section">
             <div class="container">
                 <div class="main-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>لماذا تختار رايت جايد؟</h2>
+                    <h2>{{ __('site.Why_choose_Right_Guide') }} </h2>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -376,6 +379,13 @@
                 <div class="content">
                     @foreach ($contents as $content)
                         @if ($content->title == 'طلب استشارة')
+                            @php
+                                $contentTranslation = $content->translations()->where('locale', 'en')->first();
+                                $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
+                                $contentTranslation = $contentTranslation
+                                    ? json_decode($contentTranslation->content)->content
+                                    : null;
+                            @endphp
                             <div class="row align-items-center">
                                 <div class="col-lg-2">
                                     <figure>
@@ -386,15 +396,16 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                                        {{ $content->title }}
+                                        {{ app()->getLocale() == 'en' ? $title : $content->title }}
                                     </h4>
                                     <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                        {!! $content->content !!}
+                                        {!! app()->getLocale() == 'en' ? $contentTranslation : $content->content !!}
                                     </p>
                                 </div>
                                 <div class="col-lg-3 mx-auto">
                                     <a href="{{ $content->link }}" class="btn cs-btn wow fadeInUp"
-                                        data-wow-duration="1s" data-wow-delay="0.3s"> {{ $content->title }}</a>
+                                        data-wow-duration="1s" data-wow-delay="0.3s">
+                                        {{ app()->getLocale() == 'en' ? $title : $content->title }}</a>
                                 </div>
                             </div>
                             @break
@@ -410,7 +421,7 @@
         <section class="rates-stories-section">
             <div class="container">
                 <div class="main-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>قصص وتقييمات</h2>
+                    <h2> {{ __('site.stories_and_reviews') }}</h2>
                 </div>
                 <div class="content">
                     {{-- <div class="owl-carousel rates-slider owl-slider">
@@ -520,6 +531,13 @@
             <div class="container">
                 @foreach ($contents as $content)
                     @if ($content->title == 'طلب خدمة')
+                        @php
+                            $contentTranslation = $content->translations()->where('locale', 'en')->first();
+                            $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
+                            $contentTranslation = $contentTranslation
+                                ? json_decode($contentTranslation->content)->content
+                                : null;
+                        @endphp
                         <div class="content">
                             <div class="row align-items-center">
                                 <div class="col-lg-2">
@@ -531,14 +549,15 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                                        {{ $content->title }} </h4>
+                                        {{ app()->getLocale() == 'en' ? $title : $content->title }} </h4>
                                     <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                        {!! $content->content !!}
+                                        {!! app()->getLocale() == 'en' ? $contentTranslation : $content->content !!}
                                     </p>
                                 </div>
                                 <div class="col-lg-3 mx-auto">
                                     <a href="{{ $content->link }}" class="btn cs-btn wow fadeInUp"
-                                        data-wow-duration="1s" data-wow-delay="0.3s">ارسل طلب الأن</a>
+                                        data-wow-duration="1s" data-wow-delay="0.3s">
+                                        {{ app()->getLocale() == 'en' ? $title : $content->title }} </a>
                                 </div>
                             </div>
                         </div>
@@ -553,8 +572,9 @@
             <div class="container">
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>أفضل العروض</h2>
-                    <a href="{{ route('offers') }}" class="btn cs-btn">عرض كل العروض</a>
+                    <h2>{{ __('site.best_offers') }}</h2>
+                    <a href="{{ route('offers') }}" class="btn cs-btn"> {{ __('site.show') }}
+                        {{ __('site.all') }} {{ __('site.offers') }} </a>
                 </div>
                 <div class="content">
                     <div class="row">
@@ -566,7 +586,7 @@
                                             <img src="{{ asset('assets/front_end/images/offer-1.png') }}" alt=""
                                                 srcset="">
                                             <div class="discount">
-                                                ‏{{ intval($offer->discount_value) }}% خصم
+                                                ‏{{ intval($offer->discount_value) }}% {{ __('site.discount') }}
                                             </div>
                                         </figure>
                                         <div class="offer-card-body">
@@ -594,20 +614,27 @@
         <section class="standers-section">
             <div class="container">
                 <div class="main-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>معايير إختيار المستشفى</h2>
+                    <h2>{{ __('site.hospital_selection_criteria') }}</h2>
                 </div>
                 <div class="content">
                     <div class="row">
                         @foreach ($contents->where('link', 'hospital_criteria')->take(6) as $content)
+                            @php
+                                $contentTranslation = $content->translations()->where('locale', 'en')->first();
+                                $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
+                                $contentTranslation = $contentTranslation
+                                    ? json_decode($contentTranslation->content)->content
+                                    : null;
+                            @endphp
                             <div class="col-lg-4 col-md-6">
                                 <div class="standers-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                     <figure>
                                         <img src="{{ asset('uploads/contents/' . ($content->image->image ?? 'default.jpg')) }}"
                                             alt="" srcset="">
                                     </figure>
-                                    <h4> {{ $content->title }} </h4>
+                                    <h4> {{ app()->getLocale() == 'en' ? $title : $content->title }}</h4>
                                     <p>
-                                        {!! $content->content !!}
+                                        {!! app()->getLocale() == 'en' ? $contentTranslation : $content->content !!}
                                     </p>
                                 </div>
                             </div>
@@ -623,6 +650,13 @@
             <div class="container">
                 @foreach ($contents as $content)
                     @if ($content->title == 'تواصل معنا')
+                        @php
+                            $contentTranslation = $content->translations()->where('locale', 'en')->first();
+                            $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
+                            $contentTranslation = $contentTranslation
+                                ? json_decode($contentTranslation->content)->content
+                                : null;
+                        @endphp
                         <div class="content">
                             <div class="row align-items-center">
                                 <div class="col-lg-2">
@@ -634,14 +668,15 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                                        {{ $content->titel }} </h4>
+                                        {{ app()->getLocale() == 'en' ? $title : $content->title }} </h4>
                                     <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                        {!! $content->content !!}
+                                        {!! app()->getLocale() == 'en' ? $contentTranslation : $content->content !!}
                                     </p>
                                 </div>
                                 <div class="col-lg-3 mx-auto">
                                     <a href="{{ $content->link }}" class="btn cs-btn wow fadeInUp"
-                                        data-wow-duration="1s" data-wow-delay="0.3s"> {{ $content->title }} </a>
+                                        data-wow-duration="1s" data-wow-delay="0.3s">
+                                        {{ app()->getLocale() == 'en' ? $title : $content->title }} </a>
                                 </div>
                             </div>
                         </div>
@@ -657,28 +692,40 @@
             <div class="container">
                 <div class="main-title d-flex flex-wrap justify-content-between align-items-center wow fadeInUp"
                     data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>من المدونة</h2>
+                    <h2>{{ __('site.blog') }}</h2>
                     {{-- <a href="blog.html" class="btn cs-btn">عرض كل المقالات</a> --}}
                 </div>
                 <div class="content">
                     <div class="row">
                         @foreach ($contents->where('link', 'blog')->take(3) as $content)
+                            @php
+                                $contentTranslation = $content->translations()->where('locale', 'en')->first();
+                                $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
+                                $contentTranslation = $contentTranslation
+                                    ? json_decode($contentTranslation->content)->content
+                                    : null;
+                            @endphp
                             <div class="col-lg-4 col-md-6">
                                 <a href="{{ route('blog.details', $content->id) }}">
                                     <div class="article-card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
                                         <figure style="width:100%; height:220px; overflow:hidden; border-radius:12px;">
                                             <img src="{{ asset('uploads/contents/' . ($content->image->image ?? 'default.jpg')) }}"
-                                                alt="" style=" width:100%; height:100%; object-fit:cover; object-position:center; display:block;">
+                                                alt=""
+                                                style=" width:100%; height:100%; object-fit:cover; object-position:center; display:block;">
                                         </figure>
                                         <div class="article-card-body">
                                             <h6>
                                                 {{ $content->created_at->translatedFormat('d F، Y') }}
                                             </h6>
 
-                                            <h4>{{ $content->title }}</h4>
+                                            <h4> {{ app()->getLocale() == 'en' ? $title : $content->title }}</h4>
 
                                             <p>
-                                                {{ \Illuminate\Support\Str::words(strip_tags($content->content), 20, '...') }}
+                                                @if (app()->getLocale() == 'en')
+                                                    {{ \Illuminate\Support\Str::words(strip_tags($contentTranslation), 20, '...') }}
+                                                @else
+                                                    {{ \Illuminate\Support\Str::words(strip_tags($content->content), 20, '...') }}
+                                                @endif
                                             </p>
                                         </div>
                                     </div>
@@ -696,38 +743,38 @@
         <section class="our-partners-section">
             <div class="container">
                 <div class="main-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
-                    <h2>شركاؤنا في النجاح</h2>
+                    <h2> {{ __('site.our_partners_in_success') }} </h2>
                 </div>
                 <div class="content">
                     <div class="d-flex align-items-center flex-wrap gap-3">
                         <div class="partner-card">
                             <figure class="scale">
-                                <img src="{{ asset('assets/front_end/images/partner-1.png') }}" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.1s" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/partner-1.png') }}" class="wow zoomIn"
+                                    data-wow-duration="1s" data-wow-delay="0.1s" alt="" srcset="">
                             </figure>
                         </div>
                         <div class="partner-card">
                             <figure class="scale">
-                                <img src="{{ asset('assets/front_end/images/partner-2.png') }}" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.2s" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/partner-2.png') }}" class="wow zoomIn"
+                                    data-wow-duration="1s" data-wow-delay="0.2s" alt="" srcset="">
                             </figure>
                         </div>
                         <div class="partner-card">
                             <figure class="scale">
-                                <img src="{{ asset('assets/front_end/images/partner-3.png') }}" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.3s" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/partner-3.png') }}" class="wow zoomIn"
+                                    data-wow-duration="1s" data-wow-delay="0.3s" alt="" srcset="">
                             </figure>
                         </div>
                         <div class="partner-card">
                             <figure class="scale">
-                                <img src="{{ asset('assets/front_end/images/partner-4.png') }}" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.4s" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/partner-4.png') }}" class="wow zoomIn"
+                                    data-wow-duration="1s" data-wow-delay="0.4s" alt="" srcset="">
                             </figure>
                         </div>
                         <div class="partner-card">
                             <figure class="scale">
-                                <img src="{{ asset('assets/front_end/images/partner-5.png') }}" class="wow zoomIn" data-wow-duration="1s"
-                                    data-wow-delay="0.5s" alt="" srcset="">
+                                <img src="{{ asset('assets/front_end/images/partner-5.png') }}" class="wow zoomIn"
+                                    data-wow-duration="1s" data-wow-delay="0.5s" alt="" srcset="">
                             </figure>
                         </div>
                     </div>
@@ -740,7 +787,9 @@
         <section class="mailinglist-section">
             <div class="container">
                 <div class="content">
-                    <h4>إنضم للقائمة البريدية ليصلك كل جديد.</h4>
+                    <h4>
+                        {{ __('site.con_l') }}
+                    </h4>
                     <form action="#" method="post">
                         <div class="cs-search-input">
                             <span>
@@ -760,8 +809,9 @@
                                 </svg>
 
                             </span>
-                            <input type="text" class="form-control custom-input" placeholder="أدخل بريدك الإلكتروني">
-                            <button type="button" class="btn cs-btn v2">إشتراك</button>
+                            <input type="text" class="form-control custom-input"
+                                placeholder="{{ __('site.enter_your_email_address') }}">
+                            <button type="button" class="btn cs-btn v2">{{ __('site.subscription') }}</button>
                         </div>
                     </form>
                 </div>

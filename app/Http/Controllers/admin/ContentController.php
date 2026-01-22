@@ -32,13 +32,15 @@ class ContentController extends Controller
     {
         $request->validate([
             'title'   => 'required|string|max:255',
+            'title_en' => 'nullable|string|max:255',
             'content' => 'required|string',
+            'content_en' => 'nullable|string',
             'link'    => 'nullable|max:1000',
             'id'      => 'nullable|integer|exists:contents,id',
         ]);
         // dd("dd");
         $data = $request->only(['title', 'content', 'link']);
-
+        // dd($request->id);
         if ($request->id) {
             $content = Content::findOrFail($request->id);
             $content->update($data);
@@ -50,16 +52,36 @@ class ContentController extends Controller
                     ]);
                 }
             }
+            if ($request->has('title_en') || $request->has('content_en')) {
+                $content->translations()->updateOrCreate(
+                    ['locale' => 'en'],
+                    [
+                        'content' => json_encode([ // استخدام json_encode لتحويل المصفوفة إلى نص
+                            'title' => $request->title_en ?? $content->title, // إذا كانت الترجمة غير موجودة، استخدم القيمة الأصلية
+                            'content' => $request->content_en ?? $content->content // نفس الشيء هنا
+                        ])
+                    ]
+                );
+            }
             $msg = 'Content updated successfully';
         } else {
             $content = Content::create($data);
-             if ($request->has('uploaded_images')) {
+            if ($request->has('uploaded_images')) {
                 $images = array_filter($request->uploaded_images);
                 foreach ($images as $filename) {
                     $content->image()->create([
                         'image' => $filename
                     ]);
                 }
+            }
+            if ($request->has('title_en') || $request->has('content_en')) {
+                $content->translations()->create([
+                    'locale' => 'en',
+                    'content' => json_encode([ // استخدام json_encode لتحويل المصفوفة إلى نص
+                        'title' => $request->title_en ?? $content->title, // استخدم القيمة الإنجليزية إذا كانت موجودة
+                        'content' => $request->content_en ?? $content->content // استخدم القيمة الإنجليزية إذا كانت موجودة
+                    ])
+                ]);
             }
             $msg = 'Content created successfully';
         }
@@ -99,6 +121,7 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
+        $content->translations()->delete();
         $content->delete();
 
         return response()->json([

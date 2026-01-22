@@ -14,4 +14,8 @@ class Content extends Model
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+    public function translations()
+    {
+        return $this->morphMany(Translation::class, 'translatable');
+    }
 }

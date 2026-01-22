@@ -22,7 +22,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <li class="breadcrumb-item">
@@ -36,7 +36,7 @@
                                 </svg>
 
                             </span>
-                            <span>الخدمات الصحية</span>
+                            <span>{{ __('site.health_services') }}</span>
                         </a>
                     </li>
                     <span>
@@ -47,7 +47,7 @@
                         </svg>
 
                     </span>
-                    <li class="breadcrumb-item active" aria-current="page">التأمين الصحي</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.health_insurance') }}</li>
                 </ol>
             </nav>
 
@@ -65,52 +65,52 @@
                     <div class="col-lg-7">
                         {!! $content->content !!}
                     </div>
-                    <div class="col-lg-4  offset-lg-1">
-                        <div class="form-hospital">
-                            <h2>احصل على استشارة مجانية</h2>
-                            <form action="#" method="get">
-                                <div class="form-group mb-2">
-                                    <label for="">الاسم كاملا</label>
-                                    <input type="text" class="form-control cs-input" name="" id=""
-                                        placeholder="الاسم كاملا">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">البريد الالكتروني</label>
-                                    <input type="email" class="form-control cs-input" name="" id=""
-                                        placeholder="البريد الالكتروني">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">رقم الجوال</label>
-                                    <input type="text" class="form-control cs-input" name="" id=""
-                                        placeholder="رقم الجوال">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">التخصص</label>
-                                    <select name="" id="" class="form-select cs-input">
-                                        <option value="">اختر التخصص</option>
-                                    </select>
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">المرض</label>
-                                    <input type="text" class="form-control cs-input" name="" id=""
-                                        placeholder="ادخل المرض">
-                                </div>
-                                <div class="form-group mb-2">
-                                    <label for="">الوصف</label>
-                                    <textarea name="" id="" class="form-control cs-input" cols="30" rows="5"
-                                        placeholder="ادخل وصف مختصر..."></textarea>
-                                </div>
-                                <div class="form-check mt-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        أنا أوافق على <a href="#" class="policy">شروط الإستخدام و
-                                            سياسة الخصوصية</a>
-                                    </label>
-                                </div>
-                                <button type="button" class="btn cs-btn v2 w-100 mt-4">أرسل الطلب</button>
-                            </form>
-                        </div>
-                    </div>
+                        {{-- <div class="col-lg-4  offset-lg-1">
+                            <div class="form-hospital">
+                                <h2>احصل على استشارة مجانية</h2>
+                                <form action="#" method="get">
+                                    <div class="form-group mb-2">
+                                        <label for="">الاسم كاملا</label>
+                                        <input type="text" class="form-control cs-input" name="" id=""
+                                            placeholder="الاسم كاملا">
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="">البريد الالكتروني</label>
+                                        <input type="email" class="form-control cs-input" name="" id=""
+                                            placeholder="البريد الالكتروني">
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="">رقم الجوال</label>
+                                        <input type="text" class="form-control cs-input" name="" id=""
+                                            placeholder="رقم الجوال">
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="">التخصص</label>
+                                        <select name="" id="" class="form-select cs-input">
+                                            <option value="">اختر التخصص</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="">المرض</label>
+                                        <input type="text" class="form-control cs-input" name="" id=""
+                                            placeholder="ادخل المرض">
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label for="">الوصف</label>
+                                        <textarea name="" id="" class="form-control cs-input" cols="30" rows="5"
+                                            placeholder="ادخل وصف مختصر..."></textarea>
+                                    </div>
+                                    <div class="form-check mt-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            أنا أوافق على <a href="#" class="policy">شروط الإستخدام و
+                                                سياسة الخصوصية</a>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn cs-btn v2 w-100 mt-4">أرسل الطلب</button>
+                                </form>
+                            </div>
+                        </div> --}}
                 </div>
             </div>
         </div>

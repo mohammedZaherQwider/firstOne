@@ -164,7 +164,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <span>الرئيسية</span>
+                            <span>{{ __('front.main') }}</span>
                         </a>
                     </li>
                     <span>
@@ -174,12 +174,14 @@
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
                         </svg>
                     </span>
-                    <li class="breadcrumb-item active" aria-current="page">العروض</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.offers') }}</li>
                 </ol>
             </nav>
 
             <div class="main-title">
-                <h2>عروض طبية مميزة</h2>
+                <h2>
+                    {{ __('site.special_medical_offers') }}
+                </h2>
             </div>
         </div>
 
@@ -187,8 +189,8 @@
             <div class="container">
                 <div class="content">
                     <div class="d-flex justify-content-between">
-                        <h3>عوامل الفلترة</h3>
-                        <a href="{{ route('offers') }}" class="clear-all">امسح الكل</a>
+                        <h3>{{ __('site.filtering_factors') }}</h3>
+                        <a href="{{ route('offers') }}" class="clear-all">{{ __('site.clear_all') }}</a>
                     </div>
 
                     <div class="form">
@@ -198,18 +200,18 @@
                                 {{-- اسم العرض --}}
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>العرض</label>
+                                        <label>{{ __('site.offer') }}</label>
                                         <input type="text" name="offer_name" class="form-control custom-input"
-                                            placeholder="ابحث عن عرض" value="{{ request('offer_name') }}">
+                                            placeholder="{{ __('site.searchB') }} {{ __('site.for') }} {{ __('site.offer') }}" value="{{ request('offer_name') }}">
                                     </div>
                                 </div>
 
                                 {{-- التخصص --}}
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>التخصص</label>
+                                        <label>{{ __('site.specialization') }}</label>
                                         <select name="specialization_id" class="form-select custom-input">
-                                            <option value="">اختر التخصص</option>
+                                            <option value="">{{ __('site.choose') }} {{ __('site.specialization') }}</option>
                                             @foreach ($specializations as $specialization)
                                                 <option value="{{ $specialization->id }}"
                                                     {{ request('specialization_id') == $specialization->id ? 'selected' : '' }}>
@@ -223,9 +225,9 @@
                                 {{-- المستشفى --}}
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>المستشفى</label>
+                                        <label>{{ __('site.hospitel') }}</label>
                                         <select name="hospital_id" class="form-select custom-input">
-                                            <option value="">اختر المستشفى</option>
+                                            <option value="">{{ __('site.choose') }} {{ __('site.hospitel') }}</option>
                                             @foreach ($hospitals as $hospital)
                                                 <option value="{{ $hospital->id }}"
                                                     {{ request('hospital_id') == $hospital->id ? 'selected' : '' }}>
@@ -239,9 +241,9 @@
                                 {{-- الدكتور --}}
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>الدكتور</label>
+                                        <label>{{ __('site.doctor') }}</label>
                                         <select name="doctor_id" class="form-select custom-input">
-                                            <option value="">اختر الدكتور</option>
+                                            <option value="">{{ __('site.choose') }} {{ __('site.doctor') }}</option>
                                             @foreach ($doctors as $doctor)
                                                 <option value="{{ $doctor->id }}"
                                                     {{ request('doctor_id') == $doctor->id ? 'selected' : '' }}>
@@ -255,7 +257,7 @@
                                 {{-- السعر من/إلى (اختياري) --}}
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>السعر من</label>
+                                        <label>{{ __('site.price') }} {{ __('site.from') }}</label>
                                         <input type="number" name="min_price" class="form-control custom-input"
                                             value="{{ request('min_price') }}">
                                     </div>
@@ -263,7 +265,7 @@
 
                                 <div class="col-lg-auto col-md-6">
                                     <div class="form-group">
-                                        <label>السعر إلى</label>
+                                        <label>{{ __('site.price') }} {{ __('site.to') }}</label>
                                         <input type="number" name="max_price" class="form-control custom-input"
                                             value="{{ request('max_price') }}">
                                     </div>
@@ -271,7 +273,7 @@
 
                                 {{-- زر البحث --}}
                                 <div class="col-lg-auto col-md-6">
-                                    <button type="submit" class="btn cs-btn v2">بحث</button>
+                                    <button type="submit" class="btn cs-btn v2">{{ __('site.searchB') }}</button>
                                 </div>
 
                             </div>
@@ -310,7 +312,7 @@
                                         </div>
 
                                         <span class="badge-discount">
-                                            خصم {{ rtrim(rtrim(number_format($discount, 2), '0'), '.') }}%
+                                            {{ __('site.discount') }} {{ rtrim(rtrim(number_format($discount, 2), '0'), '.') }}%
                                         </span>
                                     </div>
 
@@ -340,7 +342,7 @@
 
                                             <div class="meta-item">
                                                 <span>🧾</span>
-                                                <span>رقم العرض: #{{ $offer->id }}</span>
+                                                <span>{{ __('site.number') }} {{ __('site.offer') }}: #{{ $offer->id }}</span>
                                             </div>
 
                                             <div class="meta-item">
@@ -353,7 +355,7 @@
                                             {{-- <a href="{{ route('offer_details', $offer->id) }}" class="btn cs-btn">
                                                 عرض التفاصيل
                                             </a> --}}
-                                            <a href="{{ route('pay', $offer) }}" class="btn cs-btn v2">حجز العرض</a>
+                                            <a href="{{ route('pay', $offer) }}" class="btn cs-btn v2">{{ __('site.reservation') }} {{ __('site.offer') }}</a>
                                         </div>
                                     </div>
 
@@ -362,14 +364,14 @@
                         @empty
                             <div class="col-12">
                                 <div class="alert alert-warning mb-0">
-                                    لا يوجد عروض مطابقة للبحث الحالي.
+                                   {{ __('site.no_offers_matched_the_current_search') }}
                                 </div>
                             </div>
                         @endforelse
 
-                        <div class="col-12 mt-2">
+                        {{-- <div class="col-12 mt-2">
                             {{ $offers->links() }}
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

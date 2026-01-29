@@ -1,13 +1,21 @@
 @extends('back_end.layout.app')
 @section('content')
     <!--begin::Table-->
-    <div class="card card-flush mt-6 mt-xl-9">
+    <style>
+        #kt_content {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: -10px;
+        }
+    </style>
+    <div class="card card-flush mt-6 mt-xl-9" id="kt_content">
         <!--begin::Card header-->
         <div class="card-header mt-5">
             <!--begin::Card title-->
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">Operations Spendings</h3>
-                <div class="fs-6 text-gray-400">Total ${{ $operations->where('pay', 1)->sum('price') }} sepnt so far</div>
+                <h3 class="fw-bolder mb-1">{{ __('site.operations') }} </h3>
+                <div class="fs-6 text-gray-400">{{ __('back.Total') }} ${{ $operations->where('pay', 1)->sum('price') }} {{ __('back.sepnt so far') }}</div>
             </div>
             <!--begin::Card title-->
             <!--begin::Card toolbar-->
@@ -16,11 +24,11 @@
                 <div class="me-6 my-1">
                     <select id="kt_filter_year" name="year" data-control="select2" data-hide-search="true"
                         class="w-125px form-select form-select-solid form-select-sm">
-                        <option value="All" selected="selected">All time</option>
-                        <option value="thisyear">This year</option>
-                        <option value="thismonth">This month</option>
-                        <option value="lastmonth">Last month</option>
-                        <option value="last90days">Last 90 days</option>
+                        <option value="All" selected="selected">{{ __('back.all') }} {{ __('back.time') }}</option>
+                        <option value="thisyear">{{ __('back.this_year') }}</option>
+                        <option value="thismonth">{{ __('back.this_month') }}</option>
+                        <option value="lastmonth">{{ __('back.last_month') }}</option>
+                        <option value="last90days">{{ __('back.last_90_days') }}</option>
                     </select>
                 </div>
                 <!--end::Select-->
@@ -28,11 +36,11 @@
                 <div class="me-4 my-1">
                     <select id="kt_filter_orders" name="orders" data-control="select2" data-hide-search="true"
                         class="w-125px form-select form-select-solid form-select-sm">
-                        <option value="All" selected="selected">All Orders</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Declined">Declined</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="In Transit">In Transit</option>
+                        <option value="All" selected="selected">{{ __('back.all_orders') }}</option>
+                        <option value="Approved">{{ __('back.approved') }}</option>
+                        <option value="Declined">{{ __('back.declined') }}</option>
+                        <option value="In Progress">{{ __('back.in_progress') }}</option>
+                        <option value="In Transit">{{ __('back.in_transit') }}</option>
                     </select>
                 </div>
                 <!--end::Select-->
@@ -51,7 +59,7 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" id="kt_filter_search"
-                        class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="Search Order" />
+                        class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="{{ __('back.search_order') }}" />
                 </div>
                 <!--end::Search-->
             </div>
@@ -68,18 +76,18 @@
                     <!--begin::Head-->
                     <thead class="fs-7 text-gray-400 text-uppercase">
                         <tr>
-                            <th class="min-w-250px">Patient Name / ID</th>
-                            <th class="min-w-150px">Insert By</th>
-                            <th class="min-w-90px">Hospital</th>
-                            <th class="min-w-90px">Doctor</th>
-                            <th class="min-w-90px">Specialization</th>
-                            <th class="min-w-90px">Operation Name</th>
-                            <th class="min-w-90px">Operation Date</th>
-                            <th class="min-w-90px">Operation Time</th>
-                            <th class="min-w-90px">Operation Schedule</th>
-                            <th class="min-w-90px">Status </th>
-                            <th class="min-w-90px">Price </th>
-                            <th class="min-w-50px text-end">Actions</th>
+                            <th class="min-w-250px">{{ __('back.patient_name') }}</th>
+                            <th class="min-w-150px">{{ __('back.insert_by') }}</th>
+                            <th class="min-w-90px">{{ __('back.hospital') }}</th>
+                            <th class="min-w-90px">{{ __('back.doctor') }}</th>
+                            <th class="min-w-90px">{{ __('back.specialization') }}</th>
+                            <th class="min-w-90px">{{ __('back.operation_name') }}</th>
+                            <th class="min-w-90px">{{ __('back.operation_date') }}</th>
+                            <th class="min-w-90px">{{ __('back.operation_time') }}</th>
+                            <th class="min-w-90px">{{ __('back.operation_schedule') }}</th>
+                            <th class="min-w-90px">{{ __('back.status') }} </th>
+                            <th class="min-w-90px">{{ __('back.price') }} </th>
+                            <th class="min-w-50px text-end">{{ __('back.actions') }}</th>
                         </tr>
                     </thead>
                     <!--end::Head-->

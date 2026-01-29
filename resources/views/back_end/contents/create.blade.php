@@ -12,54 +12,60 @@
                     @endif --}}
 
                     <h1 class="fw-bolder text-dark mb-9">
-                        {{ isset($content) ? 'Edit Content' : 'Add Content' }}
+                        {{ isset($content) ? __('back.edit_content') : __('back.add_content') }}
                     </h1>
 
                     <div class="row mb-5">
 
                         <!-- Title -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Title</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.title') }}</label>
                             <input type="text" class="form-control form-control-solid" name="title"
                                 value="{{ $content->title ?? '' }}">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
+                        @if (isset($content))
                         @php
                             $contentTranslation = $content->translations()->where('locale', 'en')->first();
                             $title = $contentTranslation ? json_decode($contentTranslation->content)->title : null;
-                            $contentTranslation = $contentTranslation ? json_decode($contentTranslation->content)->content : null;
+                            $contentTranslation = $contentTranslation
+                            ? json_decode($contentTranslation->content)->content
+                            : null;
                         @endphp
+
+                        @endif
                         <!-- Translation Title (English) -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Title (English)</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.title_en') }}</label>
                             <input type="text" class="form-control form-control-solid" name="title_en"
-                                {{-- value="{{ old('title_en', isset($content) ? optional($content->translations()->where('locale', 'en')->first())->content['title'] ?? '' : '') }}" --}} value="{{ $title ?? '' }}">
+                                value="{{ $title ?? '' }}">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
 
                         <!-- Type -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Type</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.type') }}</label>
                             <select name="type_selector" id="type_selector" class="form-select form-select-solid">
-                                <option value="" selected disabled>Choose Type : </option>
+                                <option value="" selected disabled>{{ __('back.choose_type') }} </option>
                                 <option value="why_choose_us"
                                     {{ isset($content) && $content->link === 'why_choose_us' ? 'selected' : '' }}>
-                                    Why Choose Us
+                                    {{ __('back.why_choose_us') }}
                                 </option>
                                 <option value="banner"
                                     {{ isset($content) && $content->link && $content->link !== 'why_choose_us' && $content->link !== 'hospital_criteria' && $content->link !== 'blog' ? 'selected' : '' }}>
-                                    Banner
+                                    {{ __('back.banner') }}
                                 </option>
                                 <option value="hospital_criteria"
                                     {{ isset($content) && $content->link === 'hospital_criteria' ? 'selected' : '' }}>
-                                    معايير اختيار المستشفى
+                                    {{ __('back.hospital_criteria') }}
                                 </option>
-                                <option value="blog" {{ isset($content) && $content->link === 'blog' ? 'selected' : '' }}>
-                                    مدونة
+                                <option value="blog"
+                                    {{ isset($content) && $content->link === 'blog' ? 'selected' : '' }}>
+                                    {{ __('back.blog') }}
                                 </option>
                                 <option value="service"
                                     {{ isset($content) && $content->link === 'service' ? 'selected' : '' }}>
-                                    التأمين الصحي
+                                    {{ __('back.service') }}
                                 </option>
                             </select>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -67,7 +73,7 @@
 
                         <!-- Link (Hidden by default, shown only for banner) -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3" id="link_wrapper" style="display:none;">
-                            <label class="fs-5 fw-bold mb-2">Link</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.link') }}</label>
                             <input type="url" class="form-control form-control-solid" id="link_input_visible"
                                 placeholder="https://example.com">
                             <div class="fv-plugins-message-container invalid-feedback"></div>
@@ -80,7 +86,7 @@
 
                         <!-- Content -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Content</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.content') }}</label>
                             <textarea name="content" id="summernote">
                                {{ old('content', $content->content ?? '') }}
                             </textarea>
@@ -88,7 +94,7 @@
                         </div>
                         <!-- Translation Content (English) -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Content (English)</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.content_en') }}</label>
                             <textarea name="content_en" id="summernote_en">
                                  {{-- {{ old('content_en', isset($content) ? optional($content->translations()->where('locale', 'en')->first())->content['content'] ?? '' : '') }} --}}
                                 {{ old('content', $contentTranslation ?? '') }}
@@ -97,7 +103,7 @@
                         </div>
                         <!-- Images (Morph) -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Image</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.image') }}</label>
 
                             <div id="myDropzone" class="dropzone">
                                 @if (isset($content) && $content->images && $content->images->isNotEmpty())
@@ -121,8 +127,8 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="kt_contact_submit_button">
-                        <span class="indicator-label">Save</span>
-                        <span class="indicator-progress">Please wait...
+                        <span class="indicator-label">{{ __('back.save') }}</span>
+                        <span class="indicator-progress">{{ __('back.please_wait') }}...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                     </button>
@@ -171,58 +177,6 @@
         });
     </script>
     <script>
-        // const typeSelector = document.getElementById('type_selector');
-        // const linkWrapper = document.getElementById('link_wrapper');
-        // const linkHidden = document.getElementById('link_hidden');
-        // const linkVisible = document.getElementById('link_input_visible');
-
-        // function syncTypeToLink() {
-        //     const type = typeSelector.value;
-
-        //     if (type === 'banner') {
-        //         // show input for user
-        //         linkWrapper.style.display = 'block';
-
-        //         // لو موجود قيمة قديمة (edit) وحابب تظهر للمستخدم
-        //         if (linkHidden.value && !['why_choose_us', 'hospital_criteria', 'blog'].includes(linkHidden.value)) {
-        //             linkVisible.value = linkHidden.value;
-        //         }
-
-        //         // خزّن اللي يكتبه المستخدم في hidden
-        //         linkHidden.value = linkVisible.value || '';
-        //     } else {
-        //         // hide input and set fixed value
-        //         linkWrapper.style.display = 'none';
-        //         linkVisible.value = '';
-        //         linkHidden.value = type; // why_choose_us / hospital_criteria / blog
-        //     }
-        // }
-
-        // // when user changes type
-        // typeSelector.addEventListener('change', syncTypeToLink);
-
-        // // when user types banner link, mirror to hidden
-        // linkVisible.addEventListener('input', function() {
-        //     if (typeSelector.value === 'banner') {
-        //         linkHidden.value = this.value;
-        //     }
-        // });
-
-        // // on load (edit mode)
-        // window.addEventListener('DOMContentLoaded', function() {
-        //     // لو edit وكان link قيمته واحدة من الثوابت، نختارها تلقائياً
-        //     const current = linkHidden.value;
-
-        //     if (['why_choose_us', 'hospital_criteria', 'blog'].includes(current)) {
-        //         typeSelector.value = current;
-        //     } else if (current) {
-        //         // غير هيك اعتبره banner link
-        //         typeSelector.value = 'banner';
-        //         linkVisible.value = current;
-        //     }
-
-        //     syncTypeToLink();
-        // });
         const typeSelector = document.getElementById('type_selector');
         const linkWrapper = document.getElementById('link_wrapper');
         const linkHidden = document.getElementById('link_hidden');
@@ -287,7 +241,7 @@
                 height: 250,
                 dialogsInBody: true,
                 disableResizeEditor: true,
-                placeholder: 'اكتب المحتوى هنا...',
+                placeholder: '{{ __('back.enter_content') }}',
                 toolbar: [
                     ['style', ['bold', 'italic', 'underline']],
                     ['para', ['ul', 'ol']],
@@ -299,7 +253,7 @@
                 height: 250,
                 dialogsInBody: true,
                 disableResizeEditor: true,
-                placeholder: 'Write content here...',
+                placeholder: '{{ __('back.enter_content_en') }}',
                 toolbar: [
                     ['style', ['bold', 'italic', 'underline']],
                     ['para', ['ul', 'ol']],

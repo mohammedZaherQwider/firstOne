@@ -16,11 +16,12 @@
         <div class="card">
             <div class="card-body p-lg-17">
 
-                <form action="{{ route('specializations.store') }}" method="POST" enctype="multipart/form-data" id="specializationForm">
+                <form action="{{ route('specializations.store') }}" method="POST" enctype="multipart/form-data"
+                    id="specializationForm">
                     @csrf
 
                     <h1 class="fw-bolder text-dark mb-9">
-                        {{ isset($specialization) ? 'Edit Specialization' : 'Add Specialization' }}
+                        {{ isset($specialization) ? __('back.edit_specialization') : __('back.add_specialization') }}
                     </h1>
 
                     {{-- hidden id for update --}}
@@ -30,10 +31,10 @@
 
                         {{-- Specialization Name --}}
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2">Specialization Name</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.specialization_name') }}</label>
                             <input type="text" class="form-control form-control-solid" name="name"
                                 value="{{ old('name', $specialization->name ?? '') }}"
-                                placeholder="Enter specialization name">
+                                placeholder="{{ __('back.enter_specialization_name') }}">
 
                             @error('name')
                                 <div class="form-error text-danger mt-1">{{ $message }}</div>
@@ -41,26 +42,29 @@
                         </div>
 
                     </div>
+
                     <!-- Images -->
                     <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                        <label class="fs-5 fw-bold mb-2">Images</label>
+                        <label class="fs-5 fw-bold mb-2">{{ __('back.image') }}</label>
                         <div id="myDropzone" class="dropzone">
                             @if (isset($specialization) && $specialization->image)
                                 <div id="currentImage">
-                                    <img src="{{ asset('uploads/specializations/' . $specialization->image->image) }}" alt="Doctor Image"
-                                        width="120">
+                                    <img src="{{ asset('uploads/specializations/' . $specialization->image->image) }}"
+                                        alt="{{ __('back.specialization_image') }}" width="120">
                                 </div>
                             @endif
                         </div>
                         <div class="fv-plugins-message-container invalid-feedback"></div>
                     </div>
-                    {{--  ضل بس تعديل الصورة  --}}
+
+                    {{--  ضل بس تعديل الصورة --}}
                     <input type="hidden" name="uploaded_images[]" id="uploaded_images"
                         value="{{ isset($specialization) ? $specialization->image?->image : '' }}">
+
                     <button type="submit" class="btn btn-primary">
-                        <span class="indicator-label">Save</span>
+                        <span class="indicator-label">{{ __('back.save') }}</span>
                         <span class="indicator-progress">
-                            Please wait...
+                            {{ __('back.please_wait') }}...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                     </button>
@@ -83,9 +87,11 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
         });
+
         myDropzone.on("sending", function(file, xhr, formData) {
             formData.append("folder", "specializations");
         });
+
         myDropzone.on("success", function(file, response) {
             let input = document.createElement('input');
             input.type = 'hidden';
@@ -95,4 +101,3 @@
         });
     </script>
 @endsection
-

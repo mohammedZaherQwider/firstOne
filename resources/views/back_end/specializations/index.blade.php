@@ -1,23 +1,32 @@
 @extends('back_end.layout.app')
 
 @section('content')
-    <div class="card card-flush mt-6 mt-xl-9">
+    <style>
+        #kt_content {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: -10px;
+        }
+    </style>
+
+    <div class="card card-flush mt-6 mt-xl-9" id="kt_content">
 
         <!-- Card Header -->
         <div class="card-header mt-5">
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">Specializations</h3>
+                <h3 class="fw-bolder mb-1">{{ __('back.specializations') }}</h3>
             </div>
 
             <div class="card-toolbar my-1">
                 <a href="{{ route('specializations.create') }}" class="btn btn-primary btn-sm">
-                    Add Specialization
+                    {{ __('back.add_specialization') }}
                 </a>
 
                 <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" id="kt_filter_search"
                         class="form-control form-control-solid form-select-sm w-150px ps-3"
-                        placeholder="Search Specialization" />
+                        placeholder="{{ __('back.search_specialization') }}" />
                 </div>
             </div>
         </div>
@@ -29,9 +38,9 @@
 
                     <thead class="fs-7 text-gray-400 text-uppercase">
                         <tr>
-                            <th class="min-w-50px">ID</th>
-                            <th class="min-w-200px">Specialization Name</th>
-                            <th class="min-w-50px text-end">Actions</th>
+                            <th class="min-w-50px">{{ __('back.id') }}</th>
+                            <th class="min-w-200px">{{ __('back.specialization_name') }}</th>
+                            <th class="min-w-50px text-end">{{ __('back.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -91,12 +100,12 @@
             let row = e.target.closest('tr');
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to undo this!",
+                title: '{{ __('back.are_you_sure') }}',
+                text: "{{ __('back.you_wont_be_able_to_undo_this') }}",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: '{{ __('back.yes_delete_it') }}',
+                cancelButtonText: '{{ __('back.cancel') }}'
             }).then((result) => {
                 if (result.isConfirmed) {
                     axios.post(url, {

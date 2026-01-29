@@ -30,39 +30,41 @@ use Spatie\Permission\Contracts\Role;
 */
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
-    Route::resource('/doctors', DoctorController::class);
-    Route::get('/doctors-pdf', [DoctorController::class, 'pdf'])->name('pdf');
-    Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
-    Route::post('/delete-old-image', [UploadController::class, 'deleteOldImage'])->name('deleteOldImage');
+        Route::resource('/doctors', DoctorController::class);
+        Route::get('/doctors-pdf', [DoctorController::class, 'pdf'])->name('pdf');
+        Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
+        Route::post('/delete-old-image', [UploadController::class, 'deleteOldImage'])->name('deleteOldImage');
 
-    Route::resource('/hospitals', HospitalController::class);
-    Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage'])
-        ->name('uploadImage');
-
-
-    Route::resource('/cities', CityController::class);
-    Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');
-
-    Route::resource('/operations', OperationController::class);
-
-    Route::resource('/roles', RoleController::class);
-    Route::resource('/users', UserController::class);
-    Route::resource('/offers', OfferController::class);
-    Route::resource('/countries', CountryController::class);
-    Route::resource('/specializations', SpecializationController::class);
-    Route::resource('/contents', ContentController::class);
-    Route::get('/payments', [AdminController::class, 'payment'])->name('payment');
-    Route::delete('/payments/{payment}', [AdminController::class, 'destroy'])->name('payments.destroy');
+        Route::resource('/hospitals', HospitalController::class);
+        Route::post('/hospital/upload-image', [HospitalController::class, 'uploadImage'])
+            ->name('uploadImage');
 
 
+        Route::resource('/cities', CityController::class);
+        Route::get('/cities/{country_id}', [HospitalController::class, 'getCities'])->name('getCities');
+
+        Route::resource('/operations', OperationController::class);
+
+        Route::resource('/roles', RoleController::class);
+        Route::resource('/users', UserController::class);
+        Route::resource('/offers', OfferController::class);
+        Route::resource('/countries', CountryController::class);
+        Route::resource('/specializations', SpecializationController::class);
+        Route::resource('/contents', ContentController::class);
+        Route::get('/payments', [AdminController::class, 'payment'])->name('payment');
+        Route::delete('/payments/{payment}', [AdminController::class, 'destroy'])->name('payments.destroy');
 
 
-    Route::get('/send-Notifications', [AdminController::class, 'notification'])->name('notification');
-    Route::post('/send-Notifications', [AdminController::class, 'send_notification'])->name('send_notification');
-    Route::get('/read-notification/{id}', [AdminController::class, 'read'])->name('read');
 
-    Route::get('/settings', [AdminController::class, 'settings_viwe'])->name('settings_viwe');
-    Route::post('/settings', [AdminController::class, 'settings'])->name('settings');
+
+        Route::get('/send-Notifications', [AdminController::class, 'notification'])->name('notification');
+        Route::post('/send-Notifications', [AdminController::class, 'send_notification'])->name('send_notification');
+        Route::get('/read-notification/{id}', [AdminController::class, 'read'])->name('read');
+
+        Route::get('/settings', [AdminController::class, 'settings_viwe'])->name('settings_viwe');
+        Route::post('/settings', [AdminController::class, 'settings'])->name('settings');
+    });
 });

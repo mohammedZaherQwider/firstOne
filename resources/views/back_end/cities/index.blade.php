@@ -1,22 +1,31 @@
 @extends('back_end.layout.app')
 
 @section('content')
-    <div class="card card-flush mt-6 mt-xl-9">
+    <style>
+        #kt_content {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: -10px;
+        }
+    </style>
+    <div class="card card-flush mt-6 mt-xl-9" id="kt_content">
 
         <!-- Card Header -->
         <div class="card-header mt-5">
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">Cities</h3>
+                <h3 class="fw-bolder mb-1">{{ __('back.cities') }}</h3>
             </div>
 
             <div class="card-toolbar my-1">
                 <a href="{{ route('cities.create') }}" class="btn btn-primary btn-sm">
-                    Add City
+                    {{ __('back.add_city') }}
                 </a>
 
                 <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" id="kt_filter_search"
-                        class="form-control form-control-solid form-select-sm w-150px ps-3" placeholder="Search City" />
+                        class="form-control form-control-solid form-select-sm w-150px ps-3"
+                        placeholder="{{ __('back.search_city') }}" />
                 </div>
             </div>
         </div>
@@ -28,10 +37,10 @@
 
                     <thead class="fs-7 text-gray-400 text-uppercase">
                         <tr>
-                            <th class="min-w-50px">ID</th>
-                            <th class="min-w-200px">City Name</th>
-                            <th class="min-w-200px">Country</th>
-                            <th class="min-w-50px text-end">Actions</th>
+                            <th class="min-w-50px">{{ __('back.id') }}</th>
+                            <th class="min-w-200px">{{ __('back.city_name') }}</th>
+                            <th class="min-w-200px">{{ __('back.country') }}</th>
+                            <th class="min-w-50px text-end">{{ __('back.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -80,12 +89,12 @@
             let row = e.target.closest('tr');
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to undo this!",
+                title: "{{ __('back.confirm_delete_title') }}",
+                text: "{{ __('back.confirm_delete_text') }}",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: "{{ __('back.yes_delete') }}",
+                cancelButtonText: "{{ __('back.cancel') }}"
             }).then((result) => {
                 if (result.isConfirmed) {
                     axios.post(url, {

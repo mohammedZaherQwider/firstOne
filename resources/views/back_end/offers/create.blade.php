@@ -10,6 +10,14 @@
             </ul>
         </div>
     @endif
+    <style>
+        #kt_content_container {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: -10px;
+        }
+    </style>
     <div id="kt_content_container" class="container-xxl">
         <div class="card">
             <div class="card-body p-lg-17">
@@ -17,14 +25,14 @@
                     @csrf
 
                     <h1 class="fw-bolder text-dark mb-9">
-                        {{ isset($offer) ? 'Edit Offer' : 'Add Offer' }}
+                        {{ isset($offer) ?  __('back.edit_offer') : __('back.add_offer') }}
                     </h1>
 
                     <input type="hidden" name="id" value="{{ $offer->id ?? '' }}">
 
                     <div class="row mb-5">
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2">Offer Name</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.offer_name') }}</label>
                             <input type="text" class="form-control form-control-solid" name="name"
                                 value="{{ $offer->name ?? '' }}">
                             @error('name')
@@ -33,7 +41,7 @@
                         </div>
 
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2">Discount Value (%)</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.discount_value') }} (%)</label>
                             <input type="number" class="form-control form-control-solid" name="discount_value"
                                 value="{{ $offer->discount_value ?? '' }}">
                             @error('discount_value')
@@ -42,7 +50,7 @@
                         </div>
 
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2">Price</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.price') }}</label>
                             <input type="number" class="form-control form-control-solid" name="price"
                                 value="{{ $offer->price ?? '' }}" step="0.01">
                             @error('price')
@@ -51,7 +59,7 @@
                         </div>
                         <!-- Images -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Images</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.images') }}</label>
                             <div id="myDropzone" class="dropzone">
                                 @if (isset($offer) && $offer->image)
                                     <div id="currentImage">
@@ -66,7 +74,7 @@
                         <input type="hidden" name="uploaded_images[]" id="uploaded_images"
                             value="{{ isset($offer) ? $offer->image?->image : '' }}">
                         <div class="col-12 fv-row mb-3">
-                            <label>Doctors</label><br>
+                            <label>{{ __('back.doctors') }}</label><br>
                             <ul style="column-count: 3" class="list-unstyled">
                                 @foreach ($doctors as $item)
                                     <li>
@@ -84,7 +92,7 @@
                         </div>
 
                         <div class="col-12 fv-row mb-3">
-                            <label>Hospitals</label><br>
+                            <label>{{ __('back.hospitals') }}</label><br>
                             <ul style="column-count: 3" class="list-unstyled">
                                 @foreach ($hospitals as $item)
                                     <li>
@@ -102,7 +110,7 @@
                         </div>
 
                         <div class="col-12 fv-row mb-3">
-                            <label>Specializations</label><br>
+                            <label>{{ __('back.specializations') }}</label><br>
                             <ul style="column-count: 3" class="list-unstyled">
                                 @foreach ($specializations as $item)
                                     <li>
@@ -122,8 +130,8 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="kt_contact_submit_button">
-                        <span class="indicator-label">Save</span>
-                        <span class="indicator-progress">Please wait...
+                        <span class="indicator-label">{{ __('back.save') }}</span>
+                        <span class="indicator-progress">   {{ __('back.please_wait') }}
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                     </button>

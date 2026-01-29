@@ -70,11 +70,27 @@ class UserController extends Controller
         if ($request->id) {
             $user = User::findOrFail($request->id);
             $user->update($data);
+            if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $user->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
             $role = Role::find($request->role_id);
             $user->syncRoles($role->name);
             $msg = 'User updated successfully';
         } else {
             $user = User::create($data);
+            if ($request->has('uploaded_images')) {
+                $images = array_filter($request->uploaded_images);
+                foreach ($images as $filename) {
+                    $user->image()->create([
+                        'image' => $filename
+                    ]);
+                }
+            }
             $role = Role::find($request->role_id);
             $user->assignRole($role->name);
             $msg = 'User created successfully';

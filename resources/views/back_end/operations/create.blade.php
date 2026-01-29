@@ -6,16 +6,16 @@
             <div class="card-body p-lg-17">
                 <form
                     action="{{ isset($operation) ? route('operations.update', $operation->id) : route('operations.store') }}" " method="POST" enctype="multipart/form-data" id="operationForm">
-                                    @csrf
-                                   @if (isset($operation))
+                                        @csrf
+                                        @if (isset($operation))
                     @method('PUT')
                     @endif
-                    <h1 class="fw-bolder text-dark mb-9">Add Operations</h1>
+                    <h1 class="fw-bolder text-dark mb-9">{{ __('back.add_operation') }}</h1>
 
                     <div class="row mb-5">
                         <input type="hidden" name="id" value="{{ $operation->id ?? '' }}">
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Name Patient</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.patient_name') }}</label>
                             <input type="text" class="form-control form-control-solid" name="name"
                                 value="{{ $operation->name ?? '' }}">
                             @error('name')
@@ -26,7 +26,7 @@
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Id Patient Patient</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.patient_id') }}</label>
                             <input type="text" class="form-control form-control-solid" name="id_patient"
                                 value="{{ $operation->id_patient ?? '' }}">
                             @error('id_patient')
@@ -38,9 +38,9 @@
                         </div>
                         <!-- Specialization -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Specialization</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.specialization') }}</label>
                             <select name="specialization_id" class="form-control form-control-solid">
-                                <option disabled {{ !isset($operation) ? 'selected' : '' }}>اختر التخصص</option>
+                                <option disabled {{ !isset($operation) ? 'selected' : '' }}>{{ __('back.select_specialization') }}  </option>
                                 @foreach ($specializations as $specialization)
                                     <option value="{{ $specialization->id }}"
                                         {{ isset($operation) && $operation->specialization_id == $specialization->id ? 'selected' : '' }}>
@@ -58,9 +58,9 @@
 
                         <!-- doctor -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Doctor</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.doctor') }}</label>
                             <select name="doctor_id" class="form-control form-control-solid">
-                                <option disabled {{ !isset($operation) ? 'selected' : '' }}>اختر المستشفى</option>
+                                <option disabled {{ !isset($operation) ? 'selected' : '' }}>{{ __('back.select_doctor') }}  </option>
                                 @foreach ($doctors as $doctor)
                                     <option value="{{ $doctor->id }}"
                                         {{ isset($operation) && $operation->doctor_id == $doctor->id ? 'selected' : '' }}>
@@ -78,9 +78,9 @@
 
                         <!-- Hospital -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Hospital</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.hospital') }}</label>
                             <select name="hospital_id" class="form-control form-control-solid">
-                                <option disabled {{ !isset($operation) ? 'selected' : '' }}>اختر المستشفى</option>
+                                <option disabled {{ !isset($operation) ? 'selected' : '' }}>{{ __('back.select_hospital') }}  </option>
                                 @foreach ($hospitals as $hospital)
                                     <option value="{{ $hospital->id }}"
                                         {{ isset($operation) && $operation->hospital_id == $hospital->id ? 'selected' : '' }}>
@@ -97,7 +97,7 @@
                         </div>
 
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Operation Name</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.operation_name') }}</label>
                             <input type="text" class="form-control form-control-solid" name="operation_name"
                                 value="{{ $operation->operation_name ?? '' }}">
                             @error('operation_name')
@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Operation Date</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.operation_date') }}</label>
                             <input type="date" class="form-control form-control-solid" name="operation_date"
                                 value="{{ $operation->operation_date ?? '' }}">
                             @error('operation_date')
@@ -120,7 +120,7 @@
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Operation Date Time</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.operation_time') }}</label>
                             <input type="time" class="form-control form-control-solid" name="operation_date_time"
                                 value="{{ $operation->operation_date_time ?? '' }}">
                             @error('operation_date_time')
@@ -131,7 +131,7 @@
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2"> Operation Duration (in minutes)</label>
+                            <label class="fs-5 fw-bold mb-2"> {{ __('back.operation_duration') }}</label>
 
                             <input type="number" name="operation_schedule" class="form-control form-control-solid"
                                 placeholder="ex: 45" min="1" value="{{ $operation->operation_schedule ?? '' }}">
@@ -143,17 +143,17 @@
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Status</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.status') }}</label>
                             <select name="status" class="form-control form-control-solid">
-                                <option disabled {{ !isset($operation) ? 'selected' : '' }}> Status</option>
+                                <option disabled {{ !isset($operation) ? 'selected' : '' }}> {{ __('back.select_status') }}</option>
                                 <option value="scheduled"
                                     {{ isset($operation) && $operation->status == 'scheduled' ? 'selected' : '' }}>
-                                    Scheduled</option>
+                                    {{ __('back.scheduled') }}</option>
                                 <option value="done"
-                                    {{ isset($operation) && $operation->status == 'done' ? 'selected' : '' }}>Done</option>
+                                    {{ isset($operation) && $operation->status == 'done' ? 'selected' : '' }}>{{ __('back.done') }}</option>
                                 <option value="cancelled"
                                     {{ isset($operation) && $operation->status == 'cancelled' ? 'selected' : '' }}>
-                                    Cancelled</option>
+                                    {{ __('back.cancelled') }}</option>
                                 @error('status')
                                     <div class="form-error">
                                         {{ $message }}
@@ -163,7 +163,7 @@
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Price</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.price') }}</label>
                             <input type="number" step="0.01" class="form-control form-control-solid" name="price"
                                 value="{{ $operation->price ?? '' }}" placeholder="Enter price">
                             @error('price')
@@ -174,7 +174,7 @@
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2 d-block">Pay</label>
+                            <label class="fs-5 fw-bold mb-2 d-block">{{ __('back.pay') }}</label>
 
                             <label class="form-check form-check-sm form-check-custom form-check-solid">
                                 <input type="checkbox" name="pay" class="form-check-input" value="1"
@@ -184,13 +184,13 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                <span class="form-check-label">Paid?</span>
+                                <span class="form-check-label">{{ __('back.paid') }} ?</span>
                             </label>
 
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <div class="col-12 fv-row mb-3">
-                            <label class="fs-5 fw-bold mb-2">Currency</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.currency') }}</label>
 
                             <select name="currency" class="form-control form-control-solid">
                                 <option value="USD"
@@ -215,7 +215,7 @@
 
                         <!-- report -->
                         <div class="col-12 fv-row fv-plugins-icon-container mb-3">
-                            <label class="fs-5 fw-bold mb-2">Report</label>
+                            <label class="fs-5 fw-bold mb-2">{{ __('back.report') }}</label>
                             <textarea class="form-control form-control-solid" rows="6" name="report">{{ $operation->report ?? '' }}</textarea>
                             @error('report')
                                 <div class="form-error">
@@ -228,8 +228,8 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="kt_contact_submit_button">
-                        <span class="indicator-label">Send</span>
-                        <span class="indicator-progress">Please wait...
+                        <span class="indicator-label">{{ __('back.save') }}</span>
+                        <span class="indicator-progress"> {{ __('back.please_wait') }}
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                         </span>
                     </button>

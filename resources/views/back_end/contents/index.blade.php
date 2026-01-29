@@ -1,23 +1,30 @@
 @extends('back_end.layout.app')
 
 @section('content')
-    <div class="card card-flush mt-6 mt-xl-9">
-
+    <style>
+        #kt_content {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: -10px;
+        }
+    </style>
+    <div class="card card-flush mt-6 mt-xl-9" id="kt_content">
         <!-- Card Header -->
         <div class="card-header mt-5">
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">Contents</h3>
+                <h3 class="fw-bolder mb-1">{{ __('back.contents') }}</h3>
             </div>
 
             <div class="card-toolbar my-1">
                 <a href="{{ route('contents.create') }}" class="btn btn-primary btn-sm">
-                    Add Content
+                    {{ __('back.add_content') }}
                 </a>
 
                 <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" id="kt_filter_search"
                         class="form-control form-control-solid form-select-sm w-150px ps-3"
-                        placeholder="Search Content" />
+                        placeholder="{{ __('back.search_content') }}" />
                 </div>
             </div>
         </div>
@@ -29,12 +36,12 @@
 
                     <thead class="fs-7 text-gray-400 text-uppercase">
                         <tr>
-                            <th class="min-w-50px">ID</th>
-                            <th class="min-w-80px">Image</th>
-                            <th class="min-w-200px">Title</th>
-                            <th class="min-w-200px">Type | Link</th>
-                            <th class="min-w-150px">Created At</th>
-                            <th class="min-w-50px text-end">Actions</th>
+                            <th class="min-w-50px">{{ __('back.id') }}</th>
+                            <th class="min-w-80px">{{ __('back.image') }}</th>
+                            <th class="min-w-200px">{{ __('back.title') }}</th>
+                            <th class="min-w-200px">{{ __('back.type_link') }}</th>
+                            <th class="min-w-150px">{{ __('back.created_at') }}</th>
+                            <th class="min-w-50px text-end">{{ __('back.actions') }}</th>
                         </tr>
                     </thead>
 
@@ -49,22 +56,23 @@
 
                                 <td>
                                     <div style="width:48px;height:48px;border-radius:8px;overflow:hidden;">
-                                        <img
-                                            src="{{ asset('uploads/contents/' . $contentImage) }}"
+                                        <img src="{{ asset('uploads/contents/' . $contentImage) }}"
                                             alt="{{ $content->title }}"
-                                            style="width:100%;height:100%;object-fit:cover;display:block;"
-                                        >
+                                            style="width:100%;height:100%;object-fit:cover;display:block;">
                                     </div>
                                 </td>
 
                                 <td>{{ $content->title }}</td>
 
                                 <td>
-                                    @if ($content->link == "why_choose_us" || $content->link == "hospital_criteria" || $content->link == "blog" || $content->link == "service" )
+                                    @if (
+                                        $content->link == 'why_choose_us' ||
+                                            $content->link == 'hospital_criteria' ||
+                                            $content->link == 'blog' ||
+                                            $content->link == 'service')
                                         {{ $content->link }}
                                     @else
                                         <a href="{{ $content->link }}" target="_blank">{{ $content->link }}</a>
-
                                     @endif
                                 </td>
 
@@ -107,14 +115,13 @@
         function destroy(e) {
             let url = e.target.closest('form').action;
             let row = e.target.closest('tr');
-
             Swal.fire({
-                title: 'Are you sure?',
+                title: '{{ __('back.confirm_delete') }}',
                 text: "You won't be able to undo this!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: '{{ __('back.yes_delete') }}',
+                cancelButtonText: '{{ __('back.cancel') }}'
             }).then((result) => {
                 if (result.isConfirmed) {
                     axios.post(url, {

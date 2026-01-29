@@ -36,8 +36,8 @@
                                     <div class="mb-5">
                                         <!--begin::Title-->
                                         <a href="#"
-                                            class="fs-2 text-dark fw-bolder text-hover-primary text-dark lh-base">Hospital
-                                            Description</a>
+                                            class="fs-2 text-dark fw-bolder text-hover-primary text-dark lh-base">{{ __('site.hospitel') }}
+                                            {{ __('back.Description') }}</a>
                                         <!--end::Title-->
                                         <!--begin::Text-->
                                         <div class="fw-bold fs-5 text-gray-600 text-dark mt-4">
@@ -60,15 +60,15 @@
                                     <div class="mb-6">
                                         <!--begin::Title-->
                                         <a href="#"
-                                            class="fw-bolder text-dark mb-4 fs-2 lh-base text-hover-primary">Hospital
-                                            Images</a>
+                                            class="fw-bolder text-dark mb-4 fs-2 lh-base text-hover-primary">{{ __('site.hospitel') }}
+                                            {{ __('back.Images') }}</a>
                                         <!--end::Title-->
                                         <!--begin::Text-->
                                         <form id="hospitalForm" action="{{ route('uploadImage') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="fw-bold fs-5 mt-4 text-dark">
-                                                <label class="fs-5 fw-bold mb-2">Images</label>
+                                                <label class="fs-5 fw-bold mb-2">{{ __('back.Images') }}</label>
                                                 <!-- Dropzone فقط -->
                                                 <div id="myDropzone" class="dropzone"></div>
                                                 <input type="hidden" id="id" name="hospital_id"
@@ -77,7 +77,7 @@
 
                                                 <div class="fv-plugins-message-container invalid-feedback"></div>
                                                 <button id="saveHospitalBtn" class="btn btn-primary mt-3">
-                                                    save images</button>
+                                                    {{ __('back.Save') }} {{ __('back.Images') }}</button>
 
                                             </div>
                                         </form>
@@ -101,7 +101,7 @@
                         <!--begin::Content-->
                         <div class="d-flex flex-stack mb-5">
                             <!--begin::Title-->
-                            <h3 class="text-dark">Services </h3>
+                            <h3 class="text-dark">{{ __('back.Services') }} </h3>
                             <!--end::Title-->
                             <!--begin::Link-->
                             <!--end::Link-->
@@ -213,7 +213,7 @@
                 maxFilesize: 5,
                 acceptedFiles: "image/*",
                 addRemoveLinks: true,
-                dictDefaultMessage: "اسحب أو اضغط لرفع الصور",
+                dictDefaultMessage: " {{ __('back.Swipe') }} ",
                 headers: {
                     "X-CSRF-TOKEN": "{{ csrf_token() }}"
                 }

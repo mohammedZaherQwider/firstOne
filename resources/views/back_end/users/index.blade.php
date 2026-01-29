@@ -1,121 +1,66 @@
 @extends('back_end.layout.app')
+
 @section('content')
-    <!--begin::Table-->
-    <div class="card card-flush mt-6 mt-xl-9">
+    <style>
+        #kt_content {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: -10px;
+        }
+    </style>
+    <div class="card card-flush mt-6 mt-xl-9" id="kt_content">
         <!--begin::Card header-->
         <div class="card-header mt-5">
-            <!--begin::Card title-->
             <div class="card-title flex-column">
-                <h3 class="fw-bolder mb-1">Users</h3>
+                <h3 class="fw-bolder mb-1">{{ __('back.users') }}</h3>
             </div>
-            <!--begin::Card title-->
-            <!--begin::Card toolbar-->
             <div class="card-toolbar my-1">
-                <!--begin::Select-->
-                <div class="me-6 my-1">
-                    <select id="kt_filter_year" name="year" data-control="select2" data-hide-search="true"
-                        class="w-125px form-select form-select-solid form-select-sm">
-                        <option value="All" selected="selected">All time</option>
-                        <option value="thisyear">This year</option>
-                        <option value="thismonth">This month</option>
-                        <option value="lastmonth">Last month</option>
-                        <option value="last90days">Last 90 days</option>
-                    </select>
-                </div>
-                <!--end::Select-->
-                <!--begin::Select-->
-                <div class="me-4 my-1">
-                    <select id="kt_filter_orders" name="orders" data-control="select2" data-hide-search="true"
-                        class="w-125px form-select form-select-solid form-select-sm">
-                        <option value="All" selected="selected">All Orders</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Declined">Declined</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="In Transit">In Transit</option>
-                    </select>
-                </div>
-                <!--end::Select-->
-                <!--begin::Search-->
-                <div class="d-flex align-items-center position-relative my-1">
-                    <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-                    <span class="svg-icon svg-icon-3 position-absolute ms-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none">
-                            <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1"
-                                transform="rotate(45 17.0365 15.1223)" fill="black" />
-                            <path
-                                d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
-                                fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
+                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">
+                    {{ __('back.add_user') }}
+                </a>
+                <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" id="kt_filter_search"
-                        class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="Search Order" />
+                        class="form-control form-control-solid form-select-sm w-150px ps-3"
+                        placeholder="{{ __('back.search_user') }}" />
                 </div>
-                <!--end::Search-->
             </div>
-            <!--begin::Card toolbar-->
         </div>
-        <!--end::Card header-->
+
         <!--begin::Card body-->
         <div class="card-body pt-0">
-            <!--begin::Table container-->
             <div class="table-responsive">
-                <!--begin::Table-->
-                <table id="kt_profile_overview_table"
-                    class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bolder">
-                    <!--begin::Head-->
+                <table class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bolder">
                     <thead class="fs-7 text-gray-400 text-uppercase">
                         <tr>
-                            <th class="min-w-250px">ID </th>
-                            <th class="min-w-250px">Name</th>
-                            <th class="min-w-250px">Email </th>
-                            <th class="min-w-250px"> Phone </th>
-                            <th class="min-w-250px"> Country </th>
-                            <th class="min-w-250px"> Job </th>
-                            <th class="min-w-250px"> Hospital </th>
-                            <th class="min-w-250px"> Role </th>
-                            <th class="min-w-250px"> Type </th>
-                            <th class="min-w-50px text-end">Actions</th>
+                            <th class="min-w-50px">{{ __('back.id') }}</th>
+                            <th class="min-w-250px">{{ __('back.name') }}</th>
+                            <th class="min-w-250px">{{ __('back.email') }}</th>
+                            <th class="min-w-250px">{{ __('back.phone') }}</th>
+                            <th class="min-w-250px">{{ __('back.country') }}</th>
+                            <th class="min-w-250px">{{ __('back.job') }}</th>
+                            <th class="min-w-250px">{{ __('back.hospital') }}</th>
+                            <th class="min-w-250px">{{ __('back.role') }}</th>
+                            <th class="min-w-250px">{{ __('back.type') }}</th>
+                            <th class="min-w-50px text-end">{{ __('back.actions') }}</th>
                         </tr>
                     </thead>
-                    <!--end::Head-->
-                    <!--begin::Body-->
                     <tbody class="fs-6">
                         @foreach ($users as $user)
                             <tr>
-                                <td>
-                                    {{ $user->id }}
-                                </td>
-                                <td>
-                                    {{ $user->name }}
-                                </td>
-                                <td>
-                                    {{ $user->email }}
-                                </td>
-                                <td>
-                                    {{ $user->phone }}
-                                </td>
-                                <td>
-                                    {{ $user->country->name }}
-                                </td>
-                                <td>
-                                    {{ $user->job->name }}
-                                </td>
-                                <td>
-                                    {{ $user->hospital->name }}
-                                </td>
-                                <td>
-                                    {{ $user->role->name }}
-                                </td>
-                                <td>
-                                    {{ $user->type }}
-                                </td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->country->name }}</td>
+                                <td>{{ $user->job->name }}</td>
+                                <td>{{ $user->hospital->name }}</td>
+                                <td>{{ $user->role->name }}</td>
+                                <td>{{ $user->type }}</td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
                                         <a href="{{ route('users.edit', $user) }}"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none">
@@ -127,7 +72,6 @@
                                                         fill="black" />
                                                 </svg>
                                             </span>
-                                            <!--end::Svg Icon-->
                                         </a>
                                         <form class="d-inline" action="{{ route('users.destroy', $user->id) }}"
                                             method="POST">
@@ -151,37 +95,30 @@
                                                 </span>
                                             </button>
                                         </form>
-
                                     </div>
                                 </td>
                             </tr>
                         @endforeach
-
                     </tbody>
-                    <!--end::Body-->
                 </table>
-                <!--end::Table-->
             </div>
-            <!--end::Table container-->
         </div>
-        <!--end::Card body-->
     </div>
-    <!--end::Card-->
 @endsection
+
 @section('js')
     <script>
         function destroy(e) {
             let url = e.target.closest('form').action;
             let row = e.target.closest('tr');
-            console.log(url, row);
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to undo this!",
+                title: '{{ __('back.are_you_sure') }}',
+                text: "{{ __('back.you_wont_be_able') }}",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: '{{ __('back.yes_delete_it') }}'
             }).then((result) => {
                 if (result.isConfirmed) {
                     axios.post(url, {

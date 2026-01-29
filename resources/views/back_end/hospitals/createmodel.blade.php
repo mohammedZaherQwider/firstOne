@@ -32,7 +32,7 @@
                       <!--begin::Heading-->
                       <div class="mb-13 text-center">
                           <!--begin::Title-->
-                          <h1 class="mb-3">Set First Hospital</h1>
+                          <h1 class="mb-3">{{ __('site.add') }} {{ __('site.hospitel') }} </h1>
                           <!--end::Title-->
                       </div>
                       <!--end::Heading-->
@@ -40,13 +40,13 @@
                       <div class="d-flex flex-column mb-8 fv-row">
                           <!--begin::Label-->
                           <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                              <span class="required">Hospital Title</span>
+                              <span class="required">{{ __('site.hospitel') }} {{ __('back.Name') }}</span>
                               <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                   title="Specify a target name for future usage and reference"></i>
                           </label>
                           <!--end::Label-->
                           <input type="text" class="form-control form-control-solid"
-                              placeholder="Enter Hospital Name" name="name" id="name" />
+                              placeholder="{{ __('back.Enter') }} {{ __('site.hospitel') }} {{ __('back.Name') }}" name="name" id="name" />
                           @error('name')
                               <div class="form-error">
                                   {{ $message }}
@@ -56,13 +56,13 @@
                       <div class="d-flex flex-column mb-8 fv-row">
                           <!--begin::Label-->
                           <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                              <span class="required">Hospital Title <span style="color: red">ar</span></span>
+                              <span class="required">{{ __('site.hospitel') }} {{ __('back.Name') }} <span style="color: red">ar</span></span>
                               <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                   title="Specify a target name for future usage and reference"></i>
                           </label>
                           <!--end::Label-->
                           <input type="text" class="form-control form-control-solid"
-                              placeholder="Enter Hospital Name Ar" name="nameAr" id="nameAr" />
+                              placeholder="Enter {{ __('site.hospitel') }} {{ __('back.Name') }} Ar" name="nameAr" id="nameAr" />
                           @error('nameAr')
                               <div class="form-error">
                                   {{ $message }}
@@ -74,9 +74,9 @@
                       <div class="row g-9 mb-8">
                           <!--begin::Col-->
                           <div class="col-md-6 fv-row">
-                              <label class="required fs-6 fw-bold mb-2">Country</label>
+                              <label class="required fs-6 fw-bold mb-2">{{ __('site.country') }}</label>
                               <select id="country_id" class="form-select form-select-solid" ... name="country_id">
-                                  <option value="">Select country...</option>
+                                  <option value="">{{ __('site.choose') }} {{ __('site.country') }}...</option>
                                   @foreach ($countries as $country)
                                       <option value="{{ $country->id }}">{{ $country->name }}</option>
                                   @endforeach
@@ -88,9 +88,9 @@
                               </select>
                           </div>
                           <div class="col-md-6 fv-row">
-                              <label class="required fs-6 fw-bold mb-2">City</label>
+                              <label class="required fs-6 fw-bold mb-2">{{ __('site.city') }}</label>
                               <select id="city_id" class="form-select form-select-solid" ... name="city_id">
-                                  <option value="">Select City...</option>
+                                  <option value="">{{ __('site.choose') }}  {{ __('site.city') }}...</option>
                               </select>
                               @error('city_id')
                                   <div class="form-error">
@@ -103,13 +103,13 @@
                       <div class="d-flex flex-column mb-8 fv-row">
                           <!--begin::Label-->
                           <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                              <span class="required">Bed Number</span>
+                              <span class="required">  {{ __('site.bed') }} {{ __('site.number') }}</span>
                               <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                   title="Specify a target name for future usage and reference"></i>
                           </label>
                           <!--end::Label-->
                           <input type="number" class="form-control form-control-solid"
-                              placeholder="Enter Bed Number in Hospital" name="bed_number" id="bed_number" />
+                              placeholder="{{ __('back.Enter') }} {{ __('site.bed') }} {{ __('site.number') }} {{ __('site.in') }} {{ __('site.hospitel') }}" name="bed_number" id="bed_number" />
                           @error('bed_number')
                               <div class="form-error">
                                   {{ $message }}
@@ -127,8 +127,8 @@
                               @enderror
 
                               <select name="services[0][type]" class="form-select me-2">
-                                  <option value="in">In</option>
-                                  <option value="out">Out</option>
+                                  <option value="in">{{ __('site.in') }}</option>
+                                  <option value="out">{{ __('back.Out') }}</option>
                               </select>
 
                               <select id="service-icon" name="services[0][icon]" class="form-select">
@@ -163,14 +163,14 @@
                       <!--end::Input group-->
                       <!--begin::Input group-->
                       <div class="d-flex flex-column mb-8">
-                          <label class="fs-6 fw-bold mb-2">Description</label>
+                          <label class="fs-6 fw-bold mb-2">{{ __('back.Description') }}</label>
                           <textarea class="form-control form-control-solid" rows="3" id="description" name="description"
-                              placeholder="Enter Description"></textarea>
+                              placeholder="{{ __('back.Enter') }} {{ __('back.Description') }}"></textarea>
                       </div>
                       <div class="d-flex flex-column mb-8">
-                          <label class="fs-6 fw-bold mb-2">Description <span style="color: red">ar</span></label>
+                          <label class="fs-6 fw-bold mb-2">{{ __('back.Description') }} <span style="color: red">ar</span></label>
                           <textarea class="form-control form-control-solid" rows="3" id="descriptionAr" name="descriptionAr"
-                              placeholder="Enter Description Ar"></textarea>
+                              placeholder="{{ __('back.Enter') }} {{ __('back.Description') }} Ar"></textarea>
                       </div>
                       <input type="hidden" id="id" name="id" value="">
 
@@ -179,9 +179,9 @@
                       <!--begin::Actions-->
                       <div class="text-center">
                           <button type="reset" id="kt_modal_new_target_cancel"
-                              class="btn btn-light me-3">Cancel</button>
+                              class="btn btn-light me-3">{{ __('back.Cancel') }}</button>
                           <button id="saveHospitalBtn" class="btn btn-primary">
-                              <span class="indicator-label">Submit</span>
+                              <span class="indicator-label">{{ __('back.Send') }}</span>
                           </button>
                       </div>
                       <!--end::Actions-->

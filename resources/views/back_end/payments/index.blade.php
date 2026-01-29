@@ -64,16 +64,17 @@
                                 <td>{{ $payment->updated_at->format('Y-m-d H:i') }}</td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <form class="d-inline" action="{{ route('payments.destroy', $payment->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="button" onclick="destroy(event)"
-                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-
+                                        @can('Delete Payment')
+                                            <form class="d-inline" action="{{ route('payments.destroy', $payment->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="button" onclick="destroy(event)"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

@@ -31,6 +31,43 @@ class PermissionSeeder extends Seeder
         'Add Roles',
         'Update Roles',
         'Delete Roles',
+
+        'Show all Offers',
+        'Add Offer',
+        'Update Offer',
+        'Delete Offer',
+
+        'Show all Countries',
+        'Add Country',
+        'Update Country',
+        'Delete Country',
+
+        'Show all Cities',
+        'Add City',
+        'Update City',
+        'Delete City',
+
+        'Show all Users',
+        'Add User',
+        'Update User',
+        'Delete User',
+
+        'Show all Contents',
+        'Add Content',
+        'Update Content',
+        'Delete Content',
+
+        'Show all Specializations',
+        'Add Specialization',
+        'Update Specialization',
+        'Delete Specialization',
+
+        'Show all Payments',
+        'Update Payment',
+        'Delete Payment',
+
+        'Show all Settings',
+        'Update Settings',
     ];
     public function run(): void
     {

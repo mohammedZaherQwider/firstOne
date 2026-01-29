@@ -39,10 +39,15 @@ class RoleController extends Controller
         $data = [
             'name' => $request->name,
         ];
-        // dd($request->all());
         if ($request->id) {
             $role = Role::findOrFail($request->id);
             $role->update($data);
+            if ($request->permissions) {
+                $permissions = Permission::whereIn('id', $request->permissions)
+                    ->pluck('name')
+                    ->toArray();
+                $role->syncPermissions($permissions);
+            }
             $msg = 'Role updated successfully';
         } else {
             $role = Role::create($data);
@@ -50,7 +55,6 @@ class RoleController extends Controller
                 ->pluck('name')
                 ->toArray();
             $role->givePermissionTo($permissions);
-
             $msg = 'Role created successfully';
         }
         return redirect()->route('roles.index')->with([
@@ -72,7 +76,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::select('id', 'name')->get();
         $rolePermissions = $role->permissions->pluck('id')->toArray();
-        return view('back_end.roles.create', compact('role','permissions','rolePermissions'));
+        return view('back_end.roles.create', compact('role', 'permissions', 'rolePermissions'));
     }
 
     /**

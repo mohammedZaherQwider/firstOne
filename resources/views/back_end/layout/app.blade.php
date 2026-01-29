@@ -54,24 +54,25 @@ License: For each use you must have a valid license purchased only from above li
         <link href="{{ asset('assets/back_end/cssRTL/dropzone.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/back_end/cssRTL/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/back_end/cssRTL/all.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('assets/back_end/cssRTL/summernote-lite.min.css') }}" rel="stylesheet" >
+        <link href="{{ asset('assets/back_end/cssRTL/summernote-lite.min.css') }}" rel="stylesheet">
     @else
         <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{ asset('assets/back_end/css/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/back_end/css/leaflet.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/back_end/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/back_end/css/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <!--end::Page Vendor Stylesheets-->
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link href="{{ asset('assets/back_end/css/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/back_end/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/back_end/css/dropzone.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/back_end/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
-    {{-- icon --}}
-    <link href="{{ asset('assets/back_end/css/all.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/back_end/css/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
+            type="text/css" />
+        <link href="{{ asset('assets/back_end/css/leaflet.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/back_end/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/back_end/css/datatables/datatables.bundle.css') }}" rel="stylesheet"
+            type="text/css" />
+        <!--end::Page Vendor Stylesheets-->
+        <!--begin::Global Stylesheets Bundle(used by all pages)-->
+        <link href="{{ asset('assets/back_end/css/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/back_end/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/back_end/css/dropzone.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/back_end/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+        {{-- icon --}}
+        <link href="{{ asset('assets/back_end/css/all.min.css') }}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="{{ asset('assets/back_end/css/summernote-lite.min.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css">
     @endif
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 
@@ -311,296 +312,307 @@ License: For each use you must have a valid license purchased only from above li
 
                                 </div>
                             @endcanany
-                            {{-- @canany(['Show all Roles', 'Add Roles']) --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
-                                            </svg>
+                            @canany(['Show all Roles', 'Add Roles'])
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
+                                                        fill="black" />
+                                                    <path
+                                                        d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
+                                                        fill="black" />
+                                                    <path opacity="0.3"
+                                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
                                         </span>
-                                        <!--end::Svg Icon-->
+                                        <span class="menu-title">{{ __('site.rolrs') }}</span>
+                                        <span class="menu-arrow"></span>
                                     </span>
-                                    <span class="menu-title">{{ __('site.rolrs') }}</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    {{-- @can('Show all Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('roles.index') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.all') }} {{ __('site.rolrs') }}
-                                            </span>
-                                        </a>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        @can('Show all Roles')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('roles.index') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.all') }} {{ __('site.rolrs') }}
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                        @can('Add Roles')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('roles.create') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.add') }} {{ __('site.rolr') }}
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        @endcan
                                     </div>
-                                    {{-- @endcan --}}
-                                    {{-- @can('Add Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('roles.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.add') }} {{ __('site.rolr') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                </div>
 
-                            </div>
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-title">{{ __('site.offers') }}</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    {{-- @can('Show all Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('offers.index') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.all') }} {{ __('site.offers') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                    {{-- @can('Add Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('offers.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.add') }} {{ __('site.offer') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
                                 </div>
-                            </div>
-                            {{-- @endcanany --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
-                                            </svg>
+                            @endcanany
+                            @canany(['Show all Offers', 'Add Offer'])
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <!-- SVG content for "Offers" icon -->
+                                                    <path
+                                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
+                                                        fill="black" />
+                                                    <path
+                                                        d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
+                                                        fill="black" />
+                                                    <path opacity="0.3"
+                                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
                                         </span>
-                                        <!--end::Svg Icon-->
+                                        <span class="menu-title">{{ __('site.offers') }}</span>
+                                        <span class="menu-arrow"></span>
                                     </span>
-                                    <span class="menu-title">{{ __('site.countries') }}</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    {{-- @can('Show all Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('countries.index') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.all') }} {{ __('site.countries') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                    {{-- @can('Add Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('countries.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.add') }} {{ __('site.country') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                </div>
-
-                            </div>
-                            {{-- @endcanany --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-title">{{ __('site.cities') }}</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    {{-- @can('Show all Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('cities.index') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.all') }} {{ __('site.cities') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                    {{-- @can('Add Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('cities.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.add') }} {{ __('site.city') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                </div>
-                            </div>
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-title">{{ __('site.specializations') }}</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    {{-- @can('Show all Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('specializations.index') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.all') }}
-                                                {{ __('site.specializations') }} </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                    {{-- @can('Add Roles') --}}
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('specializations.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.add') }}
-                                                {{ __('site.specialization') }} </span>
-                                        </a>
-                                    </div>
-                                    {{-- @endcan --}}
-                                </div>
-
-                            </div>
-                            {{-- @endcanany --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-title">{{ __('site.users') }}</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('users.index') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.all') }} {{ __('site.users') }}
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="{{ route('users.create') }}">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">{{ __('site.add') }} {{ __('site.user') }}
-                                            </span>
-                                        </a>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        @can('Show all Offers')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('offers.index') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.all') }}
+                                                        {{ __('site.offers') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                        @can('Add Offer')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('offers.create') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.add') }}
+                                                        {{ __('site.offer') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
                                     </div>
                                 </div>
+                            @endcanany
+                            @canany(['Show all Countries', 'Add Country'])
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <!-- SVG content for "Countries" icon -->
+                                                    <path
+                                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
+                                                        fill="black" />
+                                                    <path
+                                                        d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
+                                                        fill="black" />
+                                                    <path opacity="0.3"
+                                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <span class="menu-title">{{ __('site.countries') }}</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        @can('Show all Countries')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('countries.index') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.all') }}
+                                                        {{ __('site.countries') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                        @can('Add Country')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('countries.create') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.add') }}
+                                                        {{ __('site.country') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                    </div>
+                                </div>
+                            @endcanany
+                            @canany(['Show all Cities', 'Add City'])
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <!-- SVG content for "Cities" icon -->
+                                                    <path
+                                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
+                                                        fill="black" />
+                                                    <path
+                                                        d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
+                                                        fill="black" />
+                                                    <path opacity="0.3"
+                                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <span class="menu-title">{{ __('site.cities') }}</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        @can('Show all Cities')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('cities.index') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.all') }}
+                                                        {{ __('site.cities') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                        @can('Add City')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('cities.create') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.add') }}
+                                                        {{ __('site.city') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                    </div>
+                                </div>
+                            @endcanany
+                            @canany(['Show all Specializations', 'Add Specialization'])
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
+                                                        fill="black" />
+                                                    <path
+                                                        d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
+                                                        fill="black" />
+                                                    <path opacity="0.3"
+                                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <span class="menu-title">{{ __('site.specializations') }}</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        @can('Show all Specializations')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('specializations.index') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.all') }}
+                                                        {{ __('site.specializations') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                        @can('Add Specialization')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('specializations.create') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.add') }}
+                                                        {{ __('site.specialization') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                    </div>
+                                </div>
+                            @endcanany
+                            @canany(['Show all Users', 'Add User'])
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    <span class="menu-link">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <!-- SVG content for "Users" icon -->
+                                                    <path
+                                                        d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
+                                                        fill="black" />
+                                                    <path
+                                                        d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
+                                                        fill="black" />
+                                                    <path opacity="0.3"
+                                                        d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
+                                                        fill="black" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <span class="menu-title">{{ __('site.users') }}</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <div class="menu-sub menu-sub-accordion menu-active-bg">
+                                        @can('Show all Users')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('users.index') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.all') }}
+                                                        {{ __('site.users') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                        @can('Add User')
+                                            <div class="menu-item">
+                                                <a class="menu-link" href="{{ route('users.create') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">{{ __('site.add') }}
+                                                        {{ __('site.user') }}</span>
+                                                </a>
+                                            </div>
+                                        @endcan
+                                    </div>
+                                </div>
+                            @endcanany
+                            @can('Show all Contents')
                                 <div class="menu-item">
                                     <a class="menu-link" href="{{ route('contents.index') }}">
                                         <span class="menu-bullet">
@@ -609,14 +621,16 @@ License: For each use you must have a valid license purchased only from above li
                                         <span class="menu-title"> {{ __('back.Contents') }} </span>
                                     </a>
                                 </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="{{ route('notification') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title"> {{ __('back.Notifications') }} </span>
-                                    </a>
-                                </div>
+                            @endcan
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('notification') }}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title"> {{ __('back.Notifications') }} </span>
+                                </a>
+                            </div>
+                            @can('Show all Payments')
                                 <div class="menu-item">
                                     <a class="menu-link" href="{{ route('payment') }}">
                                         <span class="menu-bullet">
@@ -625,6 +639,8 @@ License: For each use you must have a valid license purchased only from above li
                                         <span class="menu-title"> {{ __('back.Payments') }} </span>
                                     </a>
                                 </div>
+                            @endcan
+                            @can('Show all Settings')
                                 <div class="menu-item">
                                     <a class="menu-link" href="{{ route('settings') }}">
                                         <span class="menu-bullet">
@@ -633,9 +649,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <span class="menu-title"> {{ __('back.Settings') }} </span>
                                     </a>
                                 </div>
-
-                            </div>
-
+                            @endcan
                             <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
 
                             </div>

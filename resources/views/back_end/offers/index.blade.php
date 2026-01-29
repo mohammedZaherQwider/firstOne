@@ -16,7 +16,9 @@
                 <h3 class="fw-bolder mb-1">{{ __('back.offers') }}</h3>
             </div>
             <div class="card-toolbar my-1">
-                <a href="{{ route('offers.create') }}" class="btn btn-primary btn-sm">{{ __('back.add_offer') }}</a>
+                @can('Add Offer')
+                    <a href="{{ route('offers.create') }}" class="btn btn-primary btn-sm">{{ __('back.add_offer') }}</a>
+                @endcan
                 <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" id="kt_filter_search"
                         class="form-control form-control-solid form-select-sm w-150px ps-3"
@@ -56,23 +58,27 @@
                                 <td>{{ $offer->updated_at->format('Y-m-d') }}</td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
-                                        <a href="{{ route('offers.edit', $offer->id) }}"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <span class="svg-icon svg-icon-3">
-                                                <!-- Edit Icon SVG -->
-                                            </span>
-                                        </a>
-                                        <form class="d-inline" action="{{ route('offers.destroy', $offer->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="button" onclick="destroy(event)"
-                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                        @can('Update Offer')
+                                            <a href="{{ route('offers.edit', $offer->id) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <span class="svg-icon svg-icon-3">
-                                                    <!-- Delete Icon SVG -->
+                                                    <!-- Edit Icon SVG -->
                                                 </span>
-                                            </button>
-                                        </form>
+                                            </a>
+                                        @endcan
+                                        @can('Delete Offer')
+                                            <form class="d-inline" action="{{ route('offers.destroy', $offer->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="button" onclick="destroy(event)"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <!-- Delete Icon SVG -->
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

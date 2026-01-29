@@ -70,8 +70,10 @@
                             </h3>
                             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top"
                                 data-bs-trigger="hover" title="Click to add a user">
-                                <a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_new_target">{{ __('site.add') }} {{ __('site.hospitel') }}</a>
+                                @can('Add Hospital')
+                                    <a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal"
+                                        data-bs-target="#kt_modal_new_target">{{ __('site.add') }} {{ __('site.hospitel') }}</a>
+                                @endcan
                                 <div class="d-flex my-0">
                                     <select id="exportSelect"
                                         class="form-select form-select-sm border-body bg-body w-100px">
@@ -314,88 +316,6 @@
         });
     </script>
 
-    {{-- <script>
-        $(document).on('click', '.btn-edit-hospital', function(e) {
-            e.preventDefault();
-            let serviceIndex = 0;
-
-
-            let id = $(this).data('id');
-            let url = "/hospitals/" + id + "/edit";
-
-            function addServiceRow(index, srv = {
-                name: '',
-                type: 'in',
-                icon: 'fa-hospital'
-            }) {
-                let html = `
-        <div class="service-item d-flex mb-3 align-items-center">
-            <input type="text" name="services[${index}][name]" value="${srv.name}" class="form-control me-2">
-
-            <select name="services[${index}][type]" class="form-select me-2">
-                <option value="in" ${srv.type === 'in' ? 'selected' : ''}>In</option>
-                <option value="out" ${srv.type === 'out' ? 'selected' : ''}>Out</option>
-            </select>
-
-            <select name="services[${index}][icon]" class="form-select me-2">
-                <option value="fa-hospital" ${srv.icon === 'fa-hospital' ? 'selected' : ''}>Hospital</option>
-                <option value="fa-stethoscope" ${srv.icon === 'fa-stethoscope' ? 'selected' : ''}>Stethoscope</option>
-                <option value="fa-user-md" ${srv.icon === 'fa-user-md' ? 'selected' : ''}>Doctor</option>
-                <option value="@" ${srv.icon === '@' ? 'selected' : ''}>@</option>
-            </select>
-
-            <button type="button" class="btn btn-danger btn-remove-service ms-2">-</button>
-        </div>
-        `;
-                $('#services-wrapper').append(html);
-            }
-
-            $.ajax({
-                url: url,
-                type: "GET",
-                success: function(response) {
-                    $('#name').val(response.name);
-                    $('#country_id').val(response.country_id).trigger('change');
-                    $('#bed_number').val(response.bed_number);
-                    $('#description').val(response.description);
-
-                    $('#services-wrapper').empty();
-                    response.services.forEach((srv, index) => {
-                        addServiceRow(serviceIndex++, srv);
-                    });
-
-                    $.ajax({
-                        url: '/cities/' + response.country_id,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#city_id').empty().append(
-                                '<option value="">اختر المدينة</option>');
-                            $.each(data, function(key, value) {
-                                $('#city_id').append('<option value="' + value.id +
-                                    '">' + value.name + '</option>');
-                            });
-                            $('#city_id').val(response.city_id).trigger('change');
-                        }
-                    });
-
-                    let modal = new bootstrap.Modal(document.getElementById('kt_modal_new_target'));
-                    modal.show();
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                }
-            });
-        });
-        $(document).on('click', '.btn-add-service', function() {
-            addServiceRow(serviceIndex++);
-        });
-
-        // حذف الخدمة عند الضغط على زر -
-        $(document).on('click', '.btn-remove-service', function() {
-            $(this).closest('.service-item').remove();
-        });
-    </script> --}}
     <script>
         $(document).on('click', '.btn-edit-hospital', function(e) {
             e.preventDefault();

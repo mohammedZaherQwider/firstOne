@@ -19,9 +19,11 @@
             </div>
 
             <div class="card-toolbar my-1">
-                <a href="{{ route('specializations.create') }}" class="btn btn-primary btn-sm">
-                    {{ __('back.add_specialization') }}
-                </a>
+                @can('Add Specialization')
+                    <a href="{{ route('specializations.create') }}" class="btn btn-primary btn-sm">
+                        {{ __('back.add_specialization') }}
+                    </a>
+                @endcan
 
                 <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" id="kt_filter_search"
@@ -62,24 +64,25 @@
                                 </td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
+                                        @can('Update Specialization')
+                                            <a href="{{ route('specializations.edit', $specialization->id) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                        @endcan
+                                        @can('Delete Specialization')
+                                            <form class="d-inline"
+                                                action="{{ route('specializations.destroy', $specialization->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
 
-                                        <a href="{{ route('specializations.edit', $specialization->id) }}"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-
-                                        <form class="d-inline"
-                                            action="{{ route('specializations.destroy', $specialization->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button type="button" onclick="destroy(event)"
-                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-
+                                                <button type="button" onclick="destroy(event)"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

@@ -288,6 +288,4 @@ return [
     'linkedin' => 'LinkedIn',
     'save_settings' => 'Save Settings',
     'please_wait' => 'Please wait',
-
-
 ];

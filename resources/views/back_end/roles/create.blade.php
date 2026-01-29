@@ -4,11 +4,8 @@
     <div id="kt_content_container" class="container-xxl">
         <div class="card">
             <div class="card-body p-lg-17">
-                <form action="{{ isset($role) ? route('roles.update', $role->id) : route('roles.store') }}" " method="POST" enctype="multipart/form-data" id="operationForm">
-                            @csrf
-                                   @if (isset($role))
-                    @method('PUT')
-                    @endif
+                <form action="{{ route('roles.store') }}" method="POST" enctype="multipart/form-data" id="operationForm">
+                    @csrf
                     <h1 class="fw-bolder text-dark mb-9">Add Roles</h1>
 
                     <div class="row mb-5">

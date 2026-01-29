@@ -18,10 +18,11 @@
             </div>
 
             <div class="card-toolbar my-1">
-                <a href="{{ route('countries.create') }}" class="btn btn-primary btn-sm">
-                    {{ __('back.add_country') }}
-                </a>
-
+                @can('Add Country')
+                    <a href="{{ route('countries.create') }}" class="btn btn-primary btn-sm">
+                        {{ __('back.add_country') }}
+                    </a>
+                @endcan
                 <div class="d-flex align-items-center position-relative my-1 ms-4">
                     <input type="text" class="form-control form-control-solid form-select-sm w-150px ps-3"
                         placeholder="{{ __('back.search_country') }}" />
@@ -54,23 +55,24 @@
 
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end flex-shrink-0">
+                                        @can('Update Country')
+                                            <a href="{{ route('countries.edit', $country->id) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                        @endcan
+                                        @can('Delete Country')
+                                            <form class="d-inline" action="{{ route('countries.destroy', $country->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
 
-                                        <a href="{{ route('countries.edit', $country->id) }}"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-
-                                        <form class="d-inline" action="{{ route('countries.destroy', $country->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button type="button" onclick="destroy(event)"
-                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </form>
-
+                                                <button type="button" onclick="destroy(event)"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

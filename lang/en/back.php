@@ -288,4 +288,17 @@ return [
     'linkedin' => 'LinkedIn',
     'save_settings' => 'Save Settings',
     'please_wait' => 'Please wait',
+
+      'profile_details' => 'Profile Details',
+    'avatar' => 'Avatar',
+    'name' => 'Full Name',
+    'email' => 'Email Address',
+    'password' => 'Password',
+    'role' => 'Role',
+    'contact_phone' => 'Contact Phone',
+    'company_site' => 'Company Website',
+    'country' => 'Country',
+    'select_country' => 'Select a Country',
+    'dark_mode' => 'Dark Mode',
+    'save_changes' => 'Save Changes',
 ];

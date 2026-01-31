@@ -255,7 +255,7 @@ return [
     'please_wait' => 'يرجى الانتظار...',
     'enter_content' => 'اكتب المحتوى هنا...',
     'enter_content_en' => 'اكتب المحتوى هنا بالإنجليزية...',
-     'payments' => 'المدفوعات',
+    'payments' => 'المدفوعات',
     'search_payment' => 'بحث عن دفعة',
     'id' => 'المعرف',
     'offer' => 'العرض',
@@ -273,7 +273,7 @@ return [
     'delete_warning' => 'لن تتمكن من التراجع عن هذا الإجراء!',
     'cancel' => 'إلغاء',
     'yes_delete' => 'نعم، احذف',
-     'general_settings' => 'الإعدادات العامة',
+    'general_settings' => 'الإعدادات العامة',
     'site_name' => 'اسم الموقع',
     'site_email' => 'البريد الإلكتروني للموقع',
     'phone' => 'الهاتف',
@@ -284,5 +284,19 @@ return [
     'linkedin' => 'لينكدإن',
     'save_settings' => 'حفظ الإعدادات',
     'please_wait' => 'يرجى الانتظار',
+
+
+    'profile_details' => 'تفاصيل الملف الشخصي',
+    'avatar' => 'الصورة الشخصية',
+    'name' => 'الاسم الكامل',
+    'email' => 'البريد الإلكتروني',
+    'password' => 'كلمة المرور',
+    'role' => 'الصلاحية',
+    'contact_phone' => 'رقم الهاتف',
+    'company_site' => 'موقع الشركة',
+    'country' => 'الدولة',
+    'select_country' => 'اختر الدولة',
+    'dark_mode' => 'الوضع الداكن',
+    'save_changes' => 'حفظ التغييرات',
 
 ];

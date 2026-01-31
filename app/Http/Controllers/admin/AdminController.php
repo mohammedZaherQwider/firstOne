@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Payment;
 use App\Models\Setting;
 use App\Models\User;
@@ -14,7 +15,8 @@ class AdminController extends Controller
 {
     function dashboard()
     {
-        return view('back_end.index');
+        $countries = Country::orderBy('name')->get();
+        return view('back_end.index', compact('countries'));
     }
     function notification()
     {

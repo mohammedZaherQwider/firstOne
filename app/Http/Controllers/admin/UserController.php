@@ -40,33 +40,54 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (!$request->profile) {
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+                'phone' => 'required',
+                'country_id' => 'required |exists:countries,id',
+                'job_id' => 'required | exists:jobs,id',
+                'hospital_id' => 'required | exists:hospitals,id',
+                'role_id' => 'required | exists:roles,id',
+                'type' => 'required|in:admin,user',
 
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-            'phone' => 'required',
-            'country_id' => 'required |exists:countries,id',
-            'job_id' => 'required | exists:jobs,id',
-            'hospital_id' => 'required | exists:hospitals,id',
-            'role_id' => 'required | exists:roles,id',
-            'type' => 'required|in:admin,user',
+            ]);
+        }
 
-        ]);
         // dd($request->all());
+        $data = [];
+        if (!$request->profile) {
+            $data = [
+                'name'        => $request->name,
+                'email'       => $request->email,
+                'password'    => Hash::make($request->password),
+                'phone'       => $request->phone,
+                'country_id'  => $request->country_id,
+                'job_id'      => $request->job_id,
+                'role_id'      => $request->role_id,
+                'hospital_id' => $request->hospital_id,
+                'type' => $request->type,
+                'email_verified_at' => now(),
+            ];
+        } else {
+            $user = User::findOrFail($request->id);
+            $data = [
+                'name'        => $request->name,
+                'email'       => $request->email,
+                'password'    => $user->password,
+                'phone'       => $request->phone,
+                'country_id'  => $request->country_id,
+                'job_id'      => $user->job_id,
+                'role_id'      => $request->role_id,
+                'hospital_id' => $user->hospital_id,
+                'type' => $user->type,
+                'email_verified_at' => now(),
+            ];
+        }
 
-        $data = [
-            'name'        => $request->name,
-            'email'       => $request->email,
-            'password'    => Hash::make($request->password),
-            'phone'       => $request->phone,
-            'country_id'  => $request->country_id,
-            'job_id'      => $request->job_id,
-            'role_id'      => $request->role_id,
-            'hospital_id' => $request->hospital_id,
-            'type' => $request->type,
-            'email_verified_at' => now(),
-        ];
+        // dd($data);
+
         if ($request->id) {
             $user = User::findOrFail($request->id);
             $user->update($data);
@@ -95,11 +116,19 @@ class UserController extends Controller
             $user->assignRole($role->name);
             $msg = 'User created successfully';
         }
-        return redirect()->route('users.index')->with([
-            'status' => 'success',
-            'msg' => $msg,
-            'data' => $user
-        ]);
+        if (!$request->profile) {
+            return redirect()->route('users.index')->with([
+                'status' => 'success',
+                'msg' => $msg,
+                'data' => $user
+            ]);
+        } else {
+            return redirect()->route('dashboard')->with([
+                'status' => 'success',
+                'msg' => $msg,
+                'data' => $user
+            ]);
+        }
     }
 
     /**

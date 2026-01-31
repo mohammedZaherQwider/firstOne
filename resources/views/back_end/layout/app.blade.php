@@ -40,6 +40,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('assets/back_end/js/jquery-3.7.0.min.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/sweetalert2.all.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
     @if (app()->getLocale() == 'ar')
         <link href="{{ asset('assets/back_end/cssRTL/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -150,7 +151,7 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                             id="#kt_aside_menu" data-kt-menu="true">
                             <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-                                <span class="menu-link">
+                                <a class="menu-link" href="{{ route('dashboard') }}">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                                         <span class="svg-icon svg-icon-2">
@@ -169,7 +170,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">{{ __('site.dash') }}</span>
-                                </span>
+                                </a>
                             </div>
                             @canany(['Show all Doctors', 'Add Doctor'])
                                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -734,7 +735,8 @@ License: For each use you must have a valid license purchased only from above li
                                         <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
                                             class="menu-item here show menu-lg-down-accordion me-lg-1">
                                             <span class="menu-link py-3">
-                                                <span class="menu-title">{{ __('site.dash') }}</span>
+                                                <a class="menu-title"
+                                                    href="{{ route('dashboard') }}">{{ __('site.dash') }}</a>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                         </div>
@@ -917,20 +919,6 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="separator my-2"></div>
                                         <!--end::Menu separator-->
                                         <!--begin::Menu item-->
-                                        <div class="menu-item px-5">
-                                            <div class="menu-content px-5">
-                                                <label
-                                                    class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
-                                                    for="kt_user_menu_dark_mode_toggle">
-                                                    <input class="form-check-input w-30px h-20px" type="checkbox"
-                                                        value="1" name="mode"
-                                                        id="kt_user_menu_dark_mode_toggle"
-                                                        data-kt-url="../../demo1/dist/index.html" />
-                                                    <span class="pulse-ring ms-n1"></span>
-                                                    <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-                                                </label>
-                                            </div>
-                                        </div>
                                         <!--end::Menu item-->
                                     </div>
                                     <!--end::User account menu-->
@@ -1038,6 +1026,30 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('assets/back_end/js/dropzone-min.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/back_end/js/summernote-lite.min.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const toggle = document.getElementById('darkModeToggle');
+            if (!toggle) return;
+
+            const darkmode = new Darkmode({
+                time: '0.5s',
+                saveInCookies: false,
+                autoMatchOsTheme: false
+            });
+
+            // sync switch
+            toggle.checked = darkmode.isActivated();
+
+            toggle.addEventListener('change', function() {
+                darkmode.toggle();
+            });
+
+        });
+    </script>
 
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->

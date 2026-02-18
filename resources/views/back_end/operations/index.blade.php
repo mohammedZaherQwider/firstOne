@@ -15,7 +15,8 @@
             <!--begin::Card title-->
             <div class="card-title flex-column">
                 <h3 class="fw-bolder mb-1">{{ __('site.operations') }} </h3>
-                <div class="fs-6 text-gray-400">{{ __('back.Total') }} ${{ $operations->where('pay', 1)->sum('price') }} {{ __('back.sepnt so far') }}</div>
+                <div class="fs-6 text-gray-400">{{ __('back.Total') }} ${{ $operations->where('pay', 1)->sum('price') }}
+                    {{ __('back.sepnt so far') }}</div>
             </div>
             <!--begin::Card title-->
             <!--begin::Card toolbar-->
@@ -59,7 +60,8 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" id="kt_filter_search"
-                        class="form-control form-control-solid form-select-sm w-150px ps-9" placeholder="{{ __('back.search_order') }}" />
+                        class="form-control form-control-solid form-select-sm w-150px ps-9"
+                        placeholder="{{ __('back.search_order') }}" />
                 </div>
                 <!--end::Search-->
             </div>
@@ -150,7 +152,6 @@
                                                             fill="black" />
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->
                                             </a>
                                         @endcan
                                         @can('Delete Operation')

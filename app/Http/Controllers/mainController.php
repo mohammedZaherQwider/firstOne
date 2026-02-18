@@ -285,6 +285,7 @@ class mainController extends Controller
     }
     function status(Request $request, Offer $offer)
     {
+        $admin = User::orderBy('id', 'asc')->first();
         // dump($offer);
         $resourcePath = $request->resourcePath;
         // dd($resourcePath);
@@ -324,6 +325,9 @@ class mainController extends Controller
                 'status'         => 'paid',
                 'paid_at'        => Carbon::now(),
             ]);
+            if ($admin) {
+                // $admin->notify(new PaymentSuccessNotification($offer, $price));
+            }
             return view('front_end.resulte');
         } else {
             Payment::create([
@@ -386,13 +390,14 @@ class mainController extends Controller
             ->where('link', 'blog')
             ->findOrFail($id);
         $contents = Content::all();
-        return view('front_end.blog-details', compact('content','contents'));
+        return view('front_end.blog-details', compact('content', 'contents'));
     }
-    function service_details() {
-         $content = Content::with('image')
+    function service_details()
+    {
+        $content = Content::with('image')
             ->where('link', 'service')
-            ->where('title','التأمين الصحي')
+            ->where('title', 'التأمين الصحي')
             ->first();
-        return view('front_end.service-details',compact('content'));
+        return view('front_end.service-details', compact('content'));
     }
 }

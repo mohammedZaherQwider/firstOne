@@ -276,7 +276,7 @@
                     <a href="{{ route('login') }}" class="btn cs-btn v2"> {{ __('front.login') }}</a>
                     <div class="lang d-flex align-items-center">
                         <!-- <a href="#"> -->
-                        <div class="cs-dropdown">
+                        {{-- <div class="cs-dropdown">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="language"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -288,14 +288,39 @@
                                             class="kt-nav__item {{ app()->currentLocale() == $localeCode ? 'kt-nav__item--active' : '' }}">
                                             <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
                                                 class="kt-nav__link">
-                                                {{-- <span class="kt-nav__link-icon"><img src="{{ asset('admin2asset/assets/media/flags/'.$properties['flag']) }}" alt="" /></span> --}}
                                                 <span class="kt-nav__link-text">{{ $properties['native'] }}</span>
                                             </a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
+                        @php
+    $currentLocale = app()->currentLocale();
+    $locales = LaravelLocalization::getSupportedLocales();
+@endphp
+
+<div class="cs-dropdown">
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="language"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ $locales[$currentLocale]['native'] }}
+        </button>
+
+        <ul class="dropdown-menu" aria-labelledby="language">
+            @foreach ($locales as $localeCode => $properties)
+                <li
+                    class="kt-nav__item {{ $currentLocale == $localeCode ? 'kt-nav__item--active' : '' }}">
+                    <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                        class="kt-nav__link">
+                        <span class="kt-nav__link-text">{{ $properties['native'] }}</span>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+
                         <span class="icon-show">
                             <svg id="vuesax_bulk_global" data-name="vuesax/bulk/global"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"

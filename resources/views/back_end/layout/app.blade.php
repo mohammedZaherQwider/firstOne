@@ -752,7 +752,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center ms-1 ms-lg-3">
 
                                 </div>
-                                <div class="d-flex align-items-center ms-1 ms-lg-3">
+                                {{-- <div class="d-flex align-items-center ms-1 ms-lg-3">
                                     <select class="form-select form-select-sm"
                                         onchange="if (this.value) window.location.href=this.value">
                                         <option disabled selected>{{ __('Languages') }}</option>
@@ -764,7 +764,22 @@ License: For each use you must have a valid license purchased only from above li
                                             </option>
                                         @endforeach
                                     </select>
+                                </div> --}}
+                                <div class="d-flex align-items-center ms-1 ms-lg-3">
+                                    <select class="form-select form-select-sm"
+                                        onchange="if (this.value) window.location.href=this.value">
+
+                                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                            <option
+                                                value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                                {{ app()->currentLocale() == $localeCode ? 'selected' : '' }}>
+                                                {{ $properties['native'] }}
+                                            </option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
+
 
 
                                 <!--end::Search-->

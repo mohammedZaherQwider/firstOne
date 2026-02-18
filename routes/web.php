@@ -70,7 +70,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::post('/reset_password', [mainController::class, 'reset_password'])->name('reset_password');
     Route::get('/profile', [mainController::class, 'profile'])->name('profile');
 
-    Route::get('/pay/{offer}', [mainController::class, 'pay'])->name('pay');
+    Route::get('/pay/{offer}', [mainController::class, 'pay'])->middleware('notify.offer')->name('pay');
     Route::get('/offers/{offer}', [mainController::class, 'status'])->name('offers.status');
 });
 

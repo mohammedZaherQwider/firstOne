@@ -43,7 +43,7 @@ class AdminController extends Controller
     }
     function settings(Request $request)
     {
-
+        
         foreach ($request->except('_token') as $key => $value) {
             Setting::updateOrCreate(
                 ['key' => $key],
